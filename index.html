@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MA LEGEND | Official Store</title>
+    
+    <!-- WEBSITE ICON -->
+    <link rel="icon" type="image/jpg" href="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
+
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- THEME SETTINGS --- */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-sub: #b3b3b3;
+            --border: #333333;
+            --gold: #FFD700;
+            --neon-blue: #00f3ff;
+            --neon-green: #00ff88;
+            --danger: #ff4444;
+            --sidebar-bg: rgba(10, 10, 10, 0.95);
+        }
+
+        body.light-mode {
+            --bg-color: #f4f4f4;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-sub: #555555;
+            --border: #cccccc;
+            --gold: #d4af37;
+            --neon-blue: #0077be;
+            --neon-green: #009900;
+            --sidebar-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 20px;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background: var(--card-bg);
+            border-bottom: 2px solid var(--neon-green);
+            padding: 8px;
+            display: flex; justify-content: center; gap: 15px;
+            font-family: 'Rajdhani', sans-serif; font-size: 0.9rem;
+        }
+
+        /* --- HEADER --- */
+        header { 
+            padding: 20px; 
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(var(--bg-color), 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu-btn, .theme-btn {
+            font-size: 1.5rem; color: var(--gold); cursor: pointer;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 1px solid var(--border); background: var(--card-bg);
+        }
+
+        .brand-center { text-align: center; }
+        .brand-center h1 {
+            font-family: 'Orbitron', sans-serif; font-size: 1.5rem;
+            background: linear-gradient(to right, var(--text-main), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* --- MARQUEE --- */
+        .marquee-box {
+            background: var(--gold); color: black; font-weight: bold;
+            font-family: 'Rajdhani'; padding: 5px 0; overflow: hidden;
+            white-space: nowrap; position: relative; font-size: 0.9rem;
+        }
+        .marquee-content {
+            display: inline-block; padding-left: 100%; animation: scrollText 15s linear infinite;
+        }
+        @keyframes scrollText { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
+
+        /* --- SIDEBAR --- */
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 1000;
+            opacity: 0; visibility: hidden; transition: 0.4s;
+        }
+        .sidebar {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100%;
+            background: var(--sidebar-bg); z-index: 1001;
+            border-right: 1px solid var(--gold);
+            padding: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .side-profile { text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+        .side-img {
+            width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); padding: 3px; object-fit: cover;
+            animation: styleSpin 8s linear infinite; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        @keyframes styleSpin { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); border-color: #fff; } 100% { transform: rotate(360deg); } }
+
+        .side-links a {
+            display: block; padding: 15px; margin-bottom: 10px; color: var(--text-main); text-decoration: none;
+            border-radius: 10px; font-weight: 500; display: flex; align-items: center; gap: 15px;
+        }
+        .side-links a:hover { background: rgba(255, 215, 0, 0.1); color: var(--gold); }
+        .side-links i { width: 25px; text-align: center; color: var(--gold); }
+
+        /* --- APP CARDS --- */
+        .app-icon-img {
+            width: 60px; height: 60px; border-radius: 12px; object-fit: cover;
+            border: 1px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .tag {
+            position: absolute; top: 10px; right: 10px; font-size: 0.6rem; padding: 2px 6px;
+            border-radius: 4px; font-weight: bold; color: white; font-family: 'Rajdhani';
+        }
+        .tag-new { background: var(--neon-blue); animation: blink 1.5s infinite; }
+        .tag-hot { background: var(--danger); }
+        .tag-gold { background: var(--gold); color: black; box-shadow: 0 0 10px var(--gold); }
+        @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+
+        .stars { color: var(--gold); font-size: 0.7rem; margin-top: 3px; }
+
+        .tab-container { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+        .tab-btn {
+            background: transparent; border: 1px solid var(--border); color: var(--text-sub);
+            padding: 10px 30px; border-radius: 50px; cursor: pointer; font-weight: bold;
+        }
+        .tab-btn.active { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); }
+
+        .page-section { display: none; animation: fadeIn 0.5s; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+
+        .search-box {
+            width: 90%; max-width: 450px; margin: 0 auto 30px; display: flex; align-items: center;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 50px; padding: 10px 20px;
+        }
+        .search-box input { border: none; background: transparent; color: var(--text-main); width: 100%; outline: none; margin-left: 10px; }
+        .search-box i { color: var(--gold); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 20px; position: relative; }
+        
+        /* SPECIAL GOLD CARD FOR MA WHATSAPP */
+        .card.featured {
+            border: 2px solid var(--gold);
+            background: linear-gradient(145deg, #1a1a1a, #000000);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+            transform: scale(1.02);
+        }
+
+        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        
+        .action-row { display: flex; gap: 10px; margin-top: 15px; }
+        .dl-btn {
+            flex: 1; padding: 10px; border-radius: 8px; background: var(--gold); color: black; font-weight: bold;
+            text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center;
+        }
+        .share-btn {
+            width: 45px; border-radius: 8px; background: transparent; border: 1px solid var(--border);
+            color: var(--text-sub); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .share-btn:hover { color: var(--neon-blue); border-color: var(--neon-blue); }
+
+        /* --- SCROLL TO TOP --- */
+        #scrollTop {
+            position: fixed; bottom: 80px; right: 20px; width: 45px; height: 45px;
+            background: var(--gold); color: black; border-radius: 50%; display: none;
+            justify-content: center; align-items: center; cursor: pointer; font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 99;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center; margin-top: 50px; padding: 30px 20px;
+            background: var(--card-bg); border-top: 1px solid var(--border);
+        }
+        footer .social-icons { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
+        footer .social-icons i { font-size: 1.5rem; color: var(--gold); cursor: pointer; }
+        footer .social-icons a { color: var(--gold); transition: 0.3s; }
+        footer .social-icons a:hover { color: var(--neon-green); transform: translateY(-5px); }
+
+        /* --- POPUP MODALS --- */
+        .info-modal, .server-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 2000; display: none; justify-content: center; align-items: center;
+        }
+        .info-box, .server-box {
+            background: var(--card-bg); width: 90%; max-width: 350px; padding: 30px; border-radius: 20px;
+            border: 1px solid var(--gold); text-align: center; position: relative; animation: zoomIn 0.3s;
+        }
+        @keyframes zoomIn { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
+        
+        .close-icon { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-sub); }
+        .contact-input { width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: var(--text-main); border-radius: 5px; }
+        .send-btn { width: 100%; padding: 10px; background: var(--neon-blue); border: none; color: black; font-weight: bold; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .logs { color: var(--neon-blue); font-size: 0.8rem; height: 60px; text-align: left; margin: 15px 0; font-family: monospace; }
+        .count { font-size: 2.5rem; font-weight: bold; font-family: 'Orbitron'; margin-bottom: 15px; }
+        .faq-item { margin-bottom: 10px; text-align: left; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .faq-q { color: var(--gold); font-weight: bold; margin-bottom: 5px; display: flex; justify-content: space-between; cursor: pointer; }
+        .faq-a { color: var(--text-sub); font-size: 0.85rem; display: none; margin-top: 5px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- SCROLL TO TOP -->
+    <div id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="side-profile">
+            <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="side-img" alt="Logo">
+            <h3 style="color:var(--gold); font-family:'Orbitron'; margin-top:10px;">MA LEGEND</h3>
+            <p style="color:var(--text-sub); font-size:0.8rem">Official Store</p>
+        </div>
+        <div class="side-links">
+            <a href="#" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a>
+            <a href="#" onclick="openInfo('faq')"><i class="fas fa-question-circle"></i> Help / FAQ</a>
+            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> WA Channel</a>
+            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="#" onclick="openInfo('about')"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="#" onclick="openInfo('contact')"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div style="margin-top:auto; text-align:center; color:var(--text-sub); font-size:0.7rem;">&copy; 2024 MA Legend</div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+        <div class="brand-center">
+            <h1>MA LEGEND</h1>
+            <span style="font-size:0.7rem; color:var(--neon-green); letter-spacing:2px;">OFFICIAL STORE</span>
+        </div>
+        <div class="theme-btn" onclick="toggleTheme()"><i class="fas fa-sun" id="themeIcon"></i></div>
+    </header>
+
+    <!-- MARQUEE -->
+    <div class="marquee-box">
+        <div class="marquee-content">
+            Welcome to MA LEGEND Official Store • New Update v10.0 Released • Download Safe & Anti-Ban Mods • Join Telegram for Daily Updates!
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <span><i class="fas fa-eye"></i> 15.4K</span>
+        <span><i class="fas fa-user-check"></i> 8.2K Verified</span>
+        <span style="color:var(--gold)">ONLINE</span>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('whatsapp', this)">WA Mods</button>
+        <button class="tab-btn" onclick="switchTab('games', this)">Games & Tools</button>
+    </div>
+
+    <!-- SECTION 1: WHATSAPP -->
+    <div id="whatsapp" class="page-section active">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchWa" placeholder="Search WA Mods..." onkeyup="filterApps('whatsapp', 'searchWa')">
+        </div>
+
+        <div class="grid">
+            
+            <!-- FEATURED TOP 3X WhatsApp -->
+            <div class="card featured">
+                <span class="tag tag-gold"><i class="fas fa-crown"></i> BEST</span>
+                <div class="card-header">
+                    <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
+                    <div>
+                        <h3 style="color:var(--gold);">TOP 3X LEGEND</h3>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span style="color:var(--text-sub); font-size:0.8rem;">v 2.25.31.76 • Anti-Ban Safe</span>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a href="javascript:void(0)" class="dl-btn" onclick="startDL('https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file')">DOWNLOAD</a>
+                    <button class="share-btn" onclick="shareApp('https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file')"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+
+            <!-- GB WHATSAPP -->
+            <div class="card">
+                <span class="tag tag-new">NEW</span>
+                <div class="card-header">
+                    <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
+                    <div>
+                        <h3>GB WhatsApp</h3>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span style="color:var(--text-sub); font-size:0.8rem;">v17.85 • Anti-Ban</span>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a href="javascript:void(0)" class="dl-btn" onclick="startDL('GB WhatsApp', 'LINK_HERE')">DOWNLOAD</a>
+                    <button class="share-btn" onclick="shareApp('GB WhatsApp', 'LINK_HERE')"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+
+            <!-- FM WHATSAPP -->
+            <div class="card">
+                <span class="tag tag-hot">HOT</span>
+                <div class="card-header">
+                     <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
+                    <div>
+                        <h3>FM WhatsApp</h3>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <span style="color:var(--text-sub); font-size:0.8rem;">v9.98 • Privacy</span>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a href="javascript:void(0)" class="dl-btn" onclick="startDL('FM WhatsApp', 'LINK_HERE')">DOWNLOAD</a>
+                    <button class="share-btn" onclick="shareApp('FM WhatsApp', 'LINK_HERE')"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+            
+            <!-- WA PLUS -->
+            <div class="card">
+                <div class="card-header">
+                     <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
+                    <div>
+                        <h3>WA Plus</h3>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <span style="color:var(--text-sub); font-size:0.8rem;">v19.00 • Blue Theme</span>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a href="javascript:void(0)" class="dl-btn" onclick="startDL('WA Plus', 'LINK_HERE')">DOWNLOAD</a>
+                    <button class="share-btn" onclick="shareApp('WA Plus', 'LINK_HERE')"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: GAMES -->
+    <div id="games" class="page-section">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchGames" placeholder="Search Games..." onkeyup="filterApps('games', 'searchGames')">
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <span class="tag tag-hot" style="background:var(--danger)">ROOT</span>
+                <div class="card-header">
+                     <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
+                    <div>
+                        <h3>PUBG ESP</h3>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <span style="color:var(--danger); font-size:0.8rem; font-weight:bold;">Aimbot + ESP</span>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a href="javascript:void(0)" class="dl-btn" onclick="startDL('PUBG ESP', 'LINK_HERE')">DOWNLOAD</a>
+                    <button class="share-btn" onclick="shareApp('PUBG ESP', 'LINK_HERE')"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="tag tag-new">UPDATED</span>
+                <div class="card-header">
+                     <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
+                    <div>
+                        <h3>CapCut Pro</h3>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <span style="color:var(--text-sub); font-size:0.8rem;">Premium Unlocked</span>
+                    </div>
+                </div>
+                <div class="action-row">
+                    <a href="javascript:void(0)" class="dl-btn" onclick="startDL('CapCut', 'LINK_HERE')">DOWNLOAD</a>
+                    <button class="share-btn" onclick="shareApp('CapCut', 'LINK_HERE')"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="brand-center">
+            <h2 style="font-family:'Orbitron'; color:var(--gold);">MA LEGEND</h2>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.youtube.com/@legendmod407" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p style="margin-top:20px;">&copy; 2024 MA Legend Store. All Rights Reserved.</p>
+    </footer>
+
+    <!-- POPUPS -->
+    <div class="info-modal" id="faqModal">
+        <div class="info-box">
+            <i class="fas fa-times close-icon" onclick="closeInfo()"></i>
+            <h2 style="margin-bottom:20px;">HELP / FAQ</h2>
+            <div class="faq-item" onclick="toggleAns(this)">
+                <div class="faq-q">Are these mods safe? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-a">Yes, all apps are scanned. However, use secondary numbers for extra safety.</div>
+            </div>
+            <div class="faq-item" onclick="toggleAns(this)">
+                <div class="faq-q">How to update? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-a">Download new version and install over old one. Don't uninstall to save chats.</div>
+            </div>
+            <div class="faq-item" onclick="toggleAns(this)">
+                <div class="faq-q">Password for files? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-a">Some files are protected. Join Telegram channel for passwords.</div>
+            </div>
+            <button class="dl-btn" onclick="closeInfo()" style="margin-top:20px;">CLOSE</button>
+        </div>
+    </div>
+
+    <div class="info-modal" id="aboutModal">
+        <div class="info-box">
+            <i class="fas fa-times close-icon" onclick="closeInfo()"></i>
+            <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="side-img" style="margin-bottom:15px; width:80px; height:80px;">
+            <h2>ABOUT US</h2>
+            <p>Welcome to <strong>MA LEGEND STORE</strong>. We provide safe, secure, and anti-ban mods for WhatsApp and premium tools for gaming.</p>
+            <button class="dl-btn" onclick="closeInfo()">CLOSE</button>
+        </div>
+    </div>
+
+    <div class="info-modal" id="contactModal">
+        <div class="info-box">
+            <i class="fas fa-times close-icon" onclick="closeInfo()"></i>
+            <h2>CONTACT US</h2>
+            <p style="color:var(--text-sub); margin-bottom:15px;">Have an issue? Message me on WhatsApp.</p>
+            
+            <!-- CHANGE THE NUMBER BELOW TO YOUR REAL NUMBER -->
+            <button class="send-btn" onclick="window.location.href='https://wa.me/923001234567'">
+                OPEN WHATSAPP <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="server-modal" id="dlModal">
+        <div class="server-box">
+            <h3 style="color:var(--neon-green)">CONNECTING...</h3>
+            <div class="logs" id="logs"></div>
+            <div class="count" id="timer">5</div>
+            <a href="#" id="finalBtn" class="dl-btn" style="display:none;">OPEN LINK</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.querySelector('.sidebar-overlay').classList.toggle('active'); }
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active'); btn.classList.add('active');
+        }
+        function toggleTheme() { document.body.classList.toggle('light-mode'); }
+        function openInfo(type) { 
+            toggleSidebar(); let id = (type === 'about') ? 'aboutModal' : (type === 'contact') ? 'contactModal' : 'faqModal';
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeInfo() { document.querySelectorAll('.info-modal').forEach(el => el.style.display = 'none'); }
+        function toggleAns(el) {
+            let ans = el.querySelector('.faq-a'), icon = el.querySelector('i');
+            if(ans.style.display === 'block') { ans.style.display = 'none'; icon.className = 'fas fa-chevron-down'; } 
+            else { ans.style.display = 'block'; icon.className = 'fas fa-chevron-up'; }
+        }
+        function startDL(name, link) {
+            let modal = document.getElementById('dlModal'), logDiv = document.getElementById('logs'), timerDiv = document.getElementById('timer'), btn = document.getElementById('finalBtn');
+            modal.style.display = 'flex'; btn.style.display = 'none'; btn.href = link; timerDiv.style.display = 'block';
+            let logs = ["> Connecting...", "> Requesting " + name, "> Verifying Token...", "> Download Ready."], i = 0; logDiv.innerHTML = "";
+            let logInt = setInterval(()=>{ if(i<logs.length) { logDiv.innerHTML += logs[i] + "<br>"; i++; } else clearInterval(logInt); }, 800);
+            let time = 5; timerDiv.innerText = time;
+            let timeInt = setInterval(()=>{ time--; timerDiv.innerText = time; if(time<=0){ clearInterval(timeInt); timerDiv.style.display='none'; btn.style.display='block'; } }, 1000);
+        }
+        function filterApps(sectionId, inputId) {
+            let input = document.getElementById(inputId).value.toUpperCase();
+            let cards = document.getElementById(sectionId).getElementsByClassName('card');
+            for(let i=0; i<cards.length; i++){ cards[i].style.display = cards[i].querySelector('h3').innerText.toUpperCase().indexOf(input) > -1 ? "" : "none"; }
+        }
+        
+        // --- FIXED SHARE FUNCTION ---
+        function shareApp(name, link) {
+            const shareText = 'Download ' + name + ' from MA Legend Store!';
+            const shareUrl = window.location.href; // Or use the direct file link if you prefer
+
+            // 1. Try Native Mobile Share
+            if (navigator.share) {
+                navigator.share({
+                    title: name,
+                    text: shareText,
+                    url: shareUrl
+                }).catch((error) => console.log('Error sharing:', error));
+            } 
+            // 2. Fallback: Copy to Clipboard (PC/Laptop)
+            else {
+                navigator.clipboard.writeText(shareText + " " + shareUrl).then(function() {
+                    alert('Link Copied to Clipboard!');
+                }, function(err) {
+                    prompt("Copy this link:", shareUrl);
+                });
+            }
+        }
+
+        window.onscroll = function() {
+            let btn = document.getElementById("scrollTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) { btn.style.display = "flex"; } else { btn.style.display = "none"; }
+        };
+        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+    </script>
+</body>
+</html>
