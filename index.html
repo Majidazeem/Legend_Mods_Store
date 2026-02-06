@@ -3,937 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MA LEGEND | Official Store</title>
+    <title>MA LEGEND | Official VIP Elite Store</title>
     
-    <!-- SEO & SOCIAL PREVIEW (WhatsApp/Facebook Link ke liye) -->
-    <meta name="description" content="Download best Anti-Ban WhatsApp Mods, CapCut Pro, and Tools securely. Official MA Legend Store.">
-    <meta property="og:title" content="MA LEGEND | Official Store">
-    <meta property="og:description" content="Download latest Mods safely. 100% Anti-Ban & Tested.">
+    <meta name="description" content="MA Legend Official Store - Premium Anti-Ban WhatsApp Mods & Elite Tools.">
+    <meta property="og:title" content="MA LEGEND | VIP Elite Store">
     <meta property="og:image" content="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
-    <meta property="og:url" content="https://legend-mods-store.vercel.app/">
     <meta name="theme-color" content="#FFD700">
 
-    <!-- WEBSITE ICON -->
     <link rel="icon" type="image/jpg" href="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
-
-    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- THEME SETTINGS --- */
+        /* --- MASTER DESIGN SYSTEM --- */
         :root {
             --bg-color: #050505;
-            --card-bg: #111111;
+            --card-bg: rgba(18, 18, 18, 0.98);
             --text-main: #ffffff;
-            --text-sub: #b3b3b3;
-            --border: #333333;
+            --text-sub: #a5a5a5;
+            --border: #222222;
             --gold: #FFD700;
-            --neon-blue: #00f3ff;
             --neon-green: #00ff88;
-            --danger: #ff4444;
-            --sidebar-bg: rgba(10, 10, 10, 0.95);
-            --header-bg: rgba(5, 5, 5, 0.9);
-            --shadow: 0 5px 15px rgba(0,0,0,0.2);
-            --toast-bg: #1a1a1a;
+            --neon-blue: #00f3ff;
+            --header-bg: rgba(5, 5, 5, 0.96);
+            --vip-gradient: linear-gradient(45deg, #FFD700, #ffffff, #FFD700);
+            --gold-glow: rgba(255, 215, 0, 0.3);
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
-        /* LIGHT MODE (Clean & Sharp Fix) */
+        /* Light Mode Override */
         body.light-mode {
-            --bg-color: #f8f9fa;
+            --bg-color: #f4f6f9;
             --card-bg: #ffffff;
-            --text-main: #000000;
+            --text-main: #121212;
             --text-sub: #555555;
-            --border: #e0e0e0;
-            --gold: #d4af37;
-            --neon-blue: #0077be;
-            --neon-green: #009900;
-            --sidebar-bg: #ffffff;
-            --header-bg: #ffffff; 
-            --shadow: 0 2px 10px rgba(0,0,0,0.05);
-            --toast-bg: #333333;
+            --border: #d1d1d1;
+            --header-bg: #ffffff;
+            --gold: #b8860b; 
+            --glass: rgba(0, 0, 0, 0.05);
+            --gold-glow: rgba(184, 134, 11, 0.2);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: 0.3s; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding-bottom: 20px;
-            overflow-x: hidden;
-        }
-
-        /* --- STATS BAR --- */
-        .stats-bar {
-            background: var(--card-bg);
-            border-bottom: 2px solid var(--neon-green);
-            padding: 8px;
-            display: flex; justify-content: center; gap: 15px;
-            font-family: 'Rajdhani', sans-serif; font-size: 0.9rem;
-            color: var(--text-main);
-        }
-
-        /* --- HEADER --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.3s, color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
+        
+        /* HEADER */
         header { 
-            padding: 15px 20px; 
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100;
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow);
+            height: 70px; padding: 0 15px; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000; background: var(--header-bg);
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
         }
+        .brand-logo h1 { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; text-shadow: 0 0 10px var(--gold-glow); }
+        .btn-nav-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--card-bg); border: 1px solid var(--border); color: var(--gold); cursor: pointer; font-size: 1.2rem; }
 
-        .menu-btn, .theme-btn {
-            font-size: 1.2rem; color: var(--gold); cursor: pointer;
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; border: 1px solid var(--border); background: var(--card-bg);
-            box-shadow: var(--shadow);
-        }
-
-        .brand-center { text-align: center; }
-        .brand-center h1 {
-            font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 800;
-            color: var(--text-main);
-        }
-        
-        /* Gradient Text (Only in Dark Mode) */
-        body:not(.light-mode) .brand-center h1 {
-            background: linear-gradient(to right, #fff, var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        /* --- MARQUEE --- */
-        .marquee-box {
-            background: var(--gold); color: black; font-weight: bold;
-            font-family: 'Rajdhani'; padding: 5px 0; overflow: hidden;
-            white-space: nowrap; position: relative; font-size: 0.85rem;
-        }
-        .marquee-content {
-            display: inline-block; padding-left: 10%; 
-            animation: scrollText 20s linear infinite;
-        }
-        @keyframes scrollText { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-
-        /* --- SIDEBAR --- */
-        .sidebar-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 1000;
-            opacity: 0; visibility: hidden; transition: 0.4s;
-        }
-        .sidebar {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100%;
-            background: var(--sidebar-bg); z-index: 1001;
-            border-right: 1px solid var(--gold);
-            padding: 20px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; flex-direction: column;
-            color: var(--text-main);
-        }
+        /* SIDEBAR */
+        .sidebar { position: fixed; top: 0; left: -300px; width: 285px; height: 100%; background: var(--bg-color); z-index: 2001; padding: 40px 25px; border-right: 2px solid var(--gold); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .sidebar.active { left: 0; }
-        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; backdrop-filter: blur(5px); }
+        .sidebar-overlay.active { display: block; }
+        .side-profile { text-align: center; margin-bottom: 30px; }
+        .side-avatar-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); padding: 5px; animation: spinLogo 15s linear infinite; }
+        @keyframes spinLogo { 100% { transform: rotate(360deg); } }
+        .side-links a { display: flex; align-items: center; gap: 15px; padding: 15px; color: var(--text-main); text-decoration: none; border-radius: 15px; font-size: 1rem; margin-bottom: 8px; cursor: pointer; }
+        .side-links a:hover { background: var(--glass); border: 1px solid var(--border); color: var(--gold); transform: translateX(5px); }
+        .side-links i { color: var(--gold); width: 25px; text-align: center; }
 
-        .side-profile { text-align: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-        .side-img {
-            width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); padding: 3px; object-fit: cover;
-            animation: styleSpin 8s linear infinite; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-        @keyframes styleSpin { 0% { transform: rotate(0deg); } 50% { transform: rotate(180deg); border-color: #fff; } 100% { transform: rotate(360deg); } }
+        /* MARQUEE */
+        .marquee { background: var(--gold); color: #000; padding: 12px; font-weight: 900; overflow: hidden; white-space: nowrap; font-size: 0.8rem; font-family: 'Rajdhani'; border-bottom: 2px solid #000; }
+        .marquee-inner { display: inline-block; animation: scrollText 25s linear infinite; }
+        @keyframes scrollText { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
-        .side-links a {
-            display: block; padding: 15px; margin-bottom: 10px; color: var(--text-main); text-decoration: none;
-            border-radius: 10px; font-weight: 500; display: flex; align-items: center; gap: 15px;
-        }
-        .side-links a:hover { background: rgba(255, 215, 0, 0.1); color: var(--gold); }
-        .side-links i { width: 25px; text-align: center; color: var(--gold); }
+        /* TABS */
+        .tabs { display: flex; gap: 10px; padding: 25px 15px; overflow-x: auto; justify-content: center; }
+        .tab-btn { flex: 1; min-width: 100px; max-width: 130px; padding: 15px; border-radius: 18px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-sub); font-weight: bold; cursor: pointer; font-family: 'Rajdhani'; font-size: 1rem; }
+        .tab-btn.active { background: var(--gold); color: #000; box-shadow: 0 5px 20px var(--gold-glow); transform: translateY(-3px); }
 
-        /* --- APP CARDS --- */
-        .app-icon-img {
-            width: 60px; height: 60px; border-radius: 12px; object-fit: cover;
-            border: 1px solid var(--border); box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .tag {
-            position: absolute; top: 10px; right: 10px; font-size: 0.6rem; padding: 3px 8px;
-            border-radius: 4px; font-weight: bold; color: white; font-family: 'Rajdhani';
-            z-index: 2;
-        }
-        .tag-new { background: var(--neon-blue); animation: blink 1.5s infinite; }
-        .tag-hot { background: var(--danger); }
-        .tag-gold { background: var(--gold); color: black; box-shadow: 0 0 10px var(--gold); }
-        @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+        /* SEARCH */
+        .search-container { width: 92%; max-width: 550px; margin: 0 auto 30px; background: var(--card-bg); border: 1px solid var(--border); padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .search-container input { background: transparent; border: none; color: var(--text-main); outline: none; width: 100%; font-size: 1.1rem; }
 
-        .stars { color: var(--gold); font-size: 0.7rem; margin-top: 3px; }
-
-        /* --- TIME BADGE (Automatic Time) --- */
-        .time-badge {
-            display: flex; align-items: center; gap: 5px;
-            font-size: 0.75rem;
-            color: var(--neon-green);
-            margin-top: 5px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            background: rgba(0, 255, 136, 0.1);
-            padding: 2px 8px; border-radius: 4px; width: fit-content;
-        }
-        body.light-mode .time-badge { background: rgba(0, 153, 0, 0.1); color: var(--neon-green); }
-
-        .tab-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; padding: 0 10px; }
-        .tab-btn {
-            background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub);
-            padding: 10px 25px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
-            flex: 1; max-width: 120px;
-        }
-        .tab-btn.active { 
-            background: var(--gold); color: #000; border-color: var(--gold); 
-            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
-        }
-
-        .page-section { display: none; animation: fadeIn 0.4s; }
-        .page-section.active { display: block; }
-        @keyframes fadeIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
-
-        .search-box {
-            width: 90%; max-width: 450px; margin: 0 auto 30px; display: flex; align-items: center;
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 50px; padding: 12px 20px;
-            box-shadow: var(--shadow);
-        }
-        .search-box input { border: none; background: transparent; color: var(--text-main); width: 100%; outline: none; margin-left: 10px; font-size: 1rem; }
-        .search-box i { color: var(--gold); }
-
-        .no-results {
-            text-align: center; color: var(--text-sub); display: none; margin-top: 20px;
-        }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* GRID & CARDS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; padding: 0 15px 60px; max-width: 1250px; margin: 0 auto; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 30px; padding: 28px; position: relative; overflow: hidden; animation: fadeInUp 0.7s ease; }
+        .card:hover { border-color: var(--gold); transform: translateY(-8px); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         
-        .card { 
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 20px; position: relative; 
-            box-shadow: var(--shadow);
+        .vip-tag { position: absolute; top: 18px; right: -38px; padding: 6px 40px; background: var(--vip-gradient); color: #000; transform: rotate(45deg); font-size: 0.65rem; font-weight: 900; font-family: 'Orbitron'; border: 1px solid #fff; }
+        .card-head { display: flex; gap: 20px; align-items: center; margin-bottom: 25px; }
+        .card-head img { width: 80px; height: 80px; border-radius: 22px; object-fit: cover; border: 2px solid var(--border); }
+        .time-badge { font-size: 0.75rem; color: var(--neon-green); font-weight: bold; background: rgba(0, 255, 136, 0.1); padding: 6px 16px; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-family: 'Rajdhani'; margin-top: 5px; }
+
+        .btn-view { flex: 1; background: var(--gold); color: #000; padding: 15px; border-radius: 18px; text-align: center; font-weight: 800; cursor: pointer; font-family: 'Rajdhani'; font-size: 1.1rem; }
+        .btn-share { width: 60px; border: 1px solid var(--border); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: var(--text-sub); cursor: pointer; font-size: 1.3rem; }
+
+        /* OVERLAYS */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 3000; display: none; flex-direction: column; overflow-y: auto; animation: slideIn 0.4s ease; }
+        @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .overlay-body { padding: 40px 20px; max-width: 750px; margin: 0 auto; width: 100%; padding-bottom: 150px; }
+
+        .slider { display: flex; gap: 18px; overflow-x: auto; padding: 15px 0 30px; scrollbar-width: none; }
+        .slider::-webkit-scrollbar { display: none; }
+        .slider img { height: 260px; border-radius: 20px; border: 3px solid var(--border); flex-shrink: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+
+        /* ADVANCED VIP INFO PANEL (PERFECT CARDS) */
+        .vip-info-panel { 
+            background: var(--glass); 
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,215,0,0.2); 
+            border-radius: 35px; 
+            padding: 35px; 
+            margin-bottom: 25px; 
+            position: relative; 
+            overflow: hidden; 
+            border-top: 4px solid var(--gold); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            animation: fadeInUp 0.6s ease;
         }
+        .vip-info-panel h3 { color: var(--gold); font-family: 'Orbitron'; font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
         
-        .card.featured {
-            border: 2px solid var(--gold);
-            background: linear-gradient(145deg, #1a1a1a, #000000);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-            transform: scale(1.02);
+        .contact-vip-item { 
+            display: flex; align-items: center; gap: 20px; padding: 22px; 
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border); 
+            border-radius: 25px; text-decoration: none; color: var(--text-main); 
+            margin-bottom: 15px; transition: 0.4s;
         }
-        body.light-mode .card.featured {
-            background: linear-gradient(145deg, #fffcf2, #ffffff);
-            border-color: var(--gold);
-        }
-        body.light-mode .card.featured h3 { color: #000; }
+        .contact-vip-item:hover { border-color: var(--gold); background: rgba(255,215,0,0.08); transform: scale(1.03) translateX(10px); }
+        .contact-vip-item i { font-size: 2rem; color: var(--gold); width: 45px; text-align: center; }
+        .contact-vip-item div strong { font-size: 1.1rem; display: block; color: var(--text-main); }
+        .contact-vip-item div span { font-size: 0.85rem; color: var(--text-sub); }
 
-        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        
-        .action-row { display: flex; gap: 10px; margin-top: 15px; }
-        .dl-btn {
-            flex: 1; padding: 12px; border-radius: 12px; background: var(--gold); color: black; font-weight: bold; font-family: 'Rajdhani'; letter-spacing: 1px;
-            text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .share-btn {
-            width: 50px; border-radius: 12px; background: transparent; border: 1px solid var(--border);
-            color: var(--text-sub); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-        }
-        .share-btn:hover { color: var(--neon-blue); border-color: var(--neon-blue); }
+        /* STATS GRID */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 35px; }
+        .stat-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 25px; padding: 22px; text-align: center; border-bottom: 4px solid var(--gold); }
+        .stat-item label { display: block; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+        .stat-item value { font-weight: 800; font-size: 1.2rem; color: var(--gold); font-family: 'Rajdhani'; }
 
-        /* --- TOAST NOTIFICATION (Stylish Popup) --- */
-        #toast {
-            visibility: hidden; min-width: 250px; background-color: var(--toast-bg);
-            color: #fff; text-align: center; border-radius: 50px; padding: 16px;
-            position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%);
-            font-size: 0.9rem; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            opacity: 0; transition: opacity 0.5s, bottom 0.5s;
-        }
-        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+        /* TIMER MODAL */
+        .modal-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 4000; display: none; align-items: center; justify-content: center; padding: 30px; backdrop-filter: blur(15px); }
+        .modal-content { background: var(--card-bg); border-radius: 45px; border: 2px solid var(--gold); width: 100%; max-width: 430px; padding: 55px 35px; text-align: center; box-shadow: 0 0 50px var(--gold-glow); }
+        .timer-val { font-size: 5.5rem; font-weight: 900; color: var(--gold); font-family: 'Orbitron'; margin: 15px 0; text-shadow: 0 0 20px var(--gold-glow); }
+        .logs { font-family: monospace; font-size: 0.85rem; color: var(--neon-blue); text-align: left; background: #000; padding: 22px; border-radius: 25px; height: 130px; overflow: hidden; line-height: 1.7; }
 
-        /* --- SCROLL TO TOP --- */
-        #scrollTop {
-            position: fixed; bottom: 80px; right: 20px; width: 45px; height: 45px;
-            background: var(--gold); color: black; border-radius: 50%; display: none;
-            justify-content: center; align-items: center; cursor: pointer; font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 99;
-        }
+        footer { text-align: center; padding: 80px 20px; border-top: 1px solid var(--border); margin-top: 80px; background: #000; }
+        .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 1.8rem; letter-spacing: 8px; margin-bottom: 40px; }
 
-        /* --- MODAL STYLES --- */
-        .info-modal, .server-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 2000; display: none; justify-content: center; align-items: center;
-            backdrop-filter: blur(5px);
-        }
-        .info-box, .server-box {
-            background: var(--card-bg); width: 90%; max-width: 350px; padding: 30px; border-radius: 20px;
-            border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; position: relative; animation: zoomIn 0.3s;
-            color: var(--text-main);
-        }
-        @keyframes zoomIn { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
-        
-        .close-icon { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-sub); }
-
-        /* Professional About */
-        .pro-header { text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
-        .pro-logo { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--gold); padding: 2px; margin-bottom: 10px; }
-        .pro-desc { color: var(--text-sub); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
-        .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
-        .feat-item { background: rgba(128, 128, 128, 0.1); padding: 15px; border-radius: 10px; text-align: center; border: 1px solid var(--border); }
-        .feat-item i { font-size: 1.5rem; color: var(--gold); margin-bottom: 8px; }
-        .feat-item h4 { font-size: 0.8rem; margin-bottom: 3px; }
-        .feat-item p { font-size: 0.65rem; color: var(--text-sub); }
-
-        /* Professional Contact */
-        .contact-list { display: flex; flex-direction: column; gap: 12px; }
-        .c-btn {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 15px; border-radius: 12px; text-decoration: none;
-            background: rgba(128, 128, 128, 0.05); border: 1px solid var(--border); transition: 0.3s;
-        }
-        .c-btn:hover { background: rgba(255, 215, 0, 0.1); border-color: var(--gold); transform: translateX(5px); }
-        .c-left { display: flex; align-items: center; gap: 15px; }
-        .c-icon {
-            width: 40px; height: 40px; border-radius: 50%; background: rgba(128,128,128,0.1);
-            display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.2rem;
-        }
-        .c-info h4 { font-size: 0.9rem; color: var(--text-main); }
-        .c-info span { font-size: 0.7rem; color: var(--text-sub); }
-
-        /* Advanced FAQ (Accordion) */
-        .faq-header-section { text-align: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-        .faq-icon-main { font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
-
-        .faq-list { max-height: 300px; overflow-y: auto; padding-right: 5px; }
-        .faq-list::-webkit-scrollbar { width: 5px; }
-        .faq-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-
-        .faq-card {
-            background: rgba(128,128,128,0.05); border: 1px solid var(--border);
-            border-radius: 10px; margin-bottom: 10px; overflow: hidden; transition: 0.3s;
-        }
-        .faq-card.active { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .faq-q {
-            padding: 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-            font-weight: 500; font-size: 0.9rem; color: var(--text-main);
-        }
-        .faq-q i.toggle-icon { color: var(--text-sub); transition: 0.3s; }
-        .faq-card.active .faq-q i.toggle-icon { transform: rotate(180deg); color: var(--gold); }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: rgba(0,0,0,0.02); }
-        .faq-answer-content { padding: 15px; font-size: 0.85rem; color: var(--text-sub); line-height: 1.5; border-top: 1px solid var(--border); }
-        .faq-footer { margin-top: 15px; font-size: 0.8rem; color: var(--text-sub); }
-        .faq-footer span { color: var(--neon-blue); cursor: pointer; font-weight: bold; text-decoration: underline; }
-
-        /* Download Logs */
-        .logs { color: var(--neon-blue); font-size: 0.8rem; height: 60px; text-align: left; margin: 15px 0; font-family: monospace; }
-        .count { font-size: 2.5rem; font-weight: bold; font-family: 'Orbitron'; margin-bottom: 15px; color: var(--text-main); }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center; margin-top: 50px; padding: 30px 20px;
-            background: var(--card-bg); border-top: 1px solid var(--border);
-        }
-        footer .social-icons { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
-        footer .social-icons i { font-size: 1.5rem; color: var(--gold); cursor: pointer; }
-        footer .social-icons a { color: var(--gold); transition: 0.3s; }
-        footer .social-icons a:hover { color: var(--neon-green); transform: translateY(-5px); }
-
+        #toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; padding: 12px 30px; border-radius: 50px; font-weight: 900; z-index: 9999; display: none; }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
-    <!-- SCROLL TO TOP -->
-    <div id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
-
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast"><i class="fas fa-check-circle" style="color:var(--neon-green)"></i> Link Copied!</div>
+    <div id="toast">LINK COPIED!</div>
+    <div class="sidebar-overlay" id="globalOverlay" onclick="closeAll()"></div>
 
     <!-- SIDEBAR -->
-    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
-    <div class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar">
         <div class="side-profile">
-            <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="side-img" alt="Logo">
-            <h3 style="color:var(--gold); font-family:'Orbitron'; margin-top:10px;">MA LEGEND</h3>
-            <p style="color:var(--text-sub); font-size:0.8rem">Official Store</p>
+            <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="side-avatar-img">
+            <h2 style="font-family:'Orbitron'; font-size:1.4rem; color:var(--gold); margin-top:20px;">MA LEGEND</h2>
+            <p style="font-size:0.8rem; color:var(--text-sub); font-weight:600; letter-spacing:2px; text-transform: uppercase;">Master Developer</p>
         </div>
         <div class="side-links">
-            <a href="#" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a>
-            <a href="#" onclick="openInfo('faq')"><i class="fas fa-question-circle"></i> Help / FAQ</a>
-            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> WA Channel</a>
-            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="#" onclick="openInfo('about')"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="#" onclick="openInfo('contact')"><i class="fas fa-envelope"></i> Contact</a>
+            <a onclick="closeAll()"><i class="fas fa-home"></i> Home Dashboard</a>
+            <a onclick="showInfo('about')"><i class="fas fa-user-shield"></i> About Developer</a>
+            <a onclick="showInfo('contact')"><i class="fas fa-headset"></i> Contact Support</a>
+            <a onclick="showInfo('policy')"><i class="fas fa-file-contract"></i> Privacy Policy</a>
+            <div style="margin: 25px 0; border-top: 1px solid var(--border);"></div>
+            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
+            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram Elite</a>
+            <a href="https://www.youtube.com/@legendmod407" target="_blank"><i class="fab fa-youtube"></i> Master Tutorials</a>
         </div>
-        <div style="margin-top:auto; text-align:center; color:var(--text-sub); font-size:0.7rem;">&copy; 2024 MA Legend</div>
-    </div>
+    </nav>
 
-    <!-- HEADER (CLEAN & SHARP) -->
+    <!-- HEADER -->
     <header>
-        <div class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
-        <div class="brand-center">
-            <h1>MA LEGEND</h1>
-            <span style="font-size:0.7rem; color:var(--neon-green); letter-spacing:2px; font-weight:bold;">OFFICIAL STORE</span>
-        </div>
-        <div class="theme-btn" onclick="toggleTheme()"><i class="fas fa-sun" id="themeIcon"></i></div>
+        <div class="btn-nav-icon" onclick="toggleSidebar()"><i class="fas fa-bars-staggered"></i></div>
+        <div class="brand-logo"><h1>MA LEGEND</h1></div>
+        <div class="btn-nav-icon" id="themeBtn" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
     </header>
 
-    <!-- MARQUEE -->
-    <div class="marquee-box">
-        <div class="marquee-content">
-            Welcome to MA LEGEND Official Store • New Update v10.0 Released • Download Safe & Anti-Ban Mods • Join Telegram for Daily Updates!
+    <div class="marquee">
+        <div class="marquee-inner">🔥 MA LEGEND OFFICIAL: New WhatsApp Fake Chat v2.26.2.70 Updated • Secure Mediafire Links • Anti-Ban Engines Active • Support @Top_3x_Legend</div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="filterCat('whatsapp', this)">WA MODS</button>
+        <button class="tab-btn" onclick="filterCat('apps', this)">APPS</button>
+        <button class="tab-btn" onclick="filterCat('tools', this)">VIP TOOLS</button>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-container">
+        <i class="fas fa-magnifying-glass" style="color:var(--gold)"></i>
+        <input type="text" id="search" placeholder="Search premium mods..." onkeyup="doSearch()">
+    </div>
+
+    <!-- MAIN GRID -->
+    <main class="grid" id="appGrid"></main>
+
+    <!-- OVERLAY: SPECIFICATIONS -->
+    <div id="specsOverlay" class="overlay">
+        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg-color); z-index:100;">
+            <i class="fas fa-chevron-left btn-nav-icon" onclick="history.back()"></i>
+            <span style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">SPECIFICATIONS</span>
+            <div style="width:45px;"></div>
+        </div>
+        <div class="overlay-body" id="specsContent"></div>
+    </div>
+
+    <!-- OVERLAY: INFO HUB -->
+    <div id="infoOverlay" class="overlay">
+        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg-color); z-index:100;">
+            <i class="fas fa-chevron-left btn-nav-icon" onclick="history.back()"></i>
+            <span id="infoTitle" style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">VIP HUB</span>
+            <div style="width:45px;"></div>
+        </div>
+        <div class="overlay-body" id="infoContent"></div>
+    </div>
+
+    <!-- TIMER MODAL -->
+    <div class="modal-view" id="timerModal">
+        <div class="modal-content">
+            <div class="timer-val" id="timerCount">10</div>
+            <h3 style="color:var(--gold); font-family:'Orbitron';">SECURING ELITE LINK...</h3>
+            <div class="logs" id="serverLogs"></div>
+            <a href="#" id="finalBtn" style="display:none; text-decoration:none; margin-top:30px;" target="_blank" class="btn-view">OPEN MEDIAFIRE</a>
         </div>
     </div>
 
-    <!-- STATS -->
-    <div class="stats-bar">
-        <span><i class="fas fa-eye"></i> 15.4K</span>
-        <span><i class="fas fa-user-check"></i> 8.2K Verified</span>
-        <span style="color:var(--gold); font-weight:bold;">ONLINE</span>
-    </div>
-
-    <!-- TABS (3 SECTIONS) -->
-    <div class="tab-container">
-        <button class="tab-btn active" onclick="switchTab('whatsapp', this)">WA Mods</button>
-        <button class="tab-btn" onclick="switchTab('apps', this)">Apps</button>
-        <button class="tab-btn" onclick="switchTab('tools', this)">Tools</button>
-    </div>
-
-    <!-- SECTION 1: WHATSAPP -->
-    <div id="whatsapp" class="page-section active">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchWa" placeholder="Search WA Mods..." onkeyup="filterApps('whatsapp', 'searchWa', 'msgWa')">
-        </div>
-
-        <div class="grid">
-            <div id="msgWa" class="no-results">
-                <i class="fas fa-exclamation-triangle"></i> No apps found.
-            </div>
-            
-            <!-- === APP 1 === -->
-            <div class="card">
-                <span class="tag tag-new">NEW</span>
-                <div class="card-header">
-                    <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
-                    <div>
-                        <h3>Whatsapp Business</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <span style="color:var(--text-sub); font-size:0.8rem;">v2.26.1.76 • Fake chat</span>
-                        
-                        <!-- TIME (YYYY-MM-DDTHH:MM:SS) -->
-                        <div class="time-badge" data-date="2026-01-22T06:00:00"></div>
-                    </div>
-                </div>
-                <div class="action-row">
-                    <div class="dl-btn" onclick="startDL('Whatsapp Business', 'https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file')">DOWNLOAD</div>
-                    <button class="share-btn" onclick="shareApp('Whatsapp Business', 'https://legend-mods-store.vercel.app/')"><i class="fas fa-share-alt"></i></button>
-                </div>
-            </div>
-            
-            <!-- === APP 2 (FEATURED) === -->
-            <div class="card featured">
-                <span class="tag tag-gold"><i class="fas fa-crown"></i> BEST</span>
-                <div class="card-header">
-                    <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
-                    <div>
-                        <h3 style="color:var(--gold);">TOP 3X LEGEND</h3>
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <span style="color:var(--text-sub); font-size:0.8rem;">v 2.25.31.76 • Anti-Ban Safe</span>
-                        
-                        <!-- TIME -->
-                        <div class="time-badge" data-date="2026-01-20T12:00:00"></div>
-                    </div>
-                </div>
-                <div class="action-row">
-                    <div class="dl-btn" onclick="startDL('TOP 3X LEGEND', 'https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file')">DOWNLOAD</div>
-                    <button class="share-btn" onclick="shareApp('TOP 3X LEGEND', 'https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file')"><i class="fas fa-share-alt"></i></button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- SECTION 2: APPS -->
-    <div id="apps" class="page-section">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchApps" placeholder="Search Apps..." onkeyup="filterApps('apps', 'searchApps', 'msgApps')">
-        </div>
-
-        <div class="grid">
-            <div id="msgApps" class="no-results">
-                <i class="fas fa-exclamation-triangle"></i> No apps found.
-            </div>
-            <!-- === START: NEW APP ITEM === -->
-<div class="card">
-    <!-- 1. TAG: 'tag-new' (Blue), 'tag-hot' (Red), ya 'tag-gold' (Yellow) likhein -->
-    <span class="tag tag-new">NEW</span>
-
-    <div class="card-header">
-        <!-- 2. IMAGE: Yahan photo ka link lagayein -->
-        <img src="https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg" class="app-icon-img" alt="Icon">
-        
-        <div>
-            <!-- 3. NAME: App ka naam -->
-            <h3>APK Editor MOD</h3>
-            
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            
-            <!-- 4. VERSION: Version aur info -->
-            <span style="color:var(--text-sub); font-size:0.8rem;">v3.0 • APK</span>
-            
-            <!-- 5. DATE: Aaj ki tareekh aur waqt (Format: 2026-01-28T01:45:45) -->
-            <!-- Example: 2026-01-22T07:00:00 -->
-            <div class="time-badge" data-date="2026-01-30T09:00:00"></div>
-        </div>
-    </div>
-
-    <div class="action-row">
-        <!-- 6. DOWNLOAD LINK: Naam aur Link change karein -->
-        <div class="dl-btn" onclick="startDL('APK EDITOR', 'https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/')">DOWNLOAD</div>
-        
-        <!-- 7. SHARE LINK: Wahi same download link yahan bhi dalen -->
-        <button class="share-btn" onclick="shareApp('APK EDITOR', 'https://legend-mods-store.vercel.app/')"><i class="fas fa-share-alt"></i></button>
-    </div>
-</div>
-<!-- === END: NEW APP ITEM === -->
-            
-            <!-- CAPCUT PRO -->
-            <div class="card">
-                <span class="tag tag-new">UPDATED</span>
-                <div class="card-header">
-                     <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
-                    <div>
-                        <h3>CapCut Pro</h3>
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                        <span style="color:var(--text-sub); font-size:0.8rem;">v2026 • Premium Unlocked</span>
-                        
-                        <!-- TIME -->
-                        <div class="time-badge" data-date="2026-01-21T09:30:00"></div>
-                    </div>
-                </div>
-                <div class="action-row">
-                    <div class="dl-btn" onclick="startDL('CapCut Pro', 'https://www.mediafire.com/file/ayrs6y5o2rmrs72/CAPCUT_GOLDEN_2026.apk/file')">DOWNLOAD</div>
-                    <button class="share-btn" onclick="shareApp('CapCut Pro', 'https://www.mediafire.com/file/ayrs6y5o2rmrs72/CAPCUT_GOLDEN_2026.apk/file')"><i class="fas fa-share-alt"></i></button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- SECTION 3: TOOLS -->
-    <div id="tools" class="page-section">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchTools" placeholder="Search Tools..." onkeyup="filterApps('tools', 'searchTools', 'msgTools')">
-        </div>
-
-        <div class="grid">
-            <div id="msgTools" class="no-results">
-                <i class="fas fa-exclamation-triangle"></i> No tools found.
-            </div>
-            <!-- === START: NEW APP ITEM === -->
-<div class="card">
-    <!-- 1. TAG: 'tag-new' (Blue), 'tag-hot' (Red), ya 'tag-gold' (Yellow) likhein -->
-    <span class="tag tag-new">NEW</span>
-
-    <div class="card-header">
-        <!-- 2. IMAGE: Yahan photo ka link lagayein -->
-        <img src="https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg" class="app-icon-img" alt="Icon">
-        
-        <div>
-            <!-- 3. NAME: App ka naam -->
-            <h3>WHATSAPP CHANNEL REPORT</h3>
-            
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            
-            <!-- 4. VERSION: Version aur info -->
-            <span style="color:var(--text-sub); font-size:0.8rem;">v01.1 • Working</span>
-            
-            <!-- 5. DATE: Aaj ki tareekh aur waqt (Format: 2026-01-28T01:45:45) -->
-            <!-- Example: 2026-01-22T07:00:00 -->
-            <div class="time-badge" data-date="2026-01-28T14:07:00"></div>
-        </div>
-    </div>
-
-    <div class="action-row">
-        <!-- 6. DOWNLOAD LINK: Naam aur Link change karein -->
-        <div class="dl-btn" onclick="startDL('Whatsapp Channel Report', 'https://whatsapp-channel-report.vercel.app/')">OPEN TOOL</div>
-        
-        <!-- 7. SHARE LINK: Wahi same download link yahan bhi dalen -->
-        <button class="share-btn" onclick="shareApp('WHATSAPP CHANNEL REPORT', 'https://legend-mods-store.vercel.app/')"><i class="fas fa-share-alt"></i></button>
-    </div>
-</div>
-<!-- === END: NEW APP ITEM === -->
-            
-            <!-- WA LOGIN TOOL -->
-            <div class="card">
-                <span class="tag tag-hot">HOT</span>
-                <div class="card-header">
-                     <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="app-icon-img" alt="Icon">
-                    <div>
-                        <h3>WA Login Tool</h3>
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <span style="color:var(--text-sub); font-size:0.8rem;">Online Fix • No Root</span>
-                        
-                        <!-- TIME -->
-                        <div class="time-badge" data-date="2026-01-18T16:45:00"></div>
-                    </div>
-                </div>
-                <div class="action-row">
-                    <div class="dl-btn" onclick="startDL('WA Login Tool', 'https://whatsapp-loginnot-available.vercel.app/')">OPEN TOOL</div>
-                    <button class="share-btn" onclick="shareApp('WA Login Tool', 'https://whatsapp-loginnot-available.vercel.app/')"><i class="fas fa-share-alt"></i></button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- FOOTER -->
     <footer>
-        <div class="brand-center">
-            <h2 style="font-family:'Orbitron'; color:var(--gold);">MA LEGEND</h2>
+        <div class="footer-logo">MA LEGEND</div>
+        <div style="display:flex; justify-content:center; gap:30px; margin-bottom:40px;">
+            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" style="color:var(--gold); font-size:2rem;"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" style="color:var(--gold); font-size:2rem;"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.youtube.com/@legendmod407" target="_blank" style="color:var(--gold); font-size:2rem;"><i class="fab fa-youtube"></i></a>
         </div>
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@legendmod407" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank"><i class="fab fa-telegram"></i></a>
-        </div>
-        
-        <!-- DISCLAIMER -->
-        <p style="font-size:0.6rem; color:var(--text-sub); margin-top:20px; max-width:90%; margin-left:auto; margin-right:auto;">
-            Disclaimer: We are not affiliated with WhatsApp Inc. or Meta. These are modified versions for educational purposes only.
-        </p>
-        <p style="margin-top:10px; font-size:0.8rem;">&copy; 2024 MA Legend Store. All Rights Reserved.</p>
+        <p style="font-size:0.9rem; color:var(--text-sub); letter-spacing: 2px;">&copy; 2026 MA LEGEND ELITE STORE • Hub of Pro Modders</p>
     </footer>
 
-    <!-- ADVANCED FAQ MODAL -->
-    <div class="info-modal" id="faqModal">
-        <div class="info-box" style="max-width: 400px; padding: 25px;">
-            <i class="fas fa-times close-icon" onclick="closeInfo()"></i>
-            
-            <div class="faq-header-section">
-                <div class="faq-icon-main"><i class="fas fa-life-ring"></i></div>
-                <h2 style="font-family:'Orbitron';">HELP CENTER</h2>
-                <p style="color:var(--text-sub); font-size:0.8rem;">Common questions & solutions</p>
-            </div>
-
-            <div class="faq-list">
-                <div class="faq-card" onclick="toggleFaq(this)">
-                    <div class="faq-q">
-                        <span><i class="fas fa-shield-alt" style="margin-right:8px; color:var(--neon-green);"></i> Is it safe?</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </div>
-                    <div class="faq-a">
-                        <div class="faq-answer-content">Yes! All apps are scanned. However, for modified apps, we recommend using a temporary number to be 100% safe from bans.</div>
-                    </div>
-                </div>
-
-                <div class="faq-card" onclick="toggleFaq(this)">
-                    <div class="faq-q">
-                        <span><i class="fas fa-sync" style="margin-right:8px; color:var(--neon-blue);"></i> How to update?</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </div>
-                    <div class="faq-a">
-                        <div class="faq-answer-content">Download the new version and install it directly over the old one. <strong style="color:var(--danger)">DO NOT Uninstall</strong> the old app, or you will lose your chats.</div>
-                    </div>
-                </div>
-
-                <div class="faq-card" onclick="toggleFaq(this)">
-                    <div class="faq-q">
-                        <span><i class="fas fa-key" style="margin-right:8px; color:var(--gold);"></i> Password?</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </div>
-                    <div class="faq-a">
-                        <div class="faq-answer-content">Some ZIP files are protected. The password is usually provided in our <strong>Telegram Channel</strong> or inside the video description.</div>
-                    </div>
-                </div>
-
-                <div class="faq-card" onclick="toggleFaq(this)">
-                    <div class="faq-q">
-                        <span><i class="fas fa-exclamation-circle" style="margin-right:8px; color:var(--danger);"></i> App not installing?</span>
-                        <i class="fas fa-chevron-down toggle-icon"></i>
-                    </div>
-                    <div class="faq-a">
-                        <div class="faq-answer-content">1. Enable "Unknown Sources".<br>2. Delete the original Play Store version first.<br>3. Check if you have enough storage space.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="faq-footer">Still have issues? <span onclick="openInfo('contact')">Contact Support</span></div>
-        </div>
-    </div>
-
-    <!-- NEW PROFESSIONAL ABOUT MODAL -->
-    <div class="info-modal" id="aboutModal">
-        <div class="info-box" style="max-width: 400px;">
-            <i class="fas fa-times close-icon" onclick="closeInfo()"></i>
-            <div class="pro-header">
-                <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="pro-logo">
-                <h2 style="font-family:'Orbitron'; color:var(--gold);">MA LEGEND</h2>
-                <span style="font-size:0.7rem; letter-spacing:1px; color:var(--neon-blue);">OFFICIAL STORE v10.0</span>
-            </div>
-            <p class="pro-desc">We provide the most secure, anti-ban, and premium WhatsApp mods & gaming tools. Trusted by over 15k+ users globally.</p>
-            <div class="feat-grid">
-                <div class="feat-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>100% Safe</h4>
-                    <p>Anti-Ban System</p>
-                </div>
-                <div class="feat-item">
-                    <i class="fas fa-bolt"></i>
-                    <h4>Fast DL</h4>
-                    <p>High Speed Servers</p>
-                </div>
-                <div class="feat-item">
-                    <i class="fas fa-gem"></i>
-                    <h4>Premium</h4>
-                    <p>Unlocked Features</p>
-                </div>
-                <div class="feat-item">
-                    <i class="fas fa-headset"></i>
-                    <h4>Support</h4>
-                    <p>24/7 Updates</p>
-                </div>
-            </div>
-            <button class="dl-btn" onclick="closeInfo()">CLOSE</button>
-        </div>
-    </div>
-
-    <!-- NEW PROFESSIONAL CONTACT MODAL -->
-    <div class="info-modal" id="contactModal">
-        <div class="info-box" style="max-width: 400px;">
-            <i class="fas fa-times close-icon" onclick="closeInfo()"></i>
-            <h2 style="margin-bottom:5px;">SUPPORT CENTER</h2>
-            <p style="color:var(--text-sub); font-size:0.8rem; margin-bottom:20px;">Choose a method to connect with us.</p>
-            <div class="contact-list">
-                <a href="https://wa.me/923026737565" target="_blank" class="c-btn">
-                    <div class="c-left">
-                        <div class="c-icon" style="color:#00ff88;"><i class="fab fa-whatsapp"></i></div>
-                        <div class="c-info">
-                            <h4>Chat Support</h4>
-                            <span>Online: 10 AM - 10 PM</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right" style="color:var(--text-sub);"></i>
-                </a>
-                <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="c-btn">
-                    <div class="c-left">
-                        <div class="c-icon" style="color:#0088cc;"><i class="fab fa-telegram-plane"></i></div>
-                        <div class="c-info">
-                            <h4>Join Channel</h4>
-                            <span>For Passwords & Updates</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right" style="color:var(--text-sub);"></i>
-                </a>
-                <a href="https://wa.me/923026737565?text=I%20found%20a%20bug%20in%20your%20app" target="_blank" class="c-btn">
-                    <div class="c-left">
-                        <div class="c-icon" style="color:var(--danger);"><i class="fas fa-bug"></i></div>
-                        <div class="c-info">
-                            <h4>Report Issue</h4>
-                            <span>Fix bugs or crashes</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right" style="color:var(--text-sub);"></i>
-                </a>
-            </div>
-            <div style="margin-top:20px; font-size:0.7rem; color:var(--text-sub);">
-                <i class="fas fa-clock"></i> Typical Reply Time: <strong>1-2 Hours</strong>
-            </div>
-        </div>
-    </div>
-
-    <!-- FIXED DOWNLOAD MODAL -->
-    <div class="server-modal" id="dlModal">
-        <div class="server-box">
-            <i class="fas fa-times close-icon" onclick="closeDLModal()"></i>
-            <h3 style="color:var(--neon-green)">CONNECTING...</h3>
-            <div class="logs" id="logs"></div>
-            <div class="count" id="timer">5</div>
-            <a href="#" id="finalBtn" class="dl-btn" style="display:none;" target="_blank" onclick="closeDLModal()">OPEN LINK</a>
-        </div>
-    </div>
-
     <script>
-        // --- GLOBAL VARIABLES ---
-        let dlInterval, logInterval;
+        // --- DATA ENGINE (All 7 Apps Included) ---
+        const appsData = [
+            {
+                id: 1, name: "WhatsApp Fake Chat", category: "whatsapp", version: "v2.26.2.70", size: "74 MB",
+                uploadDate: "2026-02-06T06:44:00", icon: "https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg",
+                link: "https://www.mediafire.com/file/cy3jt1kvmgg7cjk/WhatsApp_2.26.2.70.apk/file",
+                screens: ["https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg", "https://i.postimg.cc/LJ9kj1L8/Gyi9Srv15-g-HQ.jpg"],
+                features: ["Fake Profile Creator", "Custom Chats", "Ghost Mode", "Fast Media"],
+                changelog: ["Base 2.26.2.70 Fixed", "Improved Fake Call UI", "Security Bypass 10.0"]
+            },
+            {
+                id: 2, name: "WhatsApp Business", category: "whatsapp", version: "v2.26.1.76", size: "65 MB",
+                uploadDate: "2026-02-01T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
+                link: "https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file",
+                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
+                features: ["Anti-Ban Logic", "Auto-Translate", "Fast Backup", "Stealth Status"],
+                changelog: ["Upgraded Bypass Engine 2026", "New VIP Dark Theme", "Bug Fixes"]
+            },
+            {
+                id: 3, name: "TOP 3X LEGEND WA", category: "whatsapp", version: "v2.25.31.76", size: "72 MB",
+                uploadDate: "2026-01-20T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
+                link: "https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file",
+                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
+                features: ["Ultra Privacy", "Auto-AI Reply", "Custom UI themes", "Anti-Ban Pro"],
+                changelog: ["Anti-Ban Matrix Fix", "Added Custom Fonts", "Optimized Speed"]
+            },
+            {
+                id: 4, name: "APK Editor Pro", category: "apps", version: "v3.0 VIP", size: "15 MB",
+                uploadDate: "2026-01-30T09:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",
+                link: "https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/",
+                screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],
+                features: ["Dex Editor Plus", "XML Manifest Mod", "Resource Editing", "No Ads"],
+                changelog: ["Enhanced Decoding", "Android 14 Support", "Fixed Build Errors"]
+            },
+            {
+                id: 5, name: "CapCut Pro Gold", category: "apps", version: "v2026 VIP", size: "283 MB",
+                uploadDate: "2026-01-21T09:30:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
+                link: "https://www.mediafire.com/file/ayrs6y5o2rmrs72/CAPCUT_GOLDEN_2026.apk/file",
+                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
+                features: ["Pro Unlocked", "No Watermark", "4K HDR Export", "AI Pro Tools"],
+                changelog: ["2026 Gold VIP Lib", "Enabled Cloud Save", "Optimized Export"]
+            },
+            {
+                id: 6, name: "WA Channel Report", category: "tools", version: "v1.1 Cloud", size: "Online",
+                uploadDate: "2026-01-28T14:07:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",
+                link: "https://whatsapp-channel-report.vercel.app/",
+                screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],
+                features: ["Mass Proxy Report", "Fast Takedown", "Cloud Algorithm", "Encrypted"],
+                changelog: ["Updated Token pool", "Increased Speed", "Added Stealth Mode"]
+            },
+            {
+                id: 7, name: "WA Login Tool", category: "tools", version: "v0.9 Fix", size: "Online",
+                uploadDate: "2026-01-18T16:45:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
+                link: "https://whatsapp-loginnot-available.vercel.app/",
+                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
+                features: ["Login Bypass", "OTP Link Fix", "Device Linking", "Anti-Lock"],
+                changelog: ["Bypassed 24h Lock", "Fixed API Errors", "New Link Logic"]
+            }
+        ];
 
-        // --- NAVIGATION & UI ---
-        function toggleSidebar() { 
-            document.getElementById('sidebar').classList.toggle('active'); 
-            document.querySelector('.sidebar-overlay').classList.toggle('active'); 
+        // --- CORE NAVIGATION (History Support) ---
+        window.onpopstate = () => closeAll(false);
+
+        function closeAll(back = true) {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('globalOverlay').classList.remove('active');
+            document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none');
+            document.getElementById('timerModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            if(back && history.state) history.back();
         }
-        
-        function switchTab(tabId, btn) {
-            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active'); btn.classList.add('active');
-        }
-        
-        function toggleTheme() { 
-            document.body.classList.toggle('light-mode'); 
-            let icon = document.getElementById('themeIcon');
-            if(document.body.classList.contains('light-mode')) {
-                icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
-            } else {
-                icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('globalOverlay').classList.toggle('active');
+            if(document.getElementById('sidebar').classList.contains('active')) {
+                history.pushState({v:'side'}, '');
             }
         }
 
-        // --- MODAL CONTROLS ---
-        function openInfo(type) { 
-            toggleSidebar();
-            let id = (type === 'about') ? 'aboutModal' : (type === 'contact') ? 'contactModal' : 'faqModal';
-            document.getElementById(id).style.display = 'flex';
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('#themeBtn i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
         }
-        function closeInfo() { document.querySelectorAll('.info-modal').forEach(el => el.style.display = 'none'); }
-        
-        // --- ADVANCED FAQ TOGGLE ---
-        function toggleFaq(card) {
-            const isActive = card.classList.contains('active');
-            document.querySelectorAll('.faq-card').forEach(item => {
-                item.classList.remove('active');
-                item.querySelector('.faq-a').style.maxHeight = null;
+
+        // --- REAL TIME ENGINE (Negative Fix) ---
+        function getTimeAgo(dateStr) {
+            const now = new Date();
+            const past = new Date(dateStr);
+            let diff = Math.floor((now - past) / 1000);
+
+            if (diff < 0) diff = 0; // Fix negative time
+            if (diff < 60) return "Just now";
+            const mins = Math.floor(diff / 60);
+            if (mins < 60) return mins + "m ago";
+            const hrs = Math.floor(mins / 60);
+            if (hrs < 24) return hrs + "h ago";
+            const days = Math.floor(hrs / 24);
+            return days + "d ago";
+        }
+
+        function renderApps(data) {
+            const grid = document.getElementById('appGrid'); grid.innerHTML = '';
+            const sorted = [...data].sort((a,b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+            sorted.forEach(app => {
+                grid.innerHTML += `
+                    <div class="card">
+                        <div class="vip-tag">VIP ELITE</div>
+                        <div class="card-head">
+                            <img src="${app.icon}" loading="lazy">
+                            <div>
+                                <h3 style="font-family:'Rajdhani'; font-weight:800; font-size:1.2rem;">${app.name}</h3>
+                                <div class="time-badge"><i class="fas fa-clock"></i> ${getTimeAgo(app.uploadDate)}</div>
+                                <div style="color:var(--gold); font-size:0.7rem; margin-top:8px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:var(--text-sub);">(Verified)</span></div>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:15px;">
+                            <div class="btn-view" onclick="openDetails(${app.id})">SPECIFICATIONS</div>
+                            <div class="btn-share" onclick="shareMod()"><i class="fas fa-share-nodes"></i></div>
+                        </div>
+                    </div>`;
             });
-            if (!isActive) {
-                card.classList.add('active');
-                let answerDiv = card.querySelector('.faq-a');
-                answerDiv.style.maxHeight = answerDiv.scrollHeight + "px";
-            }
         }
-        
-        // --- DOWNLOAD LOGIC ---
-        function startDL(name, link) {
-            let modal = document.getElementById('dlModal'), logDiv = document.getElementById('logs'), timerDiv = document.getElementById('timer'), btn = document.getElementById('finalBtn');
-            logDiv.innerHTML = "";
-            timerDiv.style.display = 'block';
-            timerDiv.innerText = "5";
-            btn.style.display = 'none';
-            btn.href = link;
-            modal.style.display = 'flex'; 
-            
-            let logs = ["> Connecting...", "> Requesting " + name, "> Verifying Token...", "> Download Ready."];
-            let i = 0;
-            if(logInterval) clearInterval(logInterval);
-            logInterval = setInterval(()=>{ 
-                if(i<logs.length) { logDiv.innerHTML += logs[i] + "<br>"; i++; } 
-                else clearInterval(logInterval); 
-            }, 800);
-            
-            let time = 5; 
-            if(dlInterval) clearInterval(dlInterval);
-            dlInterval = setInterval(()=>{ 
-                time--; timerDiv.innerText = time; 
-                if(time<=0){ 
-                    clearInterval(dlInterval); 
-                    timerDiv.style.display='none'; 
-                    btn.style.display='flex'; 
-                } 
+
+        function filterCat(c, b) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            b.classList.add('active'); renderApps(appsData.filter(a => a.category === c));
+        }
+
+        function doSearch() {
+            const q = document.getElementById('search').value.toLowerCase();
+            renderApps(appsData.filter(a => a.name.toLowerCase().includes(q)));
+        }
+
+        function openDetails(id) {
+            const a = appsData.find(x => x.id === id);
+            const content = document.getElementById('specsContent');
+            content.innerHTML = `
+                <div style="text-align:center; margin-bottom:30px;">
+                    <img src="${a.icon}" style="width:120px; border-radius:35px; border:3px solid var(--gold); box-shadow:0 15px 40px rgba(0,0,0,0.5);">
+                    <h2 style="margin-top:20px; font-family:'Orbitron'; color:var(--gold);">${a.name}</h2>
+                    <p style="font-weight:bold; color:var(--neon-blue); letter-spacing:1px;">VERSION: ${a.version}</p>
+                </div>
+                <div class="slider">${a.screens.map(s => `<img src="${s}">`).join('')}</div>
+                <div class="stats-grid">
+                    <div class="stat-item"><label>FILE SIZE</label><value>${a.size}</value></div>
+                    <div class="stat-item"><label>STATUS</label><value style="color:var(--neon-green)">STABLE</value></div>
+                    <div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div>
+                    <div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div>
+                </div>
+                <div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT'S NEW</h3><p style="color:var(--text-sub); line-height:1.8;">${a.changelog.join('<br>')}</p></div>
+                <div class="vip-info-panel"><h3><i class="fas fa-gem"></i> VIP FEATURES</h3><p style="color:var(--text-sub); line-height:1.8;">${a.features.join(' • ')}</p></div>
+                <div class="btn-view" style="padding:22px; font-size:1.3rem; box-shadow:0 10px 30px var(--gold-glow);" onclick="startTimer('${a.link}')">EXECUTE DOWNLOAD</div>
+            `;
+            document.getElementById('specsOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            history.pushState({v:'specs'}, '');
+        }
+
+        // --- VIP HUB OVERLAYS ---
+        function showInfo(type) {
+            const content = document.getElementById('infoContent');
+            const title = document.getElementById('infoTitle');
+            if(type === 'about') {
+                title.innerText = "About MA Legend";
+                content.innerHTML = `
+                    <div class="vip-info-panel" style="text-align:center;">
+                        <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" style="width:120px; border-radius:50%; border:3px solid var(--gold); padding:5px; margin-bottom:20px; box-shadow:0 0 30px var(--gold-glow);">
+                        <h2 style="font-family:'Orbitron'; color:var(--gold); letter-spacing:2px;">MA LEGEND</h2>
+                        <p style="color:var(--neon-blue); font-weight:800; font-size:0.8rem; letter-spacing:4px; margin-bottom:15px;">MASTER MODDER</p>
+                        <p style="color:var(--text-sub); line-height:1.8;">MA LEGEND is Pakistan's premier Android modding authority. Specializing in high-security, 100% anti-ban bypass engines and premium interface modifications since 2024.</p>
+                    </div>
+                    <div class="vip-info-panel">
+                        <h3><i class="fas fa-shield-halved"></i> OUR COMMITMENT</h3>
+                        <p style="color:var(--text-sub); line-height:1.8;">We provide secure mods tested personally on multiple devices. User privacy and stability are our top priorities.</p>
+                    </div>`;
+            } else if (type === 'contact') {
+                title.innerText = "Support Hub";
+                content.innerHTML = `
+                    <div class="vip-info-panel">
+                        <h3><i class="fas fa-link"></i> OFFICIAL PLATFORMS</h3>
+                        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item"><i class="fab fa-whatsapp"></i> <div><strong>WhatsApp VIP</strong><span>Elite Mod Updates</span></div></a>
+                        <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item"><i class="fab fa-telegram-plane"></i> <div><strong>Telegram Elite</strong><span>Main News Hub</span></div></a>
+                        <a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item"><i class="fab fa-youtube"></i> <div><strong>YouTube Official</strong><span>Video Proofs & Password</span></div></a>
+                        <a href="https://t.me/Top_3x_Legend" target="_blank" class="contact-vip-item" style="border-color:var(--neon-blue);"><i class="fas fa-paper-plane" style="color:var(--neon-blue);"></i> <div><strong>Developer Direct</strong><span>Personal: @Top_3x_Legend</span></div></a>
+                    </div>`;
+            } else if (type === 'policy') {
+                title.innerText = "Privacy Policy";
+                content.innerHTML = `
+                    <div class="vip-info-panel">
+                        <h3><i class="fas fa-lock"></i> DATA PROTECTION</h3>
+                        <p style="color:var(--text-sub); line-height:1.8; margin-bottom:20px;">We never collect user data, chats, or passwords. All mod logic runs locally on your device. User security is our prime directive.</p>
+                        <h3><i class="fas fa-file-shield"></i> STORE TERMS</h3>
+                        <p style="color:var(--text-sub); line-height:1.8;">• Mods are for educational use.<br>• We are not responsible for account bans.<br>• Commercial redistribution is strictly prohibited.</p>
+                    </div>`;
+            }
+            document.getElementById('infoOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            history.pushState({v:'info'}, '');
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('globalOverlay').classList.remove('active');
+        }
+
+        function startTimer(link) {
+            const m = document.getElementById('timerModal'); m.style.display = 'flex';
+            const log = document.getElementById('serverLogs'); const btn = document.getElementById('finalBtn');
+            const count = document.getElementById('timerCount');
+            btn.style.display = 'none'; count.style.display = 'block'; log.innerHTML = "> Connecting to Database...";
+            let time = 10;
+            const t = setInterval(() => {
+                time--; count.innerText = time;
+                if(time === 8) log.innerHTML += "<br>> Establishing Secure Handshake...";
+                if(time === 5) log.innerHTML += "<br>> Decrypting Download Token...";
+                if(time === 1) log.innerHTML += "<br>> ELITE LINK SECURED!";
+                if(time <= 0) { clearInterval(t); count.style.display = 'none'; btn.style.display = 'block'; btn.href = link; btn.onclick = () => { m.style.display = 'none'; history.back(); }; }
             }, 1000);
         }
 
-        function closeDLModal() {
-            document.getElementById('dlModal').style.display = 'none';
-            if(logInterval) clearInterval(logInterval);
-            if(dlInterval) clearInterval(dlInterval);
+        function shareMod() {
+            navigator.clipboard.writeText(window.location.href);
+            document.getElementById('toast').style.display = 'block';
+            setTimeout(() => document.getElementById('toast').style.display = 'none', 2500);
         }
 
-        // --- SEARCH LOGIC ---
-        function filterApps(sectionId, inputId, msgId) {
-            let input = document.getElementById(inputId).value.toUpperCase();
-            let section = document.getElementById(sectionId);
-            let cards = section.getElementsByClassName('card');
-            let msgDiv = document.getElementById(msgId);
-            let visibleCount = 0;
-
-            for(let i=0; i<cards.length; i++){ 
-                let title = cards[i].querySelector('h3').innerText.toUpperCase();
-                if(title.indexOf(input) > -1) {
-                    cards[i].style.display = "";
-                    visibleCount++;
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-            if(visibleCount === 0) msgDiv.style.display = "block";
-            else msgDiv.style.display = "none";
-        }
-        
-        // --- SHARE LOGIC WITH TOAST ---
-        function shareApp(name, link) {
-            const shareText = 'Check out ' + name + ' from MA Legend Store!';
-            const shareUrl = link; 
-            
-            if (navigator.share) {
-                navigator.share({ title: name, text: shareText, url: shareUrl })
-                .catch((error) => console.log('Error sharing:', error));
-            } else {
-                navigator.clipboard.writeText(shareText + " " + shareUrl).then(function() {
-                    showToast("Link Copied Successfully!");
-                }, function() {
-                    prompt("Copy this link:", shareUrl);
-                });
-            }
-        }
-
-        function showToast(message) {
-            var x = document.getElementById("toast");
-            x.innerHTML = '<i class="fas fa-check-circle" style="color:var(--neon-green)"></i> ' + message;
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-        }
-
-        // --- SCROLL TO TOP ---
-        window.onscroll = function() {
-            let btn = document.getElementById("scrollTop");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) { btn.style.display = "flex"; } else { btn.style.display = "none"; }
-        };
-        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
-
-        // --- TIME AGO CALCULATOR (AUTO UPDATE) ---
-        function updateUploadTimes() {
-            const timeElements = document.querySelectorAll('.time-badge');
-            
-            timeElements.forEach(el => {
-                const dateStr = el.getAttribute('data-date');
-                if (!dateStr) return;
-
-                const uploadDate = new Date(dateStr);
-                const now = new Date();
-                const diffInSeconds = Math.floor((now - uploadDate) / 1000);
-
-                let timeString = "";
-
-                if (diffInSeconds < 60) {
-                    timeString = "Just Now";
-                } else if (diffInSeconds < 3600) {
-                    const min = Math.floor(diffInSeconds / 60);
-                    timeString = min + (min === 1 ? " min ago" : " mins ago");
-                } else if (diffInSeconds < 86400) {
-                    const hr = Math.floor(diffInSeconds / 3600);
-                    timeString = hr + (hr === 1 ? " hour ago" : " hours ago");
-                } else if (diffInSeconds < 2592000) { // 30 days
-                    const days = Math.floor(diffInSeconds / 86400);
-                    timeString = days + (days === 1 ? " day ago" : " days ago");
-                } else if (diffInSeconds < 31536000) { // 12 months
-                    const months = Math.floor(diffInSeconds / 2592000);
-                    timeString = months + (months === 1 ? " month ago" : " months ago");
-                } else {
-                    const years = Math.floor(diffInSeconds / 31536000);
-                    timeString = years + (years === 1 ? " year ago" : " years ago");
-                }
-
-                el.innerHTML = '<i class="fas fa-clock"></i> Uploaded: ' + timeString;
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', updateUploadTimes);
-        setInterval(updateUploadTimes, 60000);
-
+        window.onload = () => filterCat('whatsapp', document.querySelector('.tab-btn'));
     </script>
 </body>
 </html>
