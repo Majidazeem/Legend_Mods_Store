@@ -68,10 +68,17 @@
         .side-links a:hover { background: var(--glass); border: 1px solid var(--border); color: var(--gold); transform: translateX(5px); }
         .side-links i { color: var(--gold); width: 25px; text-align: center; }
 
-        /* MARQUEE */
-        .marquee { background: var(--gold); color: #000; padding: 12px; font-weight: 900; overflow: hidden; white-space: nowrap; font-size: 0.8rem; font-family: 'Rajdhani'; border-bottom: 2px solid #000; }
-        .marquee-inner { display: inline-block; animation: scrollText 15s linear infinite; }
-        @keyframes scrollText { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+        /* MARQUEE (FIXED DIRECTION FOR ARABIC) */
+        .marquee { background: var(--gold); color: #000; padding: 12px; font-weight: 900; overflow: hidden; white-space: nowrap; font-size: 0.8rem; font-family: 'Rajdhani'; border-bottom: 2px solid #000; direction: ltr; }
+        .marquee-inner { 
+            display: inline-block; 
+            animation: scrollText 35s linear infinite; 
+            animation-delay: -15s;
+        }
+        @keyframes scrollText { 
+            from { transform: translateX(-100%); } 
+            to { transform: translateX(100%); } 
+        }
 
         /* TABS */
         .tabs { display: flex; gap: 10px; padding: 25px 15px; overflow-x: auto; justify-content: center; }
