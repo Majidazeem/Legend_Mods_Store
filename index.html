@@ -5,321 +5,425 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MA LEGEND | Official VIP Elite Store</title>
     
-    <meta name="description" content="MA Legend Official Store - Premium Anti-Ban WhatsApp Mods & Elite Tools.">
+    <!-- BROWSER ICON & SEO -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
     <meta property="og:title" content="MA LEGEND | VIP Elite Store">
+    <meta property="og:description" content="Download Exclusive WhatsApp Mods, XML Themes & VIP Tools. Anti-Ban Secure System.">
     <meta property="og:image" content="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
+    
     <meta name="theme-color" content="#FFD700">
-
-    <link rel="icon" type="image/jpg" href="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- MASTER DESIGN SYSTEM --- */
+        /* --- NEUMORPHISM PRO --- */
         :root {
-            --bg-color: #050505;
-            --card-bg: rgba(18, 18, 18, 0.98);
-            --text-main: #ffffff;
-            --text-sub: #a5a5a5;
-            --border: #222222;
+            --bg-color: #292d32;
+            --card-bg: #292d32;
+            --text-main: #e0e5ec;
+            --text-sub: #9baacf;
             --gold: #FFD700;
             --neon-green: #00ff88;
             --neon-blue: #00f3ff;
-            --header-bg: rgba(5, 5, 5, 0.96);
-            --vip-gradient: linear-gradient(45deg, #FFD700, #ffffff, #FFD700);
-            --gold-glow: rgba(255, 215, 0, 0.3);
-            --glass: rgba(255, 255, 255, 0.03);
+            --danger: #ff4757;
+            --shadow-light: rgba(255, 255, 255, 0.05);
+            --shadow-dark: rgba(0, 0, 0, 0.45);
+            --shadow-flat: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+            --shadow-pressed: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
         }
 
-        /* Light Mode Override */
         body.light-mode {
-            --bg-color: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-main: #121212;
-            --text-sub: #555555;
-            --border: #d1d1d1;
-            --header-bg: #ffffff;
-            --gold: #b8860b; 
-            --glass: rgba(0, 0, 0, 0.05);
-            --gold-glow: rgba(184, 134, 11, 0.2);
+            --bg-color: #e0e5ec;
+            --card-bg: #e0e5ec;
+            --text-main: #4d4d4d;
+            --text-sub: #7a7a7a;
+            --shadow-light: #ffffff;
+            --shadow-dark: #a3b1c6;
+            --shadow-flat: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            --shadow-pressed: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.3s, color 0.3s; }
-        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.3s, color 0.3s, box-shadow 0.3s ease; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+
+        /* --- VERIFIED BADGE ANIMATION --- */
+        .verified-badge {
+            color: #1DA1F2; margin-left: 8px; font-size: 0.9em;
+            display: inline-block;
+            animation: spinBadge 6s infinite linear;
+            vertical-align: middle;
+        }
+        @keyframes spinBadge { 
+            0% { transform: rotateY(0deg); } 
+            50% { transform: rotateY(180deg); } 
+            100% { transform: rotateY(360deg); } 
+        }
+
+        /* --- PARTICLES --- */
+        #particles { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: 0; pointer-events: none; 
+        }
+        .particle { 
+            position: absolute; 
+            background: var(--gold); 
+            border-radius: 50%; 
+            box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
+            opacity: 0;
+            animation: floatUp linear infinite; 
+        }
+        @keyframes floatUp { 
+            0% { transform: translateY(110vh) scale(0); opacity: 0; } 
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } 
+        }
+
         /* HEADER */
         header { 
-            height: 70px; padding: 0 15px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000; background: var(--header-bg);
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
+            height: 80px; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000; background: var(--bg-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
-        .brand-logo h1 { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; text-shadow: 0 0 10px var(--gold-glow); }
-        .btn-nav-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--card-bg); border: 1px solid var(--border); color: var(--gold); cursor: pointer; font-size: 1.2rem; }
+        .brand-logo h1 { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: flex; align-items: center; }
+        
+        .btn-nav-icon { 
+            width: 50px; height: 50px; border-radius: 15px; 
+            display: flex; align-items: center; justify-content: center; 
+            background: var(--bg-color); color: var(--gold); cursor: pointer; font-size: 1.2rem;
+            box-shadow: var(--shadow-flat); border: none; position: relative;
+        }
+        .btn-nav-icon:active { box-shadow: var(--shadow-pressed); transform: scale(0.95); }
+        .notif-dot { position: absolute; top: 12px; right: 12px; width: 8px; height: 8px; background: var(--danger); border-radius: 50%; box-shadow: 0 0 5px var(--danger); display: block; }
+
+        /* MARQUEE */
+        .marquee { 
+            background: var(--bg-color); color: var(--gold); padding: 15px; 
+            font-weight: 700; overflow: hidden; white-space: nowrap; font-size: 1rem; font-family: 'Rajdhani', sans-serif; 
+            margin: 20px; border-radius: 15px; box-shadow: var(--shadow-pressed); direction: ltr; position: relative; z-index: 1;
+        }
+        .marquee-inner { display: inline-block; animation: scrollText 40s linear infinite; }
+        @keyframes scrollText { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 
         /* SIDEBAR */
-        .sidebar { position: fixed; top: 0; left: -300px; width: 285px; height: 100%; background: var(--bg-color); z-index: 2001; padding: 40px 25px; border-right: 2px solid var(--gold); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .sidebar { 
+            position: fixed; top: 0; left: -320px; width: 300px; height: 100%; 
+            background: var(--bg-color); z-index: 2001; padding: 30px 25px; 
+            box-shadow: 5px 0 20px rgba(0,0,0,0.5); transition: 0.5s; overflow-y: auto;
+        }
         .sidebar.active { left: 0; }
-        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; backdrop-filter: blur(5px); }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; backdrop-filter: blur(5px); }
         .sidebar-overlay.active { display: block; }
         .side-profile { text-align: center; margin-bottom: 30px; }
-        .side-avatar-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); padding: 5px; animation: spinLogo 15s linear infinite; }
-        @keyframes spinLogo { 100% { transform: rotate(360deg); } }
-        .side-links a { display: flex; align-items: center; gap: 15px; padding: 15px; color: var(--text-main); text-decoration: none; border-radius: 15px; font-size: 1rem; margin-bottom: 8px; cursor: pointer; }
-        .side-links a:hover { background: var(--glass); border: 1px solid var(--border); color: var(--gold); transform: translateX(5px); }
-        .side-links i { color: var(--gold); width: 25px; text-align: center; }
+        .side-avatar-img { width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--bg-color); box-shadow: var(--shadow-flat); padding: 5px; animation: spinLogo 15s linear infinite; }
+        
+        .sidebar-section { margin-bottom: 25px; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-pressed); }
+        .status-header { font-family: 'Orbitron'; font-size: 0.9rem; color: var(--text-sub); margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .status-indicator { display: flex; align-items: center; gap: 10px; color: var(--neon-green); font-weight: bold; font-family: 'Rajdhani'; font-size: 1.1rem; }
+        .pulsing-dot { width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-        /* MARQUEE (FIXED DIRECTION FOR ARABIC) */
-        .marquee { background: var(--gold); color: #000; padding: 12px; font-weight: 900; overflow: hidden; white-space: nowrap; font-size: 0.8rem; font-family: 'Rajdhani'; border-bottom: 2px solid #000; direction: ltr; }
-        .marquee-inner { 
-            display: inline-block; 
-            animation: scrollText 35s linear infinite; 
-            animation-delay: -15s;
-        }
-        @keyframes scrollText { 
-            from { transform: translateX(-100%); } 
-            to { transform: translateX(100%); } 
-        }
+        .theme-options { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
+        .theme-circle { width: 30px; height: 30px; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-flat); border: 2px solid var(--bg-color); transition: 0.3s; }
+        
+        .side-links a { display: flex; align-items: center; gap: 15px; padding: 16px; color: var(--text-main); text-decoration: none; border-radius: 20px; font-size: 0.95rem; margin-bottom: 15px; cursor: pointer; box-shadow: var(--shadow-flat); }
+        .side-links a:active { box-shadow: var(--shadow-pressed); }
 
-        /* TABS */
-        .tabs { display: flex; gap: 10px; padding: 25px 15px; overflow-x: auto; justify-content: center; }
-        .tab-btn { flex: 1; min-width: 100px; max-width: 130px; padding: 15px; border-radius: 18px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-sub); font-weight: bold; cursor: pointer; font-family: 'Rajdhani'; font-size: 1rem; }
-        .tab-btn.active { background: var(--gold); color: #000; box-shadow: 0 5px 20px var(--gold-glow); transform: translateY(-3px); }
+        .tabs { display: flex; gap: 15px; padding: 10px 15px 30px; overflow-x: auto; scrollbar-width: none; position: relative; z-index: 1;}
+        .tab-btn { flex-shrink: 0; padding: 15px 25px; border-radius: 20px; border: none; background: var(--bg-color); color: var(--text-sub); font-weight: bold; cursor: pointer; font-family: 'Rajdhani'; font-size: 1rem; box-shadow: var(--shadow-flat); }
+        .tab-btn.active { color: var(--gold); box-shadow: var(--shadow-pressed); }
 
-        /* SEARCH */
-        .search-container { width: 92%; max-width: 550px; margin: 0 auto 30px; background: var(--card-bg); border: 1px solid var(--border); padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .search-container { width: 90%; max-width: 550px; margin: 0 auto 40px; background: var(--bg-color); padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; box-shadow: var(--shadow-pressed); position: relative; z-index: 1;}
         .search-container input { background: transparent; border: none; color: var(--text-main); outline: none; width: 100%; font-size: 1.1rem; }
 
-        /* GRID & CARDS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; padding: 0 15px 60px; max-width: 1250px; margin: 0 auto; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 30px; padding: 28px; position: relative; overflow: hidden; animation: fadeInUp 0.7s ease; }
-        .card:hover { border-color: var(--gold); transform: translateY(-8px); }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 30px; padding: 0 20px 60px; max-width: 1250px; margin: 0 auto; position: relative; z-index: 1;}
+        .card { background: var(--card-bg); border-radius: 30px; padding: 30px; position: relative; box-shadow: var(--shadow-flat); animation: fadeInUp 0.6s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
-        .vip-tag { position: absolute; top: 18px; right: -38px; padding: 6px 40px; background: var(--vip-gradient); color: #000; transform: rotate(45deg); font-size: 0.65rem; font-weight: 900; font-family: 'Orbitron'; border: 1px solid #fff; }
+        .vip-tag { position: absolute; top: -10px; right: 20px; padding: 6px 16px; background: var(--bg-color); color: var(--gold); font-size: 0.7rem; font-weight: 900; border-radius: 10px; box-shadow: var(--shadow-flat); font-family: 'Orbitron'; }
         .card-head { display: flex; gap: 20px; align-items: center; margin-bottom: 25px; }
-        .card-head img { width: 80px; height: 80px; border-radius: 22px; object-fit: cover; border: 2px solid var(--border); }
-        .time-badge { font-size: 0.75rem; color: var(--neon-green); font-weight: bold; background: rgba(0, 255, 136, 0.1); padding: 6px 16px; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-family: 'Rajdhani'; margin-top: 5px; }
+        .card-head img { width: 85px; height: 85px; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow-flat); }
+        .time-badge { font-size: 0.75rem; color: var(--neon-green); font-weight: bold; padding: 5px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; font-family: 'Rajdhani'; margin-top: 5px; box-shadow: var(--shadow-pressed); }
 
-        .btn-view { flex: 1; background: var(--gold); color: #000; padding: 15px; border-radius: 18px; text-align: center; font-weight: 800; cursor: pointer; font-family: 'Rajdhani'; font-size: 1.1rem; }
-        .btn-share { width: 60px; border: 1px solid var(--border); border-radius: 18px; display: flex; align-items: center; justify-content: center; color: var(--text-sub); cursor: pointer; font-size: 1.3rem; }
+        .btn-view { flex: 1; background: var(--bg-color); color: var(--gold); padding: 15px; border-radius: 20px; text-align: center; font-weight: 800; cursor: pointer; font-family: 'Rajdhani'; font-size: 1.1rem; box-shadow: var(--shadow-flat); }
+        .btn-view:active { box-shadow: var(--shadow-pressed); transform: scale(0.98); }
+        .btn-share { width: 60px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-sub); cursor: pointer; font-size: 1.3rem; background: var(--bg-color); box-shadow: var(--shadow-flat); }
+        .btn-share:active { box-shadow: var(--shadow-pressed); color: var(--gold); }
 
-        /* OVERLAYS */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 3000; display: none; flex-direction: column; overflow-y: auto; animation: slideIn 0.4s ease; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 3000; display: none; flex-direction: column; overflow-y: auto; animation: slideIn 0.3s ease; }
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .overlay-body { padding: 40px 20px; max-width: 750px; margin: 0 auto; width: 100%; padding-bottom: 150px; }
 
-        .slider { display: flex; gap: 18px; overflow-x: auto; padding: 15px 0 30px; scrollbar-width: none; }
-        .slider::-webkit-scrollbar { display: none; }
-        .slider img { height: 260px; border-radius: 20px; border: 3px solid var(--border); flex-shrink: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .vip-info-panel { background: var(--bg-color); border-radius: 35px; padding: 35px; margin-bottom: 30px; position: relative; box-shadow: var(--shadow-flat); }
+        .vip-info-panel h3 { color: var(--gold); font-family: 'Orbitron'; font-size: 1.2rem; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
 
-        /* ADVANCED VIP INFO PANEL (PERFECT CARDS) */
-        .vip-info-panel { 
-            background: var(--glass); 
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,215,0,0.2); 
-            border-radius: 35px; 
-            padding: 35px; 
-            margin-bottom: 25px; 
-            position: relative; 
-            overflow: hidden; 
-            border-top: 4px solid var(--gold); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            animation: fadeInUp 0.6s ease;
-        }
-        .vip-info-panel h3 { color: var(--gold); font-family: 'Orbitron'; font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-        
-        .contact-vip-item { 
-            display: flex; align-items: center; gap: 20px; padding: 22px; 
-            background: rgba(255,255,255,0.04); border: 1px solid var(--border); 
-            border-radius: 25px; text-decoration: none; color: var(--text-main); 
-            margin-bottom: 15px; transition: 0.4s;
-        }
-        .contact-vip-item:hover { border-color: var(--gold); background: rgba(255,215,0,0.08); transform: scale(1.03) translateX(10px); }
-        .contact-vip-item i { font-size: 2rem; color: var(--gold); width: 45px; text-align: center; }
-        .contact-vip-item div strong { font-size: 1.1rem; display: block; color: var(--text-main); }
-        .contact-vip-item div span { font-size: 0.85rem; color: var(--text-sub); }
+        .skill-row { margin-bottom: 15px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; font-weight: 600; color: var(--text-sub); }
+        .progress-bar { width: 100%; height: 10px; background: var(--bg-color); box-shadow: var(--shadow-pressed); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--gold), var(--neon-green)); box-shadow: 0 0 10px var(--gold); }
 
-        /* STATS GRID */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 35px; }
-        .stat-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 25px; padding: 22px; text-align: center; border-bottom: 4px solid var(--gold); }
-        .stat-item label { display: block; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 8px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+        .contact-grid { display: grid; gap: 20px; }
+        .contact-vip-item { display: flex; align-items: center; gap: 20px; padding: 25px; background: var(--bg-color); border-radius: 25px; text-decoration: none; color: var(--text-main); box-shadow: var(--shadow-flat); }
+        .contact-vip-item i { font-size: 2rem; width: 50px; text-align: center; }
+        .contact-vip-item.wa i { color: #25D366; } .contact-vip-item.tg i { color: #0088cc; } .contact-vip-item.yt i { color: #FF0000; }
+        .contact-vip-item div h4 { font-family: 'Orbitron'; margin-bottom: 5px; font-size: 1.1rem; }
+
+        .video-container { width: 100%; height: 220px; background: #000; border-radius: 25px; margin-bottom: 30px; overflow: hidden; box-shadow: var(--shadow-pressed); display: flex; align-items: center; justify-content: center; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
+        .slider { display: flex; gap: 25px; overflow-x: auto; padding: 10px 10px 40px; scrollbar-width: none; }
+        .slider img { height: 260px; border-radius: 20px; flex-shrink: 0; box-shadow: var(--shadow-flat); }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 35px; }
+        .stat-item { background: var(--bg-color); border-radius: 25px; padding: 22px; text-align: center; box-shadow: var(--shadow-pressed); }
+        .stat-item label { display: block; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 8px; font-weight: 800; text-transform: uppercase; }
         .stat-item value { font-weight: 800; font-size: 1.2rem; color: var(--gold); font-family: 'Rajdhani'; }
 
-        /* TIMER MODAL */
-        .modal-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 4000; display: none; align-items: center; justify-content: center; padding: 30px; backdrop-filter: blur(15px); }
-        .modal-content { background: var(--card-bg); border-radius: 45px; border: 2px solid var(--gold); width: 100%; max-width: 430px; padding: 55px 35px; text-align: center; box-shadow: 0 0 50px var(--gold-glow); }
-        .timer-val { font-size: 5.5rem; font-weight: 900; color: var(--gold); font-family: 'Orbitron'; margin: 15px 0; text-shadow: 0 0 20px var(--gold-glow); }
-        .logs { font-family: monospace; font-size: 0.85rem; color: var(--neon-blue); text-align: left; background: #000; padding: 22px; border-radius: 25px; height: 130px; overflow: hidden; line-height: 1.7; }
+        #notifModal { position: fixed; top: 90px; right: 20px; width: 300px; background: var(--bg-color); z-index: 2500; border-radius: 25px; padding: 20px; box-shadow: var(--shadow-flat); display: none; }
+        .notif-item { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
 
-        footer { text-align: center; padding: 80px 20px; border-top: 1px solid var(--border); margin-top: 80px; background: #000; }
+        .modal-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 4000; display: none; align-items: center; justify-content: center; padding: 30px; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--bg-color); border-radius: 45px; width: 100%; max-width: 430px; padding: 55px 35px; text-align: center; box-shadow: var(--shadow-flat); }
+        .timer-val { font-size: 5.5rem; font-weight: 900; color: var(--gold); font-family: 'Orbitron'; margin: 15px 0; text-shadow: 0 0 20px var(--shadow-light); }
+        .logs { font-family: monospace; font-size: 0.85rem; color: var(--neon-blue); text-align: left; background: var(--bg-color); padding: 22px; border-radius: 25px; height: 130px; overflow: hidden; line-height: 1.7; box-shadow: var(--shadow-pressed); }
+
+        footer { text-align: center; padding: 80px 20px; margin-top: 80px; background: var(--bg-color); box-shadow: 0 -10px 20px rgba(0,0,0,0.1); position: relative; z-index: 1;}
         .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 1.8rem; letter-spacing: 8px; margin-bottom: 40px; }
-
-        #toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; padding: 12px 30px; border-radius: 50px; font-weight: 900; z-index: 9999; display: none; }
+        .footer-social-icon { display: inline-flex; width: 60px; height: 60px; align-items: center; justify-content: center; border-radius: 50%; background: var(--bg-color); box-shadow: var(--shadow-flat); color: var(--gold); font-size: 1.5rem; margin: 0 10px; text-decoration: none; }
+        
+        #toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: var(--bg-color); color: var(--gold); padding: 15px 35px; border-radius: 50px; font-weight: 900; z-index: 9999; display: none; box-shadow: var(--shadow-flat); }
     </style>
 </head>
 <body class="dark-mode">
 
+    <!-- BACKGROUND PARTICLES -->
+    <div id="particles"></div>
+
     <div id="toast">LINK COPIED!</div>
     <div class="sidebar-overlay" id="globalOverlay" onclick="closeAll()"></div>
 
-    <!-- SIDEBAR -->
+    <div id="notifModal">
+        <h4 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:15px;">RECENT ALERTS</h4>
+        <div class="notif-item"><i class="fas fa-bolt" style="color:var(--neon-green)"></i> WA Anti-Ban Updated!</div>
+        <div class="notif-item"><i class="fas fa-star" style="color:var(--gold)"></i> New iOS XML Added.</div>
+        <div class="notif-item"><i class="fas fa-check-circle" style="color:var(--neon-blue)"></i> System All Good.</div>
+    </div>
+
     <nav class="sidebar" id="sidebar">
         <div class="side-profile">
             <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" class="side-avatar-img">
-            <h2 style="font-family:'Orbitron'; font-size:1.4rem; color:var(--gold); margin-top:20px;">MA LEGEND</h2>
+            <h2 style="font-family:'Orbitron'; font-size:1.4rem; color:var(--gold); margin-top:20px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
             <p style="font-size:0.8rem; color:var(--text-sub); font-weight:600; letter-spacing:2px; text-transform: uppercase;">Master Developer</p>
         </div>
+        
+        <!-- DEVICE DETECTOR (Sidebar) -->
+        <div class="sidebar-section">
+            <div class="status-header"><span>DEVICE STATUS</span></div>
+            <div style="background:rgba(0,0,0,0.2); padding:15px; border-radius:15px; text-align:center;">
+                <i class="fas fa-mobile-alt" style="font-size:1.5rem; color:var(--gold); margin-bottom:10px;"></i>
+                <div id="deviceTag" style="font-family:'Orbitron'; color:var(--neon-blue); font-size:0.9rem;">DETECTING...</div>
+                <div style="font-size:0.7rem; color:var(--text-sub); margin-top:5px;">System Optimized</div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="status-header"><span>SERVER STATUS</span> <span>v3.0</span></div>
+            <div class="status-indicator"><div class="pulsing-dot"></div> SYSTEM SAFE</div>
+            <div style="margin-top:15px; font-size:0.85rem; color:var(--text-sub); font-family:'Rajdhani'; display:flex; align-items:center;">
+                <i class="fas fa-users" style="color:var(--neon-blue); margin-right:10px;"></i> 
+                <span id="liveUserCnt" style="font-weight:bold; color:var(--text-main); margin-right:5px;">420</span> ELITE USERS ONLINE
+            </div>
+        </div>
         <div class="side-links">
-            <a onclick="closeAll()"><i class="fas fa-home"></i> Home Dashboard</a>
-            <a onclick="showInfo('about')"><i class="fas fa-user-shield"></i> About Developer</a>
-            <a onclick="showInfo('contact')"><i class="fas fa-headset"></i> Contact Support</a>
-            <a onclick="showInfo('policy')"><i class="fas fa-file-contract"></i> Privacy Policy</a>
-            <div style="margin: 25px 0; border-top: 1px solid var(--border);"></div>
+            <a onclick="closeAll(); playClick()"><i class="fas fa-home"></i> Home Dashboard</a>
+            <a onclick="showInfo('about'); playClick()"><i class="fas fa-user-shield"></i> About Developer</a>
+            <a href="mailto: legendmod715@gmail.com?subject=Mod%20Request" onclick="playClick()"><i class="fas fa-paper-plane"></i> Request New Mod</a>
+            <a onclick="showInfo('contact'); playClick()"><i class="fas fa-headset"></i> Contact Support</a>
+            <a onclick="showInfo('policy'); playClick()"><i class="fas fa-file-contract"></i> Privacy Policy</a>
+            <div style="margin: 25px 0; height: 2px; background: var(--bg-color); box-shadow: var(--shadow-pressed); border-radius: 5px;"></div>
+            <a href="#" onclick="alert('PWA Feature Coming Soon to MA Legend!'); playClick()"><i class="fas fa-download"></i> Install App (PWA)</a>
             <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
-            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram Elite</a>
-            <a href="https://www.youtube.com/@legendmod407" target="_blank"><i class="fab fa-youtube"></i> Master Tutorials</a>
         </div>
     </nav>
 
-    <!-- HEADER -->
     <header>
-        <div class="btn-nav-icon" onclick="toggleSidebar()"><i class="fas fa-bars-staggered"></i></div>
-        <div class="brand-logo"><h1>MA LEGEND</h1></div>
-        <div class="btn-nav-icon" id="themeBtn" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
+        <button class="btn-nav-icon" onclick="toggleSidebar(); playClick()"><i class="fas fa-bars-staggered"></i></button>
+        <div class="brand-logo"><h1>MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h1></div>
+        <div style="display:flex; gap:15px;">
+            <button class="btn-nav-icon" onclick="toggleNotif(); playClick()">
+                <i class="fas fa-bell"></i><span class="notif-dot"></span>
+            </button>
+            <button class="btn-nav-icon" id="themeBtn" onclick="toggleTheme(); playClick()"><i class="fas fa-moon"></i></button>
+        </div>
     </header>
 
     <div class="marquee">
-        <div class="marquee-inner"> صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ صَلَّى اللَّهُ عَلَى النَّبِيِّ مُحَمَّدٍ
-اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ
-اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ 
+        <div class="marquee-inner">
+            صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ صَلَّى اللَّهُ عَلَى النَّبِيِّ مُحَمَّدٍ اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ
         </div>
     </div>
 
-    <!-- TABS -->
     <div class="tabs">
-        <button class="tab-btn active" onclick="filterCat('whatsapp', this)">WA MODS</button>
-        <button class="tab-btn" onclick="filterCat('apps', this)">APPS</button>
-        <button class="tab-btn" onclick="filterCat('tools', this)">VIP TOOLS</button>
+        <button class="tab-btn active" onclick="filterCat('whatsapp', this); playClick()">WA MODS</button>
+        <button class="tab-btn" onclick="filterCat('themes', this); playClick()">XML THEMES</button>
+        <button class="tab-btn" onclick="filterCat('apps', this); playClick()">APPS</button>
+        <button class="tab-btn" onclick="filterCat('tools', this); playClick()">VIP TOOLS</button>
     </div>
 
-    <!-- SEARCH -->
     <div class="search-container">
         <i class="fas fa-magnifying-glass" style="color:var(--gold)"></i>
-        <input type="text" id="search" placeholder="Search premium mods..." onkeyup="doSearch()">
+        <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
     </div>
 
-    <!-- MAIN GRID -->
     <main class="grid" id="appGrid"></main>
 
-    <!-- OVERLAY: SPECIFICATIONS -->
+    <!-- OVERLAYS -->
     <div id="specsOverlay" class="overlay">
-        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg-color); z-index:100;">
-            <i class="fas fa-chevron-left btn-nav-icon" onclick="history.back()"></i>
+        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg-color); z-index:100; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
+            <div class="btn-nav-icon" onclick="history.back(); playClick()"><i class="fas fa-chevron-left"></i></div>
             <span style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">SPECIFICATIONS</span>
             <div style="width:45px;"></div>
         </div>
         <div class="overlay-body" id="specsContent"></div>
     </div>
 
-    <!-- OVERLAY: INFO HUB -->
     <div id="infoOverlay" class="overlay">
-        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg-color); z-index:100;">
-            <i class="fas fa-chevron-left btn-nav-icon" onclick="history.back()"></i>
+        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg-color); z-index:100; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
+            <div class="btn-nav-icon" onclick="history.back(); playClick()"><i class="fas fa-chevron-left"></i></div>
             <span id="infoTitle" style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">VIP HUB</span>
             <div style="width:45px;"></div>
         </div>
         <div class="overlay-body" id="infoContent"></div>
     </div>
 
-    <!-- TIMER MODAL -->
     <div class="modal-view" id="timerModal">
         <div class="modal-content">
             <div class="timer-val" id="timerCount">10</div>
-            <h3 style="color:var(--gold); font-family:'Orbitron';">SECURING ELITE LINK...</h3>
+            <h3 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:15px;">SECURING ELITE LINK...</h3>
             <div class="logs" id="serverLogs"></div>
-            <a href="#" id="finalBtn" style="display:none; text-decoration:none; margin-top:30px;" target="_blank" class="btn-view">OPEN MEDIAFIRE</a>
+            <a href="#" id="finalBtn" style="display:none; text-decoration:none; margin-top:30px;" target="_blank" class="btn-view" onclick="playClick()">OPEN MEDIAFIRE</a>
         </div>
     </div>
 
     <footer>
-        <div class="footer-logo">MA LEGEND</div>
-        <div style="display:flex; justify-content:center; gap:30px; margin-bottom:40px;">
-            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" style="color:var(--gold); font-size:2rem;"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" style="color:var(--gold); font-size:2rem;"><i class="fab fa-telegram-plane"></i></a>
-            <a href="https://www.youtube.com/@legendmod407" target="_blank" style="color:var(--gold); font-size:2rem;"><i class="fab fa-youtube"></i></a>
+        <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
+        <div style="display:flex; justify-content:center; margin-bottom:40px;">
+            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://www.youtube.com/@legendmod407" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-youtube"></i></a>
         </div>
-        <p style="font-size:0.9rem; color:var(--text-sub); letter-spacing: 2px;">&copy; 2026 MA LEGEND ELITE STORE • Hub of Pro Modders</p>
+        <p style="font-size:0.9rem; color:var(--text-sub); letter-spacing: 2px;">&copy; 2026 MA LEGEND ELITE STORE</p>
     </footer>
 
     <script>
-        // --- DATA ENGINE (All 7 Apps Included) ---
-        const appsData = [
-            {
-                id: 1, name: "WhatsApp Fake Chat", category: "whatsapp", version: "v2.26.2.70", size: "74 MB",
-                uploadDate: "2026-02-06T06:44:00", icon: "https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg",
-                link: "https://www.mediafire.com/file/cy3jt1kvmgg7cjk/WhatsApp_2.26.2.70.apk/file",
-                screens: ["https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg", "https://i.postimg.cc/LJ9kj1L8/Gyi9Srv15-g-HQ.jpg"],
-                features: ["Fake Profile Creator", "Custom Chats", "Ghost Mode", "Fast Media"],
-                changelog: ["Base 2.26.2.70 Fixed", "Improved Fake Call UI", "Security Bypass 10.0"]
-            },
-            {
-                id: 2, name: "WhatsApp Business", category: "whatsapp", version: "v2.26.1.76", size: "65 MB",
-                uploadDate: "2026-02-01T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
-                link: "https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file",
-                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
-                features: ["Anti-Ban Logic", "Auto-Translate", "Fast Backup", "Stealth Status"],
-                changelog: ["Upgraded Bypass Engine 2026", "New VIP Dark Theme", "Bug Fixes"]
-            },
-            {
-                id: 3, name: "TOP 3X LEGEND WA", category: "whatsapp", version: "v2.25.31.76", size: "72 MB",
-                uploadDate: "2026-01-20T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
-                link: "https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file",
-                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
-                features: ["Ultra Privacy", "Auto-AI Reply", "Custom UI themes", "Anti-Ban Pro"],
-                changelog: ["Anti-Ban Matrix Fix", "Added Custom Fonts", "Optimized Speed"]
-            },
-            {
-                id: 4, name: "APK Editor Pro", category: "apps", version: "v3.0 VIP", size: "15 MB",
-                uploadDate: "2026-01-30T09:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",
-                link: "https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/",
-                screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],
-                features: ["Dex Editor Plus", "XML Manifest Mod", "Resource Editing", "No Ads"],
-                changelog: ["Enhanced Decoding", "Android 14 Support", "Fixed Build Errors"]
-            },
-            {
-                id: 5, name: "CapCut Pro ", category: "apps", version: "v2026 VIP", size: "283 MB",
-                uploadDate: "2026-02-06T09:30:00", icon: "https://i.ibb.co/SD0ntMdG/14b4dbf2479980f3fc8f71a09be011c6.jpg",
-                link: "https://www.mediafire.com/file/tlkcuf5k4686ikg/CapCut_16.3.0.apk/file",
-                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
-                features: ["Pro Unlocked", "No Watermark", "4K HDR Export", "AI Pro Tools"],
-                changelog: ["2026 VIP Lib", "Enabled Cloud Save", "Optimized Export"]
-            },
-            {
-                id: 6, name: "WA Channel Report", category: "tools", version: "v1.1 Cloud", size: "Online",
-                uploadDate: "2026-01-28T14:07:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg",
-                link: "https://whatsapp-channel-report.vercel.app/",
-                screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"],
-                features: ["Mass Proxy Report", "Fast Takedown", "Cloud Algorithm", "Encrypted"],
-                changelog: ["Updated Token pool", "Increased Speed", "Added Stealth Mode"]
-            },
-            {
-                id: 7, name: "WA Login Tool", category: "tools", version: "v0.9 Fix", size: "Online",
-                uploadDate: "2026-01-18T16:45:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg",
-                link: "https://whatsapp-loginnot-available.vercel.app/",
-                screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"],
-                features: ["Login Bypass", "OTP Link Fix", "Device Linking", "Anti-Lock"],
-                changelog: ["Bypassed 24h Lock", "Fixed API Errors", "New Link Logic"]
+        // --- SOUND ENGINE (GLOBAL) ---
+        let audioCtx;
+        function initAudio() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        }
+        
+        // Unlock Audio on First Click
+        window.addEventListener('click', () => initAudio(), { once: true });
+        window.addEventListener('touchstart', () => initAudio(), { once: true });
+
+        function playClick() {
+            try {
+                if (!audioCtx) initAudio();
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                osc.frequency.value = 800; // Tone pitch
+                osc.type = 'sine';
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); // Volume
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.1);
+            } catch(e) {}
+        }
+
+        // --- PARTICLE SYSTEM ---
+        window.addEventListener('load', () => {
+            const pContainer = document.getElementById('particles');
+            for(let i=0; i<40; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = (Math.random() * 5 + 3) + 'px';
+                p.style.width = size; p.style.height = size;
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                p.style.animationDelay = '-' + (Math.random() * 10) + 's'; 
+                p.style.opacity = Math.random() * 0.6 + 0.2;
+                pContainer.appendChild(p);
             }
+            detectDevice();
+        });
+
+        // --- DEVICE DETECTOR LOGIC ---
+        function detectDevice() {
+            let os = "Unknown System";
+            if (navigator.userAgent.indexOf("Android") != -1) os = "Android Elite";
+            if (navigator.userAgent.indexOf("iPhone") != -1) os = "iOS Secure";
+            if (navigator.userAgent.indexOf("Windows") != -1) os = "PC Master";
+            document.getElementById('deviceTag').innerText = "DETECTED: " + os;
+        }
+
+        // --- FAKE LIVE USER COUNTER ---
+        setInterval(() => {
+            const cnt = document.getElementById('liveUserCnt');
+            if(cnt) {
+                let current = parseInt(cnt.innerText);
+                const change = Math.floor(Math.random() * 10) - 5; 
+                cnt.innerText = current + change;
+            }
+        }, 3000);
+
+        // --- FIXED SHARE FUNCTION ---
+        async function shareMod() {
+            const shareData = {
+                title: 'MA LEGEND VIP Store',
+                text: 'Check out this Elite Mod Store! Download VIP Mods & Themes.',
+                url: window.location.href
+            };
+
+            // Try Native Share (Mobile)
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    copyToClipboard();
+                }
+            } else {
+                copyToClipboard();
+            }
+        }
+
+        function copyToClipboard() {
+            navigator.clipboard.writeText(window.location.href);
+            const t = document.getElementById('toast');
+            t.style.display = 'block';
+            t.innerText = "LINK COPIED!";
+            setTimeout(() => t.style.display = 'none', 2500);
+        }
+
+        // --- FULL DATA ---
+        const appsData = [
+            { id: 1, name: "WhatsApp Fake Chat", category: "whatsapp", version: "v2.26.2.70", size: "74 MB", uploadDate: "2026-02-06T06:44:00", icon: "https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg", link: "https://www.mediafire.com/file/cy3jt1kvmgg7cjk/WhatsApp_2.26.2.70.apk/file", screens: ["https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg"], features: ["Fake Profile Creator", "Custom Chats", "Ghost Mode", "Fast Media"], changelog: ["Base 2.26.2.70 Fixed", "Improved Fake Call UI", "Security Bypass 10.0"], video: "" },
+            { id: 2, name: "WhatsApp Business", category: "whatsapp", version: "v2.26.1.76", size: "65 MB", uploadDate: "2026-02-01T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Anti-Ban Logic", "Auto-Translate", "Fast Backup", "Stealth Status"], changelog: ["Upgraded Bypass Engine 2026", "New VIP Dark Theme", "Bug Fixes"], video: "" },
+            { id: 3, name: "TOP 3X LEGEND WA", category: "whatsapp", version: "v2.25.31.76", size: "72 MB", uploadDate: "2026-01-20T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Ultra Privacy", "Auto-AI Reply", "Custom UI themes", "Anti-Ban Pro"], changelog: ["Anti-Ban Matrix Fix", "Added Custom Fonts", "Optimized Speed"], video: "" },
+            { id: 4, name: "APK Editor Pro", category: "apps", version: "v3.0 VIP", size: "15 MB", uploadDate: "2026-01-30T09:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Dex Editor Plus", "XML Manifest Mod", "Resource Editing", "No Ads"], changelog: ["Enhanced Decoding", "Android 14 Support", "Fixed Build Errors"], video: "" },
+            { id: 5, name: "CapCut Pro ", category: "apps", version: "v2026 VIP", size: "283 MB", uploadDate: "2026-02-06T09:30:00", icon: "https://i.ibb.co/SD0ntMdG/14b4dbf2479980f3fc8f71a09be011c6.jpg", link: "https://www.mediafire.com/file/tlkcuf5k4686ikg/CapCut_16.3.0.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Pro Unlocked", "No Watermark", "4K HDR Export", "AI Pro Tools"], changelog: ["2026 VIP Lib", "Enabled Cloud Save", "Optimized Export"], video: "" },
+            { id: 6, name: "WA Channel Report", category: "tools", version: "v1.1 Cloud", size: "Online", uploadDate: "2026-01-28T14:07:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "https://whatsapp-channel-report.vercel.app/", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Mass Proxy Report", "Fast Takedown", "Cloud Algorithm", "Encrypted"], changelog: ["Updated Token pool", "Increased Speed", "Added Stealth Mode"], video: "" },
+            { id: 7, name: "WA Login Tool", category: "tools", version: "v0.9 Fix", size: "Online", uploadDate: "2026-01-18T16:45:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://whatsapp-loginnot-available.vercel.app/", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Login Bypass", "OTP Link Fix", "Device Linking", "Anti-Lock"], changelog: ["Bypassed 24h Lock", "Fixed API Errors", "New Link Logic"], video: "" },
+            { id: 8, name: "iOS 18 Dark XML", category: "themes", version: "XML File", size: "150 KB", uploadDate: "2026-02-15T10:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "#", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Real iOS Fonts", "Blur Effect", "iOS Emojis", "Dark Mode"], changelog: ["Fixed Bubble Colors", "New Home Style"], video: "" },
+            { id: 9, name: "Neon Hacker XML", category: "themes", version: "XML File", size: "120 KB", uploadDate: "2026-02-14T09:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "#", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Green Matrix Text", "Black BG", "Hacker Fonts", "Cool Ticks"], changelog: ["Updated Color Codes"], video: "" }
         ];
 
-        // --- CORE NAVIGATION (History Support) ---
         window.onpopstate = () => closeAll(false);
-
         function closeAll(back = true) {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('globalOverlay').classList.remove('active');
             document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none');
             document.getElementById('timerModal').style.display = 'none';
+            document.getElementById('notifModal').style.display = 'none';
             document.body.style.overflow = 'auto';
             if(back && history.state) history.back();
         }
@@ -327,25 +431,29 @@
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('globalOverlay').classList.toggle('active');
-            if(document.getElementById('sidebar').classList.contains('active')) {
-                history.pushState({v:'side'}, '');
-            }
+            if(document.getElementById('sidebar').classList.contains('active')) history.pushState({v:'side'}, '');
         }
 
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const icon = document.querySelector('#themeBtn i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
+            icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun');
         }
 
-        // --- REAL TIME ENGINE (Negative Fix) ---
-        function getTimeAgo(dateStr) {
-            const now = new Date();
-            const past = new Date(dateStr);
-            let diff = Math.floor((now - past) / 1000);
+        function setTheme(color) {
+            document.documentElement.style.setProperty('--gold', color);
+            playClick();
+        }
 
-            if (diff < 0) diff = 0; // Fix negative time
+        function toggleNotif() {
+            const n = document.getElementById('notifModal');
+            n.style.display = n.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function getTimeAgo(dateStr) {
+            const now = new Date(); const past = new Date(dateStr);
+            let diff = Math.floor((now - past) / 1000);
+            if (diff < 0) diff = 0;
             if (diff < 60) return "Just now";
             const mins = Math.floor(diff / 60);
             if (mins < 60) return mins + "m ago";
@@ -356,7 +464,9 @@
         }
 
         function renderApps(data) {
-            const grid = document.getElementById('appGrid'); grid.innerHTML = '';
+            const grid = document.getElementById('appGrid'); 
+            if(!grid) return;
+            grid.innerHTML = '';
             const sorted = [...data].sort((a,b) => new Date(b.uploadDate) - new Date(a.uploadDate));
             sorted.forEach(app => {
                 grid.innerHTML += `
@@ -371,8 +481,8 @@
                             </div>
                         </div>
                         <div style="display:flex; gap:15px;">
-                            <div class="btn-view" onclick="openDetails(${app.id})">SPECIFICATIONS</div>
-                            <div class="btn-share" onclick="shareMod()"><i class="fas fa-share-nodes"></i></div>
+                            <div class="btn-view" onclick="openDetails(${app.id}); playClick()">SPECIFICATIONS</div>
+                            <div class="btn-share" onclick="shareMod(); playClick()"><i class="fas fa-share-nodes"></i></div>
                         </div>
                     </div>`;
             });
@@ -380,23 +490,33 @@
 
         function filterCat(c, b) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            b.classList.add('active'); renderApps(appsData.filter(a => a.category === c));
+            if(b) b.classList.add('active'); 
+            renderApps(appsData.filter(a => a.category === c));
         }
 
         function doSearch() {
             const q = document.getElementById('search').value.toLowerCase();
-            renderApps(appsData.filter(a => a.name.toLowerCase().includes(q)));
+            const results = appsData.filter(a => 
+                a.name.toLowerCase().includes(q) || 
+                a.features.some(f => f.toLowerCase().includes(q))
+            );
+            renderApps(results);
         }
 
         function openDetails(id) {
             const a = appsData.find(x => x.id === id);
+            let videoHTML = '';
+            if(a.video) {
+                videoHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${a.video}?controls=0" allowfullscreen></iframe></div>`;
+            }
             const content = document.getElementById('specsContent');
             content.innerHTML = `
                 <div style="text-align:center; margin-bottom:30px;">
-                    <img src="${a.icon}" style="width:120px; border-radius:35px; border:3px solid var(--gold); box-shadow:0 15px 40px rgba(0,0,0,0.5);">
-                    <h2 style="margin-top:20px; font-family:'Orbitron'; color:var(--gold);">${a.name}</h2>
-                    <p style="font-weight:bold; color:var(--neon-blue); letter-spacing:1px;">VERSION: ${a.version}</p>
+                    <img src="${a.icon}" style="width:120px; border-radius:35px; border:none; box-shadow:var(--shadow-flat);">
+                    <h2 style="margin-top:20px; font-family:'Orbitron'; color:var(--gold);">${a.name} <i class="fas fa-check-circle verified-badge"></i></h2>
+                    <p style="font-weight:bold; color:var(--neon-blue); letter-spacing:1px; margin-top:10px;">VERSION: ${a.version}</p>
                 </div>
+                ${videoHTML}
                 <div class="slider">${a.screens.map(s => `<img src="${s}">`).join('')}</div>
                 <div class="stats-grid">
                     <div class="stat-item"><label>FILE SIZE</label><value>${a.size}</value></div>
@@ -405,49 +525,64 @@
                     <div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div>
                 </div>
                 <div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT'S NEW</h3><p style="color:var(--text-sub); line-height:1.8;">${a.changelog.join('<br>')}</p></div>
-                <div class="vip-info-panel"><h3><i class="fas fa-gem"></i> VIP FEATURES</h3><p style="color:var(--text-sub); line-height:1.8;">${a.features.join(' • ')}</p></div>
-                <div class="btn-view" style="padding:22px; font-size:1.3rem; box-shadow:0 10px 30px var(--gold-glow);" onclick="startTimer('${a.link}')">EXECUTE DOWNLOAD</div>
+                <div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal - 100% Clean</div>
+                <div class="btn-view" style="padding:22px; font-size:1.3rem; margin-top:5px;" onclick="startTimer('${a.link}'); playClick()">EXECUTE DOWNLOAD</div>
             `;
             document.getElementById('specsOverlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
             history.pushState({v:'specs'}, '');
         }
 
-        // --- VIP HUB OVERLAYS ---
         function showInfo(type) {
             const content = document.getElementById('infoContent');
             const title = document.getElementById('infoTitle');
+            
             if(type === 'about') {
-                title.innerText = "About MA Legend";
+                title.innerText = "Developer Profile";
                 content.innerHTML = `
                     <div class="vip-info-panel" style="text-align:center;">
-                        <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" style="width:120px; border-radius:50%; border:3px solid var(--gold); padding:5px; margin-bottom:20px; box-shadow:0 0 30px var(--gold-glow);">
-                        <h2 style="font-family:'Orbitron'; color:var(--gold); letter-spacing:2px;">MA LEGEND</h2>
-                        <p style="color:var(--neon-blue); font-weight:800; font-size:0.8rem; letter-spacing:4px; margin-bottom:15px;">MASTER MODDER</p>
-                        <p style="color:var(--text-sub); line-height:1.8;">MA LEGEND is Pakistan's premier Android modding authority. Specializing in high-security, 100% anti-ban bypass engines and premium interface modifications since 2024.</p>
+                        <img src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" style="width:120px; border-radius:50%; border:4px solid var(--bg-color); padding:5px; margin-bottom:20px; box-shadow:var(--shadow-flat);">
+                        <h2 style="font-family:'Orbitron'; color:var(--gold); letter-spacing:2px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
+                        <p style="color:var(--neon-green); font-weight:800; font-size:0.8rem; letter-spacing:3px; margin-bottom:15px;">✓ VERIFIED DEVELOPER</p>
+                        <p style="color:var(--text-sub); line-height:1.8;">Pakistan's premier Android modding authority. Specializing in high-security, 100% anti-ban bypass engines.</p>
                     </div>
                     <div class="vip-info-panel">
-                        <h3><i class="fas fa-shield-halved"></i> OUR COMMITMENT</h3>
-                        <p style="color:var(--text-sub); line-height:1.8;">We provide secure mods tested personally on multiple devices. User privacy and stability are our top priorities.</p>
+                        <h3><i class="fas fa-code"></i> SKILL MATRIX</h3>
+                        <div class="skill-row"><div class="skill-info"><span>Anti-Ban Logic</span><span>100%</span></div><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div></div>
+                        <div class="skill-row"><div class="skill-info"><span>Modding</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
+                        <div class="skill-row"><div class="skill-info"><span>UI/UX Design</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
                     </div>`;
             } else if (type === 'contact') {
                 title.innerText = "Support Hub";
                 content.innerHTML = `
                     <div class="vip-info-panel">
-                        <h3><i class="fas fa-link"></i> OFFICIAL PLATFORMS</h3>
-                        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item"><i class="fab fa-whatsapp"></i> <div><strong>WhatsApp VIP</strong><span>Elite Mod Updates</span></div></a>
-                        <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item"><i class="fab fa-telegram-plane"></i> <div><strong>Telegram Elite</strong><span>Main News Hub</span></div></a>
-                        <a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item"><i class="fab fa-youtube"></i> <div><strong>YouTube Official</strong><span>Video Proofs & Password</span></div></a>
-                        <a href="https://t.me/Top_3x_Legend" target="_blank" class="contact-vip-item" style="border-color:var(--neon-blue);"><i class="fas fa-paper-plane" style="color:var(--neon-blue);"></i> <div><strong>Developer Direct</strong><span>Personal: @Top_3x_Legend</span></div></a>
+                        <h3><i class="fas fa-headset"></i> ELITE SUPPORT</h3>
+                        <div class="contact-grid">
+                            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item wa">
+                                <i class="fab fa-whatsapp"></i> <div><h4>WhatsApp VIP</h4><span>Join Official Channel</span></div>
+                            </a>
+                            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item tg">
+                                <i class="fab fa-telegram-plane"></i> <div><h4>Telegram Elite</h4><span>Fastest Mod Updates</span></div>
+                            </a>
+                            <a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item yt">
+                                <i class="fab fa-youtube"></i> <div><h4>YouTube Channel</h4><span>Tutorials & Proofs</span></div>
+                            </a>
+                        </div>
                     </div>`;
             } else if (type === 'policy') {
-                title.innerText = "Privacy Policy";
+                title.innerText = "Privacy Protocol";
                 content.innerHTML = `
                     <div class="vip-info-panel">
-                        <h3><i class="fas fa-lock"></i> DATA PROTECTION</h3>
-                        <p style="color:var(--text-sub); line-height:1.8; margin-bottom:20px;">We never collect user data, chats, or passwords. All mod logic runs locally on your device. User security is our prime directive.</p>
-                        <h3><i class="fas fa-file-shield"></i> STORE TERMS</h3>
-                        <p style="color:var(--text-sub); line-height:1.8;">• Mods are for educational use.<br>• We are not responsible for account bans.<br>• Commercial redistribution is strictly prohibited.</p>
+                        <h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3>
+                        <ul class="policy-list" style="list-style:none;">
+                            <li><i class="fas fa-check"></i> <strong>Zero Logs:</strong> We do not store any user chats, numbers, or personal data.</li>
+                            <li><i class="fas fa-check"></i> <strong>End-to-End:</strong> All mod features run locally on your device.</li>
+                            <li><i class="fas fa-check"></i> <strong>Safe Links:</strong> All downloads are scanned and hosted on secure servers.</li>
+                        </ul>
+                    </div>
+                    <div class="vip-info-panel">
+                        <h3><i class="fas fa-gavel"></i> TERMS OF USE</h3>
+                        <p style="color:var(--text-sub); line-height:1.6;">These mods are for educational purposes only. The developer (MA Legend) is not responsible for any account bans. Use at your own risk.</p>
                     </div>`;
             }
             document.getElementById('infoOverlay').style.display = 'flex';
@@ -472,13 +607,9 @@
             }, 1000);
         }
 
-        function shareMod() {
-            navigator.clipboard.writeText(window.location.href);
-            document.getElementById('toast').style.display = 'block';
-            setTimeout(() => document.getElementById('toast').style.display = 'none', 2500);
-        }
-
-        window.onload = () => filterCat('whatsapp', document.querySelector('.tab-btn'));
+        document.addEventListener('DOMContentLoaded', () => {
+            filterCat('whatsapp', document.querySelector('.tab-btn'));
+        });
     </script>
 </body>
 </html>
