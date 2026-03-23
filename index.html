@@ -4,629 +4,984 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MA LEGEND | Official VIP Elite Store</title>
-    
-    <!-- BROWSER ICON & SEO -->
     <link rel="icon" type="image/png" href="https://i.ibb.co/9mkRYT12/1773365624558.jpg">
     <meta property="og:title" content="MA LEGEND | VIP Elite Store">
     <meta property="og:description" content="Download Exclusive WhatsApp Mods, XML Themes & VIP Tools. Anti-Ban Secure System.">
     <meta property="og:image" content="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
-    
     <meta name="theme-color" content="#FFD700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* --- NEUMORPHISM PRO --- */
         :root {
-            --bg-color: #292d32;
-            --card-bg: #292d32;
-            --text-main: #e0e5ec;
-            --text-sub: #9baacf;
-            --gold: #FFD700;
-            --neon-green: #00ff88;
-            --neon-blue: #00f3ff;
-            --danger: #ff4757;
-            --shadow-light: rgba(255, 255, 255, 0.05);
-            --shadow-dark: rgba(0, 0, 0, 0.45);
+            --bg-color: #292d32; --card-bg: #292d32; --text-main: #e0e5ec; --text-sub: #9baacf;
+            --gold: #FFD700; --neon-green: #00ff88; --neon-blue: #00f3ff; --danger: #ff4757;
+            --shadow-light: rgba(255,255,255,0.05); --shadow-dark: rgba(0,0,0,0.45);
             --shadow-flat: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
             --shadow-pressed: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
         }
-
         body.light-mode {
-            --bg-color: #e0e5ec;
-            --card-bg: #e0e5ec;
-            --text-main: #4d4d4d;
-            --text-sub: #7a7a7a;
-            --shadow-light: #ffffff;
-            --shadow-dark: #a3b1c6;
+            --bg-color: #e0e5ec; --card-bg: #e0e5ec; --text-main: #4d4d4d; --text-sub: #7a7a7a;
+            --shadow-light: #ffffff; --shadow-dark: #a3b1c6;
             --shadow-flat: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
             --shadow-pressed: inset 6px 6px 10px var(--shadow-dark), inset -6px -6px 10px var(--shadow-light);
         }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; transition: background 0.3s, color 0.3s, box-shadow 0.3s ease; }
+        body { background-color:var(--bg-color); color:var(--text-main); overflow-x:hidden; -webkit-tap-highlight-color:transparent; }
+        .verified-badge { color:#1DA1F2; margin-left:8px; font-size:0.9em; display:inline-block; animation:spinBadge 6s infinite linear; vertical-align:middle; }
+        @keyframes spinBadge { 0%{transform:rotateY(0deg)} 50%{transform:rotateY(180deg)} 100%{transform:rotateY(360deg)} }
+        #particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+        .particle { position:absolute; background:var(--gold); border-radius:50%; box-shadow:0 0 10px var(--gold),0 0 20px var(--gold); opacity:0; animation:floatUp linear infinite; }
+        @keyframes floatUp { 0%{transform:translateY(110vh) scale(0);opacity:0} 20%{opacity:0.8} 100%{transform:translateY(-10vh) scale(1.5);opacity:0} }
+        header { height:80px; padding:0 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; background:var(--bg-color); box-shadow:0 4px 20px rgba(0,0,0,0.2); }
+        .brand-logo h1 { font-family:'Orbitron'; font-size:1.3rem; color:var(--gold); letter-spacing:2px; text-shadow:2px 2px 4px rgba(0,0,0,0.5); display:flex; align-items:center; }
+        .btn-nav-icon { width:50px; height:50px; border-radius:15px; display:flex; align-items:center; justify-content:center; background:var(--bg-color); color:var(--gold); cursor:pointer; font-size:1.2rem; box-shadow:var(--shadow-flat); border:none; position:relative; }
+        .btn-nav-icon:active { box-shadow:var(--shadow-pressed); transform:scale(0.95); }
+        .notif-dot { position:absolute; top:12px; right:12px; width:8px; height:8px; background:var(--danger); border-radius:50%; box-shadow:0 0 5px var(--danger); display:block; }
+        .marquee { background:var(--bg-color); color:var(--gold); padding:15px; font-weight:700; overflow:hidden; white-space:nowrap; font-size:1rem; font-family:'Rajdhani',sans-serif; margin:20px; border-radius:15px; box-shadow:var(--shadow-pressed); direction:ltr; position:relative; z-index:1; }
+        .marquee-inner { display:inline-block; animation:scrollText 40s linear infinite; }
+        @keyframes scrollText { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
+        .sidebar { position:fixed; top:0; left:-320px; width:300px; height:100%; background:var(--bg-color); z-index:2001; padding:30px 25px; box-shadow:5px 0 20px rgba(0,0,0,0.5); transition:0.5s; overflow-y:auto; }
+        .sidebar.active { left:0; }
+        .sidebar-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:2000; display:none; backdrop-filter:blur(5px); }
+        .sidebar-overlay.active { display:block; }
+        .side-profile { text-align:center; margin-bottom:30px; }
+        .side-avatar-img { width:100px; height:100px; border-radius:50%; border:4px solid var(--bg-color); box-shadow:var(--shadow-flat); padding:5px; animation:spinLogo 15s linear infinite; }
+        @keyframes spinLogo { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        .sidebar-section { margin-bottom:25px; padding:20px; border-radius:20px; box-shadow:var(--shadow-pressed); }
+        .status-header { font-family:'Orbitron'; font-size:0.9rem; color:var(--text-sub); margin-bottom:10px; display:flex; justify-content:space-between; }
+        .status-indicator { display:flex; align-items:center; gap:10px; color:var(--neon-green); font-weight:bold; font-family:'Rajdhani'; font-size:1.1rem; }
+        .pulsing-dot { width:10px; height:10px; background:var(--neon-green); border-radius:50%; box-shadow:0 0 10px var(--neon-green); animation:pulse 1.5s infinite; }
+        @keyframes pulse { 0%{opacity:1} 50%{opacity:0.4} 100%{opacity:1} }
+        .theme-options { display:flex; gap:15px; justify-content:center; margin-top:10px; }
+        .theme-circle { width:30px; height:30px; border-radius:50%; cursor:pointer; box-shadow:var(--shadow-flat); border:2px solid var(--bg-color); transition:0.3s; }
+        .side-links a { display:flex; align-items:center; gap:15px; padding:16px; color:var(--text-main); text-decoration:none; border-radius:20px; font-size:0.95rem; margin-bottom:15px; cursor:pointer; box-shadow:var(--shadow-flat); }
+        .side-links a:active { box-shadow:var(--shadow-pressed); }
+        .tabs { display:flex; gap:15px; padding:10px 15px 30px; overflow-x:auto; scrollbar-width:none; position:relative; z-index:1; }
+        .tab-btn { flex-shrink:0; padding:15px 25px; border-radius:20px; border:none; background:var(--bg-color); color:var(--text-sub); font-weight:bold; cursor:pointer; font-family:'Rajdhani'; font-size:1rem; box-shadow:var(--shadow-flat); }
+        .tab-btn.active { color:var(--gold); box-shadow:var(--shadow-pressed); }
+        .search-container { width:90%; max-width:550px; margin:0 auto 40px; background:var(--bg-color); padding:15px 25px; border-radius:50px; display:flex; align-items:center; gap:15px; box-shadow:var(--shadow-pressed); position:relative; z-index:1; }
+        .search-container input { background:transparent; border:none; color:var(--text-main); outline:none; width:100%; font-size:1.1rem; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:30px; padding:0 20px 60px; max-width:1250px; margin:0 auto; position:relative; z-index:1; }
+        .card { background:var(--card-bg); border-radius:30px; padding:30px; position:relative; box-shadow:var(--shadow-flat); animation:fadeInUp 0.6s ease; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        .vip-tag { position:absolute; top:-10px; right:20px; padding:6px 16px; background:var(--bg-color); color:var(--gold); font-size:0.7rem; font-weight:900; border-radius:10px; box-shadow:var(--shadow-flat); font-family:'Orbitron'; }
+        .card-head { display:flex; gap:20px; align-items:center; margin-bottom:25px; }
+        .card-head img { width:85px; height:85px; border-radius:20px; object-fit:cover; box-shadow:var(--shadow-flat); }
+        .time-badge { font-size:0.75rem; color:var(--neon-green); font-weight:bold; padding:5px 12px; border-radius:20px; display:inline-flex; align-items:center; gap:8px; font-family:'Rajdhani'; margin-top:5px; box-shadow:var(--shadow-pressed); }
+        .btn-view { flex:1; background:var(--bg-color); color:var(--gold); padding:15px; border-radius:20px; text-align:center; font-weight:800; cursor:pointer; font-family:'Rajdhani'; font-size:1.1rem; box-shadow:var(--shadow-flat); }
+        .btn-view:active { box-shadow:var(--shadow-pressed); transform:scale(0.98); }
+        .btn-share { width:60px; border-radius:20px; display:flex; align-items:center; justify-content:center; color:var(--text-sub); cursor:pointer; font-size:1.3rem; background:var(--bg-color); box-shadow:var(--shadow-flat); }
+        .btn-share:active { box-shadow:var(--shadow-pressed); color:var(--gold); }
+        .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-color); z-index:3000; display:none; flex-direction:column; overflow-y:auto; animation:slideIn 0.3s ease; }
+        @keyframes slideIn { from{transform:translateY(50px);opacity:0} to{transform:translateY(0);opacity:1} }
+        .overlay-body { padding:40px 20px; max-width:750px; margin:0 auto; width:100%; padding-bottom:150px; }
+        .vip-info-panel { background:var(--bg-color); border-radius:35px; padding:35px; margin-bottom:30px; position:relative; box-shadow:var(--shadow-flat); }
+        .vip-info-panel h3 { color:var(--gold); font-family:'Orbitron'; font-size:1.2rem; margin-bottom:25px; display:flex; align-items:center; gap:12px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:15px; }
+        .skill-row { margin-bottom:15px; }
+        .skill-info { display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.9rem; font-weight:600; color:var(--text-sub); }
+        .progress-bar { width:100%; height:10px; background:var(--bg-color); box-shadow:var(--shadow-pressed); border-radius:10px; overflow:hidden; }
+        .progress-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--gold),var(--neon-green)); box-shadow:0 0 10px var(--gold); }
+        .contact-grid { display:grid; gap:20px; }
+        .contact-vip-item { display:flex; align-items:center; gap:20px; padding:25px; background:var(--bg-color); border-radius:25px; text-decoration:none; color:var(--text-main); box-shadow:var(--shadow-flat); }
+        .contact-vip-item i { font-size:2rem; width:50px; text-align:center; }
+        .contact-vip-item.wa i{color:#25D366} .contact-vip-item.tg i{color:#0088cc} .contact-vip-item.yt i{color:#FF0000}
+        .contact-vip-item div h4 { font-family:'Orbitron'; margin-bottom:5px; font-size:1.1rem; }
+        .video-container { width:100%; height:220px; background:#000; border-radius:25px; margin-bottom:30px; overflow:hidden; box-shadow:var(--shadow-pressed); display:flex; align-items:center; justify-content:center; }
+        .video-container iframe { width:100%; height:100%; border:none; }
+        .slider { display:flex; gap:25px; overflow-x:auto; padding:10px 10px 40px; scrollbar-width:none; }
+        .slider img { height:260px; border-radius:20px; flex-shrink:0; box-shadow:var(--shadow-flat); }
+        .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:25px; margin-bottom:35px; }
+        .stat-item { background:var(--bg-color); border-radius:25px; padding:22px; text-align:center; box-shadow:var(--shadow-pressed); }
+        .stat-item label { display:block; font-size:0.75rem; color:var(--text-sub); margin-bottom:8px; font-weight:800; text-transform:uppercase; }
+        .stat-item value { font-weight:800; font-size:1.2rem; color:var(--gold); font-family:'Rajdhani'; }
+        #notifModal { position:fixed; top:90px; right:20px; width:300px; background:var(--bg-color); z-index:2500; border-radius:25px; padding:20px; box-shadow:var(--shadow-flat); display:none; }
+        .notif-item { padding:15px; border-bottom:1px solid rgba(255,255,255,0.05); font-size:0.9rem; }
+        .modal-view { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:4000; display:none; align-items:center; justify-content:center; padding:30px; backdrop-filter:blur(5px); }
+        .modal-content { background:var(--bg-color); border-radius:45px; width:100%; max-width:430px; padding:55px 35px; text-align:center; box-shadow:var(--shadow-flat); }
+        .timer-val { font-size:5.5rem; font-weight:900; color:var(--gold); font-family:'Orbitron'; margin:15px 0; text-shadow:0 0 20px var(--shadow-light); }
+        .logs { font-family:monospace; font-size:0.85rem; color:var(--neon-blue); text-align:left; background:var(--bg-color); padding:22px; border-radius:25px; height:130px; overflow:hidden; line-height:1.7; box-shadow:var(--shadow-pressed); }
+        footer { text-align:center; padding:80px 20px; margin-top:80px; background:var(--bg-color); box-shadow:0 -10px 20px rgba(0,0,0,0.1); position:relative; z-index:1; }
+        .footer-logo { font-family:'Orbitron'; color:var(--gold); font-size:1.8rem; letter-spacing:8px; margin-bottom:40px; }
+        .footer-social-icon { display:inline-flex; width:60px; height:60px; align-items:center; justify-content:center; border-radius:50%; background:var(--bg-color); box-shadow:var(--shadow-flat); color:var(--gold); font-size:1.5rem; margin:0 10px; text-decoration:none; }
+        #toast { position:fixed; bottom:40px; left:50%; transform:translateX(-50%); background:var(--bg-color); color:var(--gold); padding:15px 35px; border-radius:50px; font-weight:900; z-index:9999; display:none; box-shadow:var(--shadow-flat); }
+        .safe-badge { background:var(--bg-color); color:var(--neon-green); padding:20px; border-radius:20px; text-align:center; font-weight:700; margin-bottom:25px; box-shadow:var(--shadow-pressed); font-family:'Rajdhani'; font-size:1rem; display:flex; align-items:center; justify-content:center; gap:10px; }
+        .policy-list li { padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; gap:12px; align-items:flex-start; line-height:1.6; }
+        .policy-list li i { color:var(--neon-green); margin-top:3px; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.3s, color 0.3s, box-shadow 0.3s ease; }
-        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        /* ===== LOADING SPINNER ===== */
+        #loadingScreen { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-color); z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; }
+        .spinner { width:60px; height:60px; border:4px solid rgba(255,215,0,0.2); border-top:4px solid var(--gold); border-radius:50%; animation:spin 1s linear infinite; }
+        @keyframes spin { to{transform:rotate(360deg)} }
 
-        /* --- VERIFIED BADGE ANIMATION --- */
-        .verified-badge {
-            color: #1DA1F2; margin-left: 8px; font-size: 0.9em;
-            display: inline-block;
-            animation: spinBadge 6s infinite linear;
-            vertical-align: middle;
-        }
-        @keyframes spinBadge { 
-            0% { transform: rotateY(0deg); } 
-            50% { transform: rotateY(180deg); } 
-            100% { transform: rotateY(360deg); } 
-        }
-
-        /* --- PARTICLES --- */
-        #particles { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            z-index: 0; pointer-events: none; 
-        }
-        .particle { 
-            position: absolute; 
-            background: var(--gold); 
-            border-radius: 50%; 
-            box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
-            opacity: 0;
-            animation: floatUp linear infinite; 
-        }
-        @keyframes floatUp { 
-            0% { transform: translateY(110vh) scale(0); opacity: 0; } 
-            20% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } 
-        }
-
-        /* HEADER */
-        header { 
-            height: 80px; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000; background: var(--bg-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        .brand-logo h1 { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: flex; align-items: center; }
-        
-        .btn-nav-icon { 
-            width: 50px; height: 50px; border-radius: 15px; 
-            display: flex; align-items: center; justify-content: center; 
-            background: var(--bg-color); color: var(--gold); cursor: pointer; font-size: 1.2rem;
-            box-shadow: var(--shadow-flat); border: none; position: relative;
-        }
-        .btn-nav-icon:active { box-shadow: var(--shadow-pressed); transform: scale(0.95); }
-        .notif-dot { position: absolute; top: 12px; right: 12px; width: 8px; height: 8px; background: var(--danger); border-radius: 50%; box-shadow: 0 0 5px var(--danger); display: block; }
-
-        /* MARQUEE */
-        .marquee { 
-            background: var(--bg-color); color: var(--gold); padding: 15px; 
-            font-weight: 700; overflow: hidden; white-space: nowrap; font-size: 1rem; font-family: 'Rajdhani', sans-serif; 
-            margin: 20px; border-radius: 15px; box-shadow: var(--shadow-pressed); direction: ltr; position: relative; z-index: 1;
-        }
-        .marquee-inner { display: inline-block; animation: scrollText 40s linear infinite; }
-        @keyframes scrollText { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
-
-        /* SIDEBAR */
-        .sidebar { 
-            position: fixed; top: 0; left: -320px; width: 300px; height: 100%; 
-            background: var(--bg-color); z-index: 2001; padding: 30px 25px; 
-            box-shadow: 5px 0 20px rgba(0,0,0,0.5); transition: 0.5s; overflow-y: auto;
-        }
-        .sidebar.active { left: 0; }
-        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; backdrop-filter: blur(5px); }
-        .sidebar-overlay.active { display: block; }
-        .side-profile { text-align: center; margin-bottom: 30px; }
-        .side-avatar-img { width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--bg-color); box-shadow: var(--shadow-flat); padding: 5px; animation: spinLogo 15s linear infinite; }
-        
-        .sidebar-section { margin-bottom: 25px; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-pressed); }
-        .status-header { font-family: 'Orbitron'; font-size: 0.9rem; color: var(--text-sub); margin-bottom: 10px; display: flex; justify-content: space-between; }
-        .status-indicator { display: flex; align-items: center; gap: 10px; color: var(--neon-green); font-weight: bold; font-family: 'Rajdhani'; font-size: 1.1rem; }
-        .pulsing-dot { width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; box-shadow: 0 0 10px var(--neon-green); animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-
-        .theme-options { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
-        .theme-circle { width: 30px; height: 30px; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow-flat); border: 2px solid var(--bg-color); transition: 0.3s; }
-        
-        .side-links a { display: flex; align-items: center; gap: 15px; padding: 16px; color: var(--text-main); text-decoration: none; border-radius: 20px; font-size: 0.95rem; margin-bottom: 15px; cursor: pointer; box-shadow: var(--shadow-flat); }
-        .side-links a:active { box-shadow: var(--shadow-pressed); }
-
-        .tabs { display: flex; gap: 15px; padding: 10px 15px 30px; overflow-x: auto; scrollbar-width: none; position: relative; z-index: 1;}
-        .tab-btn { flex-shrink: 0; padding: 15px 25px; border-radius: 20px; border: none; background: var(--bg-color); color: var(--text-sub); font-weight: bold; cursor: pointer; font-family: 'Rajdhani'; font-size: 1rem; box-shadow: var(--shadow-flat); }
-        .tab-btn.active { color: var(--gold); box-shadow: var(--shadow-pressed); }
-
-        .search-container { width: 90%; max-width: 550px; margin: 0 auto 40px; background: var(--bg-color); padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; gap: 15px; box-shadow: var(--shadow-pressed); position: relative; z-index: 1;}
-        .search-container input { background: transparent; border: none; color: var(--text-main); outline: none; width: 100%; font-size: 1.1rem; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 30px; padding: 0 20px 60px; max-width: 1250px; margin: 0 auto; position: relative; z-index: 1;}
-        .card { background: var(--card-bg); border-radius: 30px; padding: 30px; position: relative; box-shadow: var(--shadow-flat); animation: fadeInUp 0.6s ease; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .vip-tag { position: absolute; top: -10px; right: 20px; padding: 6px 16px; background: var(--bg-color); color: var(--gold); font-size: 0.7rem; font-weight: 900; border-radius: 10px; box-shadow: var(--shadow-flat); font-family: 'Orbitron'; }
-        .card-head { display: flex; gap: 20px; align-items: center; margin-bottom: 25px; }
-        .card-head img { width: 85px; height: 85px; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow-flat); }
-        .time-badge { font-size: 0.75rem; color: var(--neon-green); font-weight: bold; padding: 5px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px; font-family: 'Rajdhani'; margin-top: 5px; box-shadow: var(--shadow-pressed); }
-
-        .btn-view { flex: 1; background: var(--bg-color); color: var(--gold); padding: 15px; border-radius: 20px; text-align: center; font-weight: 800; cursor: pointer; font-family: 'Rajdhani'; font-size: 1.1rem; box-shadow: var(--shadow-flat); }
-        .btn-view:active { box-shadow: var(--shadow-pressed); transform: scale(0.98); }
-        .btn-share { width: 60px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-sub); cursor: pointer; font-size: 1.3rem; background: var(--bg-color); box-shadow: var(--shadow-flat); }
-        .btn-share:active { box-shadow: var(--shadow-pressed); color: var(--gold); }
-
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 3000; display: none; flex-direction: column; overflow-y: auto; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .overlay-body { padding: 40px 20px; max-width: 750px; margin: 0 auto; width: 100%; padding-bottom: 150px; }
-
-        .vip-info-panel { background: var(--bg-color); border-radius: 35px; padding: 35px; margin-bottom: 30px; position: relative; box-shadow: var(--shadow-flat); }
-        .vip-info-panel h3 { color: var(--gold); font-family: 'Orbitron'; font-size: 1.2rem; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
-
-        .skill-row { margin-bottom: 15px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; font-weight: 600; color: var(--text-sub); }
-        .progress-bar { width: 100%; height: 10px; background: var(--bg-color); box-shadow: var(--shadow-pressed); border-radius: 10px; overflow: hidden; }
-        .progress-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--gold), var(--neon-green)); box-shadow: 0 0 10px var(--gold); }
-
-        .contact-grid { display: grid; gap: 20px; }
-        .contact-vip-item { display: flex; align-items: center; gap: 20px; padding: 25px; background: var(--bg-color); border-radius: 25px; text-decoration: none; color: var(--text-main); box-shadow: var(--shadow-flat); }
-        .contact-vip-item i { font-size: 2rem; width: 50px; text-align: center; }
-        .contact-vip-item.wa i { color: #25D366; } .contact-vip-item.tg i { color: #0088cc; } .contact-vip-item.yt i { color: #FF0000; }
-        .contact-vip-item div h4 { font-family: 'Orbitron'; margin-bottom: 5px; font-size: 1.1rem; }
-
-        .video-container { width: 100%; height: 220px; background: #000; border-radius: 25px; margin-bottom: 30px; overflow: hidden; box-shadow: var(--shadow-pressed); display: flex; align-items: center; justify-content: center; }
-        .video-container iframe { width: 100%; height: 100%; border: none; }
-        .slider { display: flex; gap: 25px; overflow-x: auto; padding: 10px 10px 40px; scrollbar-width: none; }
-        .slider img { height: 260px; border-radius: 20px; flex-shrink: 0; box-shadow: var(--shadow-flat); }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 35px; }
-        .stat-item { background: var(--bg-color); border-radius: 25px; padding: 22px; text-align: center; box-shadow: var(--shadow-pressed); }
-        .stat-item label { display: block; font-size: 0.75rem; color: var(--text-sub); margin-bottom: 8px; font-weight: 800; text-transform: uppercase; }
-        .stat-item value { font-weight: 800; font-size: 1.2rem; color: var(--gold); font-family: 'Rajdhani'; }
-
-        #notifModal { position: fixed; top: 90px; right: 20px; width: 300px; background: var(--bg-color); z-index: 2500; border-radius: 25px; padding: 20px; box-shadow: var(--shadow-flat); display: none; }
-        .notif-item { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
-
-        .modal-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 4000; display: none; align-items: center; justify-content: center; padding: 30px; backdrop-filter: blur(5px); }
-        .modal-content { background: var(--bg-color); border-radius: 45px; width: 100%; max-width: 430px; padding: 55px 35px; text-align: center; box-shadow: var(--shadow-flat); }
-        .timer-val { font-size: 5.5rem; font-weight: 900; color: var(--gold); font-family: 'Orbitron'; margin: 15px 0; text-shadow: 0 0 20px var(--shadow-light); }
-        .logs { font-family: monospace; font-size: 0.85rem; color: var(--neon-blue); text-align: left; background: var(--bg-color); padding: 22px; border-radius: 25px; height: 130px; overflow: hidden; line-height: 1.7; box-shadow: var(--shadow-pressed); }
-
-        footer { text-align: center; padding: 80px 20px; margin-top: 80px; background: var(--bg-color); box-shadow: 0 -10px 20px rgba(0,0,0,0.1); position: relative; z-index: 1;}
-        .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 1.8rem; letter-spacing: 8px; margin-bottom: 40px; }
-        .footer-social-icon { display: inline-flex; width: 60px; height: 60px; align-items: center; justify-content: center; border-radius: 50%; background: var(--bg-color); box-shadow: var(--shadow-flat); color: var(--gold); font-size: 1.5rem; margin: 0 10px; text-decoration: none; }
-        
-        #toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: var(--bg-color); color: var(--gold); padding: 15px 35px; border-radius: 50px; font-weight: 900; z-index: 9999; display: none; box-shadow: var(--shadow-flat); }
+        /* ===== ADMIN PANEL ===== */
+        #adminLoginModal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9000; display:none; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(10px); }
+        #adminPanel { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-color); z-index:8000; display:none; overflow-y:auto; }
+        .admin-header { background:var(--bg-color); padding:20px 25px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 20px rgba(0,0,0,0.3); position:sticky; top:0; z-index:100; }
+        .admin-body { max-width:900px; margin:0 auto; padding:30px 20px 100px; }
+        .admin-card { background:var(--bg-color); border-radius:25px; padding:30px; margin-bottom:25px; box-shadow:var(--shadow-flat); }
+        .admin-card h3 { color:var(--gold); font-family:'Orbitron'; font-size:1rem; margin-bottom:25px; display:flex; align-items:center; gap:10px; }
+        .form-group { margin-bottom:20px; }
+        .form-group label { display:block; font-size:0.85rem; color:var(--text-sub); margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+        .form-input { width:100%; background:var(--bg-color); border:none; color:var(--text-main); padding:16px 20px; border-radius:15px; font-size:1rem; outline:none; box-shadow:var(--shadow-pressed); font-family:'Poppins'; }
+        .form-input:focus { box-shadow:var(--shadow-pressed), 0 0 0 2px var(--gold); }
+        select.form-input option { background:#292d32; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+        .btn-admin { padding:16px 30px; border-radius:15px; border:none; font-weight:800; cursor:pointer; font-family:'Rajdhani'; font-size:1.1rem; box-shadow:var(--shadow-flat); transition:0.2s; }
+        .btn-admin:active { box-shadow:var(--shadow-pressed); transform:scale(0.97); }
+        .btn-gold { background:var(--bg-color); color:var(--gold); }
+        .btn-danger { background:var(--bg-color); color:var(--danger); }
+        .btn-green { background:var(--bg-color); color:var(--neon-green); }
+        .apps-list-admin { display:grid; gap:15px; }
+        .app-item-admin { background:var(--bg-color); border-radius:20px; padding:20px; display:flex; align-items:center; gap:15px; box-shadow:var(--shadow-pressed); }
+        .app-item-admin img { width:60px; height:60px; border-radius:15px; object-fit:cover; box-shadow:var(--shadow-flat); }
+        .app-item-admin .app-info { flex:1; }
+        .app-item-admin .app-info h4 { font-family:'Rajdhani'; font-weight:800; font-size:1.1rem; }
+        .app-item-admin .app-info p { font-size:0.8rem; color:var(--text-sub); margin-top:3px; }
+        .app-actions { display:flex; gap:10px; }
+        .btn-icon { width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer; box-shadow:var(--shadow-flat); background:var(--bg-color); font-size:1rem; }
+        .btn-icon:active { box-shadow:var(--shadow-pressed); }
+        .btn-edit { color:var(--neon-blue); }
+        .btn-del { color:var(--danger); }
+        .tab-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+        .features-input { display:flex; flex-direction:column; gap:8px; }
+        .feature-tag { display:flex; align-items:center; gap:8px; background:var(--bg-color); padding:8px 15px; border-radius:10px; box-shadow:var(--shadow-pressed); }
+        .feature-tag span { flex:1; font-size:0.9rem; }
+        .feature-tag button { background:none; border:none; color:var(--danger); cursor:pointer; font-size:0.9rem; }
+        .screens-preview { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+        .screens-preview img { width:80px; height:80px; object-fit:cover; border-radius:10px; box-shadow:var(--shadow-flat); }
+        .badge-count { background:var(--gold); color:#000; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:900; margin-left:8px; }
+        .admin-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; margin-bottom:25px; }
+        .stat-box { background:var(--bg-color); border-radius:20px; padding:20px; text-align:center; box-shadow:var(--shadow-flat); }
+        .stat-box .num { font-family:'Orbitron'; font-size:2rem; color:var(--gold); font-weight:900; }
+        .stat-box .lbl { font-size:0.75rem; color:var(--text-sub); margin-top:5px; text-transform:uppercase; font-weight:700; }
+        .empty-state { text-align:center; padding:60px 20px; color:var(--text-sub); }
+        .empty-state i { font-size:3rem; color:var(--gold); margin-bottom:15px; opacity:0.4; }
+        .changelog-input { display:flex; flex-direction:column; gap:8px; }
     </style>
 </head>
 <body class="dark-mode">
 
-    <!-- BACKGROUND PARTICLES -->
-    <div id="particles"></div>
 
-    <div id="toast">LINK COPIED!</div>
-    <div class="sidebar-overlay" id="globalOverlay" onclick="closeAll()"></div>
 
-    <div id="notifModal">
-        <h4 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:15px;">RECENT ALERTS</h4>
-        <div class="notif-item"><i class="fas fa-bolt" style="color:var(--neon-green)"></i> WA Anti-Ban Updated!</div>
-        <div class="notif-item"><i class="fas fa-star" style="color:var(--gold)"></i> New iOS XML Added.</div>
-        <div class="notif-item"><i class="fas fa-check-circle" style="color:var(--neon-blue)"></i> System All Good.</div>
+<div id="particles"></div>
+<div id="toast">LINK COPIED!</div>
+<div class="sidebar-overlay" id="globalOverlay" onclick="closeAll()"></div>
+
+<!-- NOTIFICATION MODAL -->
+<div id="notifModal">
+    <h4 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:15px;">RECENT ALERTS</h4>
+    <div class="notif-item"><i class="fas fa-bolt" style="color:var(--neon-green)"></i> WA Anti-Ban Updated!</div>
+    <div class="notif-item"><i class="fas fa-star" style="color:var(--gold)"></i> New iOS XML Added.</div>
+    <div class="notif-item"><i class="fas fa-check-circle" style="color:var(--neon-blue)"></i> System All Good.</div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+    <div class="side-profile">
+        <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" class="side-avatar-img">
+        <h2 style="font-family:'Orbitron'; font-size:1.4rem; color:var(--gold); margin-top:20px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
+        <p style="font-size:0.8rem; color:var(--text-sub); font-weight:600; letter-spacing:2px; text-transform:uppercase;">Master Developer</p>
     </div>
-
-    <nav class="sidebar" id="sidebar">
-        <div class="side-profile">
-            <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" class="side-avatar-img">
-            <h2 style="font-family:'Orbitron'; font-size:1.4rem; color:var(--gold); margin-top:20px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
-            <p style="font-size:0.8rem; color:var(--text-sub); font-weight:600; letter-spacing:2px; text-transform: uppercase;">Master Developer</p>
+    <div class="sidebar-section">
+        <div class="status-header"><span>DEVICE STATUS</span></div>
+        <div style="background:rgba(0,0,0,0.2); padding:15px; border-radius:15px; text-align:center;">
+            <i class="fas fa-mobile-alt" style="font-size:1.5rem; color:var(--gold); margin-bottom:10px;"></i>
+            <div id="deviceTag" style="font-family:'Orbitron'; color:var(--neon-blue); font-size:0.9rem;">DETECTING...</div>
+            <div style="font-size:0.7rem; color:var(--text-sub); margin-top:5px;">System Optimized</div>
         </div>
-        
-        <!-- DEVICE DETECTOR (Sidebar) -->
-        <div class="sidebar-section">
-            <div class="status-header"><span>DEVICE STATUS</span></div>
-            <div style="background:rgba(0,0,0,0.2); padding:15px; border-radius:15px; text-align:center;">
-                <i class="fas fa-mobile-alt" style="font-size:1.5rem; color:var(--gold); margin-bottom:10px;"></i>
-                <div id="deviceTag" style="font-family:'Orbitron'; color:var(--neon-blue); font-size:0.9rem;">DETECTING...</div>
-                <div style="font-size:0.7rem; color:var(--text-sub); margin-top:5px;">System Optimized</div>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>SERVER STATUS</span> <span>v4.0</span></div>
+        <div class="status-indicator"><div class="pulsing-dot"></div> FIREBASE LIVE</div>
+        <div style="margin-top:15px; font-size:0.85rem; color:var(--text-sub); font-family:'Rajdhani'; display:flex; align-items:center;">
+            <i class="fas fa-users" style="color:var(--neon-blue); margin-right:10px;"></i>
+            <span id="liveUserCnt" style="font-weight:bold; color:var(--text-main); margin-right:5px;">420</span> ELITE USERS ONLINE
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>THEME COLOR</span></div>
+        <div class="theme-options">
+            <div class="theme-circle" style="background:#FFD700" onclick="setTheme('#FFD700'); playClick()"></div>
+            <div class="theme-circle" style="background:#00f3ff" onclick="setTheme('#00f3ff'); playClick()"></div>
+            <div class="theme-circle" style="background:#00ff88" onclick="setTheme('#00ff88'); playClick()"></div>
+            <div class="theme-circle" style="background:#ff4757" onclick="setTheme('#ff4757'); playClick()"></div>
+            <div class="theme-circle" style="background:#bd00ff" onclick="setTheme('#bd00ff'); playClick()"></div>
+        </div>
+    </div>
+    <div class="side-links">
+        <a onclick="closeAll(); playClick()"><i class="fas fa-home"></i> Home Dashboard</a>
+        <a onclick="showInfo('about'); playClick()"><i class="fas fa-user-shield"></i> About Developer</a>
+        <a onclick="showInfo('contact'); playClick()"><i class="fas fa-headset"></i> Contact Support</a>
+        <a onclick="showInfo('policy'); playClick()"><i class="fas fa-file-contract"></i> Privacy Policy</a>
+        <div style="margin:25px 0; height:2px; background:var(--bg-color); box-shadow:var(--shadow-pressed); border-radius:5px;"></div>
+        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
+        <!-- admin hidden -->
+    </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <button class="btn-nav-icon" onclick="toggleSidebar(); playClick()"><i class="fas fa-bars-staggered"></i></button>
+    <div class="brand-logo"><h1>MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h1></div>
+    <div style="display:flex; gap:15px;">
+        <button class="btn-nav-icon" onclick="toggleNotif(); playClick()">
+            <i class="fas fa-bell"></i><span class="notif-dot"></span>
+        </button>
+        <button class="btn-nav-icon" id="themeBtn" onclick="toggleTheme(); playClick()"><i class="fas fa-moon"></i></button>
+    </div>
+</header>
+
+<div class="marquee">
+    <div class="marquee-inner">
+        صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ صَلَّى اللَّهُ عَلَى النَّبِيِّ مُحَمَّدٍ اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ
+    </div>
+</div>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="filterCat('whatsapp', this); playClick()">WA MODS</button>
+    <button class="tab-btn" onclick="filterCat('themes', this); playClick()">XML THEMES</button>
+    <button class="tab-btn" onclick="filterCat('apps', this); playClick()">APPS</button>
+    <button class="tab-btn" onclick="filterCat('tools', this); playClick()">VIP TOOLS</button>
+</div>
+
+<div class="search-container">
+    <i class="fas fa-magnifying-glass" style="color:var(--gold)"></i>
+    <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
+</div>
+
+<main class="grid" id="appGrid"></main>
+
+<!-- SPECS OVERLAY -->
+<div id="specsOverlay" class="overlay">
+    <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg-color); z-index:100; box-shadow:0 5px 10px rgba(0,0,0,0.1);">
+        <div class="btn-nav-icon" onclick="history.back(); playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">SPECIFICATIONS</span>
+        <div style="width:45px;"></div>
+    </div>
+    <div class="overlay-body" id="specsContent"></div>
+</div>
+
+<!-- INFO OVERLAY -->
+<div id="infoOverlay" class="overlay">
+    <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg-color); z-index:100; box-shadow:0 5px 10px rgba(0,0,0,0.1);">
+        <div class="btn-nav-icon" onclick="history.back(); playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span id="infoTitle" style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">VIP HUB</span>
+        <div style="width:45px;"></div>
+    </div>
+    <div class="overlay-body" id="infoContent"></div>
+</div>
+
+<!-- TIMER MODAL -->
+<div class="modal-view" id="timerModal">
+    <div class="modal-content">
+        <div class="timer-val" id="timerCount">10</div>
+        <h3 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:15px;">SECURING ELITE LINK...</h3>
+        <div class="logs" id="serverLogs"></div>
+        <a href="#" id="finalBtn" style="display:none; text-decoration:none; margin-top:30px;" target="_blank" class="btn-view" onclick="playClick()">OPEN DOWNLOAD</a>
+    </div>
+</div>
+
+<!-- ============ ADMIN LOGIN MODAL ============ -->
+<div id="adminLoginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9000; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(10px);">
+    <div style="background:var(--bg-color); border-radius:35px; width:100%; max-width:400px; padding:45px 35px; box-shadow:var(--shadow-flat); text-align:center;">
+        <div style="font-size:3rem; color:var(--gold); margin-bottom:20px;"><i class="fas fa-shield-halved"></i></div>
+        <h2 style="font-family:'Orbitron'; color:var(--gold); font-size:1.2rem; margin-bottom:8px;">ADMIN ACCESS</h2>
+        <p style="color:var(--text-sub); font-size:0.85rem; margin-bottom:30px;">Secure Login Required</p>
+        <div class="form-group">
+            <input type="password" id="adminPassInput" class="form-input" placeholder="Enter Admin Password" onkeyup="if(event.key==='Enter') window.checkAdminPass()">
+        </div>
+        <div style="display:flex; gap:15px; margin-top:10px;">
+            <button class="btn-admin btn-gold" style="flex:1;" onclick="window.checkAdminPass()"><i class="fas fa-unlock"></i> LOGIN</button>
+            <button class="btn-admin btn-danger" onclick="closeAdminLogin()"><i class="fas fa-times"></i></button>
+        </div>
+        <p id="loginError" style="color:var(--danger); font-size:0.85rem; margin-top:15px; display:none;">❌ Wrong Password!</p>
+    </div>
+</div>
+
+<!-- ============ ADMIN PANEL ============ -->
+<div id="adminPanel">
+    <div class="admin-header">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <div class="btn-nav-icon" onclick="closeAdminPanel()"><i class="fas fa-chevron-left"></i></div>
+            <div>
+                <div style="font-family:'Orbitron'; color:var(--gold); font-size:1rem;">ADMIN PANEL</div>
+                <div style="font-size:0.7rem; color:var(--neon-green);">Firebase Connected</div>
+            </div>
+        </div>
+        <div id="firebaseStatus" style="font-size:0.75rem; color:var(--text-sub); font-family:'Rajdhani'; display:flex; align-items:center; gap:8px;">
+            <div class="pulsing-dot"></div> LIVE
+        </div>
+    </div>
+    <div class="admin-body">
+
+        <!-- STATS -->
+        <div class="admin-stats">
+            <div class="stat-box"><div class="num" id="statTotal">0</div><div class="lbl">Total Apps</div></div>
+            <div class="stat-box"><div class="num" id="statWA">0</div><div class="lbl">WA Mods</div></div>
+            <div class="stat-box"><div class="num" id="statApps">0</div><div class="lbl">Apps</div></div>
+            <div class="stat-box"><div class="num" id="statTools">0</div><div class="lbl">Tools</div></div>
+        </div>
+
+        <!-- ADD/EDIT FORM -->
+        <div class="admin-card">
+            <h3><i class="fas fa-plus-circle"></i> <span id="formTitle">ADD NEW APP</span></h3>
+            <input type="hidden" id="editId">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>App Name *</label>
+                    <input type="text" id="fName" class="form-input" placeholder="e.g. GBWhatsApp Pro">
+                </div>
+                <div class="form-group">
+                    <label>Version *</label>
+                    <input type="text" id="fVersion" class="form-input" placeholder="e.g. v9.45 VIP">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="fCategory" class="form-input">
+                        <option value="whatsapp">WA Mods</option>
+                        <option value="apps">Apps</option>
+                        <option value="tools">VIP Tools</option>
+                        <option value="themes">XML Themes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>File Size</label>
+                    <input type="text" id="fSize" class="form-input" placeholder="e.g. 74 MB or Online">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>App Icon URL *</label>
+                <input type="url" id="fIcon" class="form-input" placeholder="https://i.postimg.cc/...">
+                <div id="iconPreview" style="margin-top:10px; display:none;">
+                    <img id="iconPreviewImg" style="width:70px; height:70px; border-radius:15px; box-shadow:var(--shadow-flat);">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Download Link *</label>
+                <input type="url" id="fLink" class="form-input" placeholder="https://www.mediafire.com/...">
+            </div>
+            <div class="form-group">
+                <label>YouTube Video ID (optional)</label>
+                <input type="text" id="fVideo" class="form-input" placeholder="e.g. dQw4w9WgXcQ (only ID)">
+            </div>
+            <div class="form-group">
+                <label>Screenshots (URLs, one per line)</label>
+                <textarea id="fScreens" class="form-input" rows="3" placeholder="https://i.postimg.cc/...&#10;https://i.postimg.cc/..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Features (one per line)</label>
+                <textarea id="fFeatures" class="form-input" rows="3" placeholder="Anti-Ban Logic&#10;Ghost Mode&#10;Fast Media"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Changelog (one per line)</label>
+                <textarea id="fChangelog" class="form-input" rows="3" placeholder="Fixed Anti-Ban&#10;New Dark Theme"></textarea>
+            </div>
+            <div style="display:flex; gap:15px; margin-top:10px; flex-wrap:wrap;">
+                <button class="btn-admin btn-gold" onclick="saveApp()" style="flex:1; min-width:140px;"><i class="fas fa-save"></i> <span id="saveBtnText">SAVE APP</span></button>
+                <button class="btn-admin btn-danger" onclick="resetForm()" style="flex:1; min-width:140px;"><i class="fas fa-times"></i> CANCEL</button>
             </div>
         </div>
 
-        <div class="sidebar-section">
-            <div class="status-header"><span>SERVER STATUS</span> <span>v3.0</span></div>
-            <div class="status-indicator"><div class="pulsing-dot"></div> SYSTEM SAFE</div>
-            <div style="margin-top:15px; font-size:0.85rem; color:var(--text-sub); font-family:'Rajdhani'; display:flex; align-items:center;">
-                <i class="fas fa-users" style="color:var(--neon-blue); margin-right:10px;"></i> 
-                <span id="liveUserCnt" style="font-weight:bold; color:var(--text-main); margin-right:5px;">420</span> ELITE USERS ONLINE
+        <!-- CHANGE PASSWORD -->
+        <div class="admin-card">
+            <h3><i class="fas fa-key"></i> CHANGE PASSWORD</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="curPass" class="form-input" placeholder="Current password">
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPass" class="form-input" placeholder="New password">
+                </div>
             </div>
+            <button class="btn-admin btn-green" onclick="changePassword()"><i class="fas fa-lock"></i> UPDATE PASSWORD</button>
         </div>
-        <div class="side-links">
-            <a onclick="closeAll(); playClick()"><i class="fas fa-home"></i> Home Dashboard</a>
-            <a onclick="showInfo('about'); playClick()"><i class="fas fa-user-shield"></i> About Developer</a>
-            <a href="mailto: legendmod715@gmail.com?subject=Mod%20Request" onclick="playClick()"><i class="fas fa-paper-plane"></i> Request New Mod</a>
-            <a onclick="showInfo('contact'); playClick()"><i class="fas fa-headset"></i> Contact Support</a>
-            <a onclick="showInfo('policy'); playClick()"><i class="fas fa-file-contract"></i> Privacy Policy</a>
-            <div style="margin: 25px 0; height: 2px; background: var(--bg-color); box-shadow: var(--shadow-pressed); border-radius: 5px;"></div>
-            <a href="#" onclick="alert('PWA Feature Coming Soon to MA Legend!'); playClick()"><i class="fas fa-download"></i> Install App (PWA)</a>
-            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
-        </div>
-    </nav>
 
-    <header>
-        <button class="btn-nav-icon" onclick="toggleSidebar(); playClick()"><i class="fas fa-bars-staggered"></i></button>
-        <div class="brand-logo"><h1>MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h1></div>
-        <div style="display:flex; gap:15px;">
-            <button class="btn-nav-icon" onclick="toggleNotif(); playClick()">
-                <i class="fas fa-bell"></i><span class="notif-dot"></span>
-            </button>
-            <button class="btn-nav-icon" id="themeBtn" onclick="toggleTheme(); playClick()"><i class="fas fa-moon"></i></button>
-        </div>
-    </header>
-
-    <div class="marquee">
-        <div class="marquee-inner">
-            صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ صَلَّى اللَّهُ عَلَى النَّبِيِّ مُحَمَّدٍ اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ
+        <!-- APPS LIST -->
+        <div class="admin-card">
+            <h3><i class="fas fa-list"></i> MANAGE APPS <span class="badge-count" id="adminAppCount">0</span></h3>
+            <div class="tab-row">
+                <button class="tab-btn active" onclick="filterAdminList('all', this)" style="padding:10px 18px; font-size:0.85rem;">All</button>
+                <button class="tab-btn" onclick="filterAdminList('whatsapp', this)" style="padding:10px 18px; font-size:0.85rem;">WA Mods</button>
+                <button class="tab-btn" onclick="filterAdminList('apps', this)" style="padding:10px 18px; font-size:0.85rem;">Apps</button>
+                <button class="tab-btn" onclick="filterAdminList('tools', this)" style="padding:10px 18px; font-size:0.85rem;">Tools</button>
+                <button class="tab-btn" onclick="filterAdminList('themes', this)" style="padding:10px 18px; font-size:0.85rem;">Themes</button>
+            </div>
+            <div id="adminAppsList" class="apps-list-admin"></div>
         </div>
     </div>
+</div>
 
-    <div class="tabs">
-        <button class="tab-btn active" onclick="filterCat('whatsapp', this); playClick()">WA MODS</button>
-        <button class="tab-btn" onclick="filterCat('themes', this); playClick()">XML THEMES</button>
-        <button class="tab-btn" onclick="filterCat('apps', this); playClick()">APPS</button>
-        <button class="tab-btn" onclick="filterCat('tools', this); playClick()">VIP TOOLS</button>
+<footer>
+    <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
+    <div style="display:flex; justify-content:center; margin-bottom:40px;">
+        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://www.youtube.com/@legendmod407" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-youtube"></i></a>
     </div>
+    <p id="footerCopy" style="font-size:0.9rem; color:var(--text-sub); letter-spacing:2px; cursor:default; user-select:none;">&copy; 2026 MA LEGEND ELITE STORE</p>
+</footer>
 
-    <div class="search-container">
-        <i class="fas fa-magnifying-glass" style="color:var(--gold)"></i>
-        <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
-    </div>
+<!-- ============ FIREBASE SDK ============ -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, set, get, remove, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-    <main class="grid" id="appGrid"></main>
+    const firebaseConfig = {
+        databaseURL: "https://my-store-a63af-default-rtdb.firebaseio.com/"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-    <!-- OVERLAYS -->
-    <div id="specsOverlay" class="overlay">
-        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg-color); z-index:100; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
-            <div class="btn-nav-icon" onclick="history.back(); playClick()"><i class="fas fa-chevron-left"></i></div>
-            <span style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">SPECIFICATIONS</span>
-            <div style="width:45px;"></div>
-        </div>
-        <div class="overlay-body" id="specsContent"></div>
-    </div>
+    const APPS_KEY = "apps";
 
-    <div id="infoOverlay" class="overlay">
-        <div style="padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg-color); z-index:100; box-shadow: 0 5px 10px rgba(0,0,0,0.1);">
-            <div class="btn-nav-icon" onclick="history.back(); playClick()"><i class="fas fa-chevron-left"></i></div>
-            <span id="infoTitle" style="font-family:'Orbitron'; font-weight:bold; color:var(--gold);">VIP HUB</span>
-            <div style="width:45px;"></div>
-        </div>
-        <div class="overlay-body" id="infoContent"></div>
-    </div>
+    // ===== PEHLE KA SARA DATA =====
+    const defaultApps = [
+        { id: 1, name: "WhatsApp Fake Chat", category: "whatsapp", version: "v2.26.2.70", size: "74 MB", uploadDate: "2026-02-06T06:44:00", icon: "https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg", link: "https://www.mediafire.com/file/cy3jt1kvmgg7cjk/WhatsApp_2.26.2.70.apk/file", screens: ["https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg"], features: ["Fake Profile Creator", "Custom Chats", "Ghost Mode", "Fast Media"], changelog: ["Base 2.26.2.70 Fixed", "Improved Fake Call UI", "Security Bypass 10.0"], video: "" },
+        { id: 2, name: "WhatsApp Business", category: "whatsapp", version: "v2.26.1.76", size: "65 MB", uploadDate: "2026-02-01T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Anti-Ban Logic", "Auto-Translate", "Fast Backup", "Stealth Status"], changelog: ["Upgraded Bypass Engine 2026", "New VIP Dark Theme", "Bug Fixes"], video: "" },
+        { id: 3, name: "TOP 3X LEGEND WA", category: "whatsapp", version: "v2.25.31.76", size: "72 MB", uploadDate: "2026-01-20T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Ultra Privacy", "Auto-AI Reply", "Custom UI themes", "Anti-Ban Pro"], changelog: ["Anti-Ban Matrix Fix", "Added Custom Fonts", "Optimized Speed"], video: "" },
+        { id: 4, name: "APK Editor Pro", category: "apps", version: "v3.0 VIP", size: "15 MB", uploadDate: "2026-01-30T09:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Dex Editor Plus", "XML Manifest Mod", "Resource Editing", "No Ads"], changelog: ["Enhanced Decoding", "Android 14 Support", "Fixed Build Errors"], video: "" },
+        { id: 5, name: "CapCut Pro", category: "apps", version: "v2026 VIP", size: "283 MB", uploadDate: "2026-02-06T09:30:00", icon: "https://i.ibb.co/SD0ntMdG/14b4dbf2479980f3fc8f71a09be011c6.jpg", link: "https://www.mediafire.com/file/tlkcuf5k4686ikg/CapCut_16.3.0.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Pro Unlocked", "No Watermark", "4K HDR Export", "AI Pro Tools"], changelog: ["2026 VIP Lib", "Enabled Cloud Save", "Optimized Export"], video: "" },
+        { id: 6, name: "WA Channel Report", category: "tools", version: "v1.1 Cloud", size: "Online", uploadDate: "2026-01-28T14:07:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "https://whatsapp-channel-report.vercel.app/", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Mass Proxy Report", "Fast Takedown", "Cloud Algorithm", "Encrypted"], changelog: ["Updated Token pool", "Increased Speed", "Added Stealth Mode"], video: "" },
+        { id: 7, name: "WA Login Tool", category: "tools", version: "v0.9 Fix", size: "Online", uploadDate: "2026-01-18T16:45:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://whatsapp-loginnot-available.vercel.app/", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Login Bypass", "OTP Link Fix", "Device Linking", "Anti-Lock"], changelog: ["Bypassed 24h Lock", "Fixed API Errors", "New Link Logic"], video: "" },
+        { id: 10, name: "WA Channel Ban Tool", category: "tools", version: "V2.0", size: "Online", uploadDate: "2026-03-05T13:04:00", icon: "https://i.postimg.cc/H80y0WGs/20260305-131355.jpg", link: "https://wa-channel-ban.vercel.app/", screens: ["https://i.postimg.cc/1gP3kkjD/Screenshot-20260305-131845.jpg", "https://i.postimg.cc/7fMcBjSk/1772698991149.png"], features: ["You can ban any channel using this tool."], changelog: ["Initial Release"], video: "" },
+        { id: 8, name: "iOS 18 Dark XML", category: "themes", version: "XML File", size: "150 KB", uploadDate: "2026-02-15T10:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "#", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Real iOS Fonts", "Blur Effect", "iOS Emojis", "Dark Mode"], changelog: ["Fixed Bubble Colors", "New Home Style"], video: "" },
+        { id: 9, name: "Neon Hacker XML", category: "themes", version: "XML File", size: "120 KB", uploadDate: "2026-02-14T09:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "#", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Green Matrix Text", "Black BG", "Hacker Fonts", "Cool Ticks"], changelog: ["Updated Color Codes"], video: "" }
+    ];
 
-    <div class="modal-view" id="timerModal">
-        <div class="modal-content">
-            <div class="timer-val" id="timerCount">10</div>
-            <h3 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:15px;">SECURING ELITE LINK...</h3>
-            <div class="logs" id="serverLogs"></div>
-            <a href="#" id="finalBtn" style="display:none; text-decoration:none; margin-top:30px;" target="_blank" class="btn-view" onclick="playClick()">OPEN MEDIAFIRE</a>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
-        <div style="display:flex; justify-content:center; margin-bottom:40px;">
-            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-telegram-plane"></i></a>
-            <a href="https://www.youtube.com/@legendmod407" target="_blank" class="footer-social-icon" onclick="playClick()"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p style="font-size:0.9rem; color:var(--text-sub); letter-spacing: 2px;">&copy; 2026 MA LEGEND ELITE STORE</p>
-    </footer>
-
-    <script>
-        // --- SOUND ENGINE (GLOBAL) ---
-        let audioCtx;
-        function initAudio() {
-            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-        }
-        
-        // Unlock Audio on First Click
-        window.addEventListener('click', () => initAudio(), { once: true });
-        window.addEventListener('touchstart', () => initAudio(), { once: true });
-
-        function playClick() {
-            try {
-                if (!audioCtx) initAudio();
-                const osc = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
-                osc.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
-                osc.frequency.value = 800; // Tone pitch
-                osc.type = 'sine';
-                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); // Volume
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.1);
-            } catch(e) {}
-        }
-
-        // --- PARTICLE SYSTEM ---
-        window.addEventListener('load', () => {
-            const pContainer = document.getElementById('particles');
-            for(let i=0; i<40; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = (Math.random() * 5 + 3) + 'px';
-                p.style.width = size; p.style.height = size;
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                p.style.animationDelay = '-' + (Math.random() * 10) + 's'; 
-                p.style.opacity = Math.random() * 0.6 + 0.2;
-                pContainer.appendChild(p);
-            }
-            detectDevice();
-        });
-
-        // --- DEVICE DETECTOR LOGIC ---
-        function detectDevice() {
-            let os = "Unknown System";
-            if (navigator.userAgent.indexOf("Android") != -1) os = "Android Elite";
-            if (navigator.userAgent.indexOf("iPhone") != -1) os = "iOS Secure";
-            if (navigator.userAgent.indexOf("Windows") != -1) os = "PC Master";
-            document.getElementById('deviceTag').innerText = "DETECTED: " + os;
-        }
-
-        // --- FAKE LIVE USER COUNTER ---
-        setInterval(() => {
-            const cnt = document.getElementById('liveUserCnt');
-            if(cnt) {
-                let current = parseInt(cnt.innerText);
-                const change = Math.floor(Math.random() * 10) - 5; 
-                cnt.innerText = current + change;
-            }
-        }, 3000);
-
-        // --- FIXED SHARE FUNCTION ---
-        async function shareMod() {
-            const shareData = {
-                title: 'MA LEGEND VIP Store',
-                text: 'Check out this Elite Mod Store! Download VIP Mods & Themes.',
-                url: window.location.href
-            };
-
-            // Try Native Share (Mobile)
-            if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    copyToClipboard();
-                }
+    // ===== APPS LOAD - Firebase se ya default =====
+    async function loadApps() {
+        try {
+            const snapshot = await get(ref(db, APPS_KEY));
+            const data = snapshot.val();
+            if (data && Object.keys(data).length > 0) {
+                // Firebase mein data hai - load karo
+                window.appsData = [];
+                Object.keys(data).forEach(key => {
+                    window.appsData.push({ firebaseKey: key, ...data[key] });
+                });
             } else {
-                copyToClipboard();
+                // Firebase khali hai - default data seedh karo aur Firebase mein save karo
+                window.appsData = [];
+                for (const appItem of defaultApps) {
+                    const newRef = push(ref(db, APPS_KEY));
+                    await set(newRef, appItem);
+                    window.appsData.push({ firebaseKey: newRef.key, ...appItem });
+                }
             }
+        } catch(e) {
+            // Firebase error - local default data use karo
+            window.appsData = defaultApps.map((a, i) => ({ firebaseKey: 'local_' + i, ...a }));
         }
 
-        function copyToClipboard() {
-            navigator.clipboard.writeText(window.location.href);
-            const t = document.getElementById('toast');
-            t.style.display = 'block';
-            t.innerText = "LINK COPIED!";
-            setTimeout(() => t.style.display = 'none', 2500);
+        window.appsData.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+        const waApps = window.appsData.filter(a => a.category === 'whatsapp');
+        renderApps(waApps.length > 0 ? waApps : window.appsData);
+        updateAdminStats();
+        renderAdminList('all');
+
+        // Ab real-time listen karo Firebase changes ke liye
+        onValue(ref(db, APPS_KEY), (snapshot) => {
+            const data = snapshot.val();
+            if (!data) return;
+            window.appsData = [];
+            Object.keys(data).forEach(key => {
+                window.appsData.push({ firebaseKey: key, ...data[key] });
+            });
+            window.appsData.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+            updateAdminStats();
+            renderAdminList('all');
+            // Active filter maintain karo
+            const activeTab = document.querySelector('.tabs .tab-btn.active');
+            if (activeTab) activeTab.click();
+        });
+    }
+
+    loadApps();
+
+    // ===== SAVE APP =====
+    window.saveApp = async function() {
+        const name = document.getElementById('fName').value.trim();
+        const version = document.getElementById('fVersion').value.trim();
+        const category = document.getElementById('fCategory').value;
+        const size = document.getElementById('fSize').value.trim() || 'N/A';
+        const icon = document.getElementById('fIcon').value.trim();
+        const link = document.getElementById('fLink').value.trim();
+        const video = document.getElementById('fVideo').value.trim();
+        const screens = document.getElementById('fScreens').value.trim().split('\n').filter(s => s.trim());
+        const features = document.getElementById('fFeatures').value.trim().split('\n').filter(f => f.trim());
+        const changelog = document.getElementById('fChangelog').value.trim().split('\n').filter(c => c.trim());
+        const editId = document.getElementById('editId').value;
+        if (!name || !version || !icon || !link) { showToast('⚠️ Fill required fields!'); return; }
+        const appData = {
+            id: Date.now(),
+            name, version, category, size, icon, link, video,
+            screens: screens.length ? screens : [icon],
+            features: features.length ? features : ['Premium Features'],
+            changelog: changelog.length ? changelog : ['Latest Update'],
+            uploadDate: editId ? (window.appsData.find(a => a.firebaseKey === editId)?.uploadDate || new Date().toISOString()) : new Date().toISOString()
+        };
+        try {
+            if (editId) {
+                await set(ref(db, `${APPS_KEY}/${editId}`), appData);
+                showToast('✅ App Updated!');
+            } else {
+                const newRef = push(ref(db, APPS_KEY));
+                await set(newRef, appData);
+                showToast('✅ App Added!');
+            }
+            resetForm();
+        } catch(e) { showToast('❌ Firebase Error! Check Rules.'); }
+    };
+
+    // ===== DELETE APP =====
+    window.deleteApp = async function(firebaseKey, name) {
+        if (!confirm(`Delete "${name}"?`)) return;
+        try {
+            await remove(ref(db, `${APPS_KEY}/${firebaseKey}`));
+            showToast('🗑️ Deleted!');
+        } catch(e) { showToast('❌ Error!'); }
+    };
+
+    // ===== EDIT APP =====
+    window.editApp = function(firebaseKey) {
+        const app = window.appsData.find(a => a.firebaseKey === firebaseKey);
+        if (!app) return;
+        document.getElementById('editId').value = firebaseKey;
+        document.getElementById('fName').value = app.name || '';
+        document.getElementById('fVersion').value = app.version || '';
+        document.getElementById('fCategory').value = app.category || 'whatsapp';
+        document.getElementById('fSize').value = app.size || '';
+        document.getElementById('fIcon').value = app.icon || '';
+        document.getElementById('fLink').value = app.link || '';
+        document.getElementById('fVideo').value = app.video || '';
+        document.getElementById('fScreens').value = (app.screens || []).join('\n');
+        document.getElementById('fFeatures').value = (app.features || []).join('\n');
+        document.getElementById('fChangelog').value = (app.changelog || []).join('\n');
+        document.getElementById('formTitle').innerText = 'EDIT APP';
+        document.getElementById('saveBtnText').innerText = 'UPDATE APP';
+        if (app.icon) {
+            document.getElementById('iconPreviewImg').src = app.icon;
+            document.getElementById('iconPreview').style.display = 'block';
         }
+        document.querySelector('.admin-card').scrollIntoView({ behavior: 'smooth' });
+    };
 
-        // --- FULL DATA ---
-        const appsData = [
-            { id: 1, name: "WhatsApp Fake Chat", category: "whatsapp", version: "v2.26.2.70", size: "74 MB", uploadDate: "2026-02-06T06:44:00", icon: "https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg", link: "https://www.mediafire.com/file/cy3jt1kvmgg7cjk/WhatsApp_2.26.2.70.apk/file", screens: ["https://i.postimg.cc/ZvP3dbqc/f3f89c778d3784fd3a51d8bd32eb3e33.jpg"], features: ["Fake Profile Creator", "Custom Chats", "Ghost Mode", "Fast Media"], changelog: ["Base 2.26.2.70 Fixed", "Improved Fake Call UI", "Security Bypass 10.0"], video: "" },
-            { id: 2, name: "WhatsApp Business", category: "whatsapp", version: "v2.26.1.76", size: "65 MB", uploadDate: "2026-02-01T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://www.mediafire.com/file/cnvg9ixzj8romr6/WhatsApp_Business_2.26.1.76.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Anti-Ban Logic", "Auto-Translate", "Fast Backup", "Stealth Status"], changelog: ["Upgraded Bypass Engine 2026", "New VIP Dark Theme", "Bug Fixes"], video: "" },
-            { id: 3, name: "TOP 3X LEGEND WA", category: "whatsapp", version: "v2.25.31.76", size: "72 MB", uploadDate: "2026-01-20T12:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://www.mediafire.com/file/vmppvot72lf54ja/TOP_3X_LEGEND_2.25.31.76.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Ultra Privacy", "Auto-AI Reply", "Custom UI themes", "Anti-Ban Pro"], changelog: ["Anti-Ban Matrix Fix", "Added Custom Fonts", "Optimized Speed"], video: "" },
-            { id: 4, name: "APK Editor Pro", category: "apps", version: "v3.0 VIP", size: "15 MB", uploadDate: "2026-01-30T09:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "https://www.mediafire.com/file/vwipkb6p0kh4ogr/APK_Editor_Mod_3.0.apk/file/", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Dex Editor Plus", "XML Manifest Mod", "Resource Editing", "No Ads"], changelog: ["Enhanced Decoding", "Android 14 Support", "Fixed Build Errors"], video: "" },
-            { id: 5, name: "CapCut Pro ", category: "apps", version: "v2026 VIP", size: "283 MB", uploadDate: "2026-02-06T09:30:00", icon: "https://i.ibb.co/SD0ntMdG/14b4dbf2479980f3fc8f71a09be011c6.jpg", link: "https://www.mediafire.com/file/tlkcuf5k4686ikg/CapCut_16.3.0.apk/file", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Pro Unlocked", "No Watermark", "4K HDR Export", "AI Pro Tools"], changelog: ["2026 VIP Lib", "Enabled Cloud Save", "Optimized Export"], video: "" },
-            { id: 6, name: "WA Channel Report", category: "tools", version: "v1.1 Cloud", size: "Online", uploadDate: "2026-01-28T14:07:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "https://whatsapp-channel-report.vercel.app/", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Mass Proxy Report", "Fast Takedown", "Cloud Algorithm", "Encrypted"], changelog: ["Updated Token pool", "Increased Speed", "Added Stealth Mode"], video: "" },
-            { id: 7, name: "WA Login Tool", category: "tools", version: "v0.9 Fix", size: "Online", uploadDate: "2026-01-18T16:45:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "https://whatsapp-loginnot-available.vercel.app/", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Login Bypass", "OTP Link Fix", "Device Linking", "Anti-Lock"], changelog: ["Bypassed 24h Lock", "Fixed API Errors", "New Link Logic"], video: "" },
-            { 
-    id: 10, 
-    name: "WA Channel Ban Tool", 
-    category: "tools", 
-    version: "V2.0", 
-    size: "Online", 
-    uploadDate: "2026-03-05T13:04:00", 
-    icon: "https://i.postimg.cc/H80y0WGs/20260305-131355.jpg", 
-    link: "https://wa-channel-ban.vercel.app/", 
-    screens:[
-        "https://i.postimg.cc/1gP3kkjD/Screenshot-20260305-131845.jpg", 
-        "https://i.postimg.cc/7fMcBjSk/1772698991149.png"
-    ], 
-    features:["You can ban any channel using this tool."], 
-    changelog: ["Initial Release"], 
-    video: ""   // <--- Isay filhaal khali rehne dein
-},
-            { id: 8, name: "iOS 18 Dark XML", category: "themes", version: "XML File", size: "150 KB", uploadDate: "2026-02-15T10:00:00", icon: "https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg", link: "#", screens: ["https://i.postimg.cc/xNMWpCLr/20260127-133717.jpg"], features: ["Real iOS Fonts", "Blur Effect", "iOS Emojis", "Dark Mode"], changelog: ["Fixed Bubble Colors", "New Home Style"], video: "" },
-            { id: 9, name: "Neon Hacker XML", category: "themes", version: "XML File", size: "120 KB", uploadDate: "2026-02-14T09:00:00", icon: "https://i.postimg.cc/SYY94wTH/20260101-082111.jpg", link: "#", screens: ["https://i.postimg.cc/SYY94wTH/20260101-082111.jpg"], features: ["Green Matrix Text", "Black BG", "Hacker Fonts", "Cool Ticks"], changelog: ["Updated Color Codes"], video: "" }
-        ];
+</script>
 
-        window.onpopstate = () => closeAll(false);
-        function closeAll(back = true) {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('globalOverlay').classList.remove('active');
-            document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none');
-            document.getElementById('timerModal').style.display = 'none';
-            document.getElementById('notifModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            if(back && history.state) history.back();
+<script>
+    // ===== SOUND ENGINE =====
+    let audioCtx;
+    function initAudio() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+    window.addEventListener('click', () => initAudio(), { once: true });
+    window.addEventListener('touchstart', () => initAudio(), { once: true });
+    function playClick() {
+        try {
+            if (!audioCtx) initAudio();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.connect(gainNode); gainNode.connect(audioCtx.destination);
+            osc.frequency.value = 800; osc.type = 'sine';
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+        } catch(e) {}
+    }
+
+    // ===== PARTICLES =====
+    window.addEventListener('load', () => {
+        const pContainer = document.getElementById('particles');
+        for(let i=0; i<40; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = (Math.random() * 5 + 3) + 'px';
+            p.style.width = size; p.style.height = size;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            p.style.animationDelay = '-' + (Math.random() * 10) + 's';
+            p.style.opacity = Math.random() * 0.6 + 0.2;
+            pContainer.appendChild(p);
         }
+        detectDevice();
+    });
 
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('globalOverlay').classList.toggle('active');
-            if(document.getElementById('sidebar').classList.contains('active')) history.pushState({v:'side'}, '');
+    function detectDevice() {
+        let os = "Unknown System";
+        if (navigator.userAgent.indexOf("Android") != -1) os = "Android Elite";
+        if (navigator.userAgent.indexOf("iPhone") != -1) os = "iOS Secure";
+        if (navigator.userAgent.indexOf("Windows") != -1) os = "PC Master";
+        document.getElementById('deviceTag').innerText = "DETECTED: " + os;
+    }
+
+    setInterval(() => {
+        const cnt = document.getElementById('liveUserCnt');
+        if(cnt) cnt.innerText = parseInt(cnt.innerText) + (Math.floor(Math.random() * 10) - 5);
+    }, 3000);
+
+    // ===== APP DATA GLOBAL =====
+    window.appsData = window.appsData || [];
+    let currentFilter = 'whatsapp';
+
+    // ===== RENDER APPS =====
+    function renderApps(data) {
+        const grid = document.getElementById('appGrid');
+        if(!grid) return;
+        if(!data || data.length === 0) {
+            grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-inbox"></i><p>No apps in this category</p></div>`;
+            return;
         }
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const icon = document.querySelector('#themeBtn i');
-            icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun');
-        }
-
-        function setTheme(color) {
-            document.documentElement.style.setProperty('--gold', color);
-            playClick();
-        }
-
-        function toggleNotif() {
-            const n = document.getElementById('notifModal');
-            n.style.display = n.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function getTimeAgo(dateStr) {
-            const now = new Date(); const past = new Date(dateStr);
-            let diff = Math.floor((now - past) / 1000);
-            if (diff < 0) diff = 0;
-            if (diff < 60) return "Just now";
-            const mins = Math.floor(diff / 60);
-            if (mins < 60) return mins + "m ago";
-            const hrs = Math.floor(mins / 60);
-            if (hrs < 24) return hrs + "h ago";
-            const days = Math.floor(hrs / 24);
-            return days + "d ago";
-        }
-
-        function renderApps(data) {
-            const grid = document.getElementById('appGrid'); 
-            if(!grid) return;
-            grid.innerHTML = '';
-            const sorted = [...data].sort((a,b) => new Date(b.uploadDate) - new Date(a.uploadDate));
-            sorted.forEach(app => {
-                grid.innerHTML += `
-                    <div class="card">
-                        <div class="vip-tag">VIP ELITE</div>
-                        <div class="card-head">
-                            <img src="${app.icon}" loading="lazy">
-                            <div>
-                                <h3 style="font-family:'Rajdhani'; font-weight:800; font-size:1.2rem;">${app.name}</h3>
-                                <div class="time-badge"><i class="fas fa-clock"></i> ${getTimeAgo(app.uploadDate)}</div>
-                                <div style="color:var(--gold); font-size:0.7rem; margin-top:8px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:var(--text-sub);">(Verified)</span></div>
-                            </div>
+        grid.innerHTML = '';
+        data.forEach(app => {
+            grid.innerHTML += `
+                <div class="card">
+                    <div class="vip-tag">VIP ELITE</div>
+                    <div class="card-head">
+                        <img src="${app.icon}" loading="lazy" onerror="this.src='https://i.postimg.cc/SYY94wTH/20260101-082111.jpg'">
+                        <div>
+                            <h3 style="font-family:'Rajdhani'; font-weight:800; font-size:1.2rem;">${app.name}</h3>
+                            <div class="time-badge"><i class="fas fa-clock"></i> ${getTimeAgo(app.uploadDate)}</div>
+                            <div style="color:var(--gold); font-size:0.7rem; margin-top:8px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:var(--text-sub);">(Verified)</span></div>
                         </div>
-                        <div style="display:flex; gap:15px;">
-                            <div class="btn-view" onclick="openDetails(${app.id}); playClick()">SPECIFICATIONS</div>
-                            <div class="btn-share" onclick="shareMod(); playClick()"><i class="fas fa-share-nodes"></i></div>
-                        </div>
-                    </div>`;
+                    </div>
+                    <div style="display:flex; gap:15px;">
+                        <div class="btn-view" onclick="openDetails('${app.firebaseKey || app.id}'); playClick()">SPECIFICATIONS</div>
+                        <div class="btn-share" onclick="shareMod(); playClick()"><i class="fas fa-share-nodes"></i></div>
+                    </div>
+                </div>`;
+        });
+    }
+
+    function filterCat(c, b) {
+        currentFilter = c;
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        if(b) b.classList.add('active');
+        renderApps(window.appsData.filter(a => a.category === c));
+    }
+
+    function doSearch() {
+        const q = document.getElementById('search').value.toLowerCase();
+        const results = window.appsData.filter(a =>
+            a.name.toLowerCase().includes(q) ||
+            (a.features || []).some(f => f.toLowerCase().includes(q))
+        );
+        renderApps(results);
+    }
+
+    function openDetails(id) {
+        const a = window.appsData.find(x => (x.firebaseKey === id || String(x.id) === String(id)));
+        if (!a) return;
+        let videoHTML = '';
+        if(a.video) videoHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${a.video}?controls=0" allowfullscreen></iframe></div>`;
+        const content = document.getElementById('specsContent');
+        content.innerHTML = `
+            <div style="text-align:center; margin-bottom:30px;">
+                <img src="${a.icon}" style="width:120px; border-radius:35px; box-shadow:var(--shadow-flat);" onerror="this.src='https://i.postimg.cc/SYY94wTH/20260101-082111.jpg'">
+                <h2 style="margin-top:20px; font-family:'Orbitron'; color:var(--gold);">${a.name} <i class="fas fa-check-circle verified-badge"></i></h2>
+                <p style="font-weight:bold; color:var(--neon-blue); letter-spacing:1px; margin-top:10px;">VERSION: ${a.version}</p>
+            </div>
+            ${videoHTML}
+            <div class="slider">${(a.screens || [a.icon]).map(s => `<img src="${s}" onerror="this.src='${a.icon}'">`).join('')}</div>
+            <div class="stats-grid">
+                <div class="stat-item"><label>FILE SIZE</label><value>${a.size}</value></div>
+                <div class="stat-item"><label>STATUS</label><value style="color:var(--neon-green)">STABLE</value></div>
+                <div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div>
+                <div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div>
+            </div>
+            <div class="vip-info-panel"><h3><i class="fas fa-star"></i> FEATURES</h3><ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">${(a.features||[]).map(f=>`<li style="color:var(--text-sub); display:flex; gap:10px;"><i class="fas fa-check" style="color:var(--neon-green); margin-top:3px;"></i>${f}</li>`).join('')}</ul></div>
+            <div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT'S NEW</h3><p style="color:var(--text-sub); line-height:1.8;">${(a.changelog||[]).join('<br>')}</p></div>
+            <div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal - 100% Clean</div>
+            <div class="btn-view" style="padding:22px; font-size:1.3rem; margin-top:5px;" onclick="startTimer('${a.link}'); playClick()">EXECUTE DOWNLOAD</div>
+        `;
+        document.getElementById('specsOverlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        history.pushState({v:'specs'}, '');
+    }
+
+    // ===== ADMIN UI FUNCTIONS =====
+    function updateAdminStats() {
+        const all = window.appsData;
+        document.getElementById('statTotal').innerText = all.length;
+        document.getElementById('statWA').innerText = all.filter(a=>a.category==='whatsapp').length;
+        document.getElementById('statApps').innerText = all.filter(a=>a.category==='apps').length;
+        document.getElementById('statTools').innerText = all.filter(a=>a.category==='tools').length;
+        document.getElementById('adminAppCount').innerText = all.length;
+    }
+
+    function renderAdminList(filter) {
+        const list = document.getElementById('adminAppsList');
+        const data = filter === 'all' ? window.appsData : window.appsData.filter(a => a.category === filter);
+        if(data.length === 0) {
+            list.innerHTML = `<div class="empty-state"><i class="fas fa-inbox"></i><p>No apps found</p></div>`;
+            return;
+        }
+        list.innerHTML = data.map(app => `
+            <div class="app-item-admin">
+                <img src="${app.icon}" onerror="this.src='https://i.postimg.cc/SYY94wTH/20260101-082111.jpg'">
+                <div class="app-info">
+                    <h4>${app.name}</h4>
+                    <p>${app.version} • ${app.category} • ${app.size}</p>
+                </div>
+                <div class="app-actions">
+                    <button class="btn-icon btn-edit" onclick="editApp('${app.firebaseKey}')"><i class="fas fa-pen"></i></button>
+                    <button class="btn-icon btn-del" onclick="deleteApp('${app.firebaseKey}', '${app.name.replace(/'/g,"\\'")}')"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.filterAdminList = function(filter, btn) {
+        document.querySelectorAll('.tab-row .tab-btn').forEach(b => b.classList.remove('active'));
+        if(btn) btn.classList.add('active');
+        renderAdminList(filter);
+    };
+
+    window.resetForm = function() {
+        document.getElementById('editId').value = '';
+        document.getElementById('fName').value = '';
+        document.getElementById('fVersion').value = '';
+        document.getElementById('fCategory').value = 'whatsapp';
+        document.getElementById('fSize').value = '';
+        document.getElementById('fIcon').value = '';
+        document.getElementById('fLink').value = '';
+        document.getElementById('fVideo').value = '';
+        document.getElementById('fScreens').value = '';
+        document.getElementById('fFeatures').value = '';
+        document.getElementById('fChangelog').value = '';
+        document.getElementById('formTitle').innerText = 'ADD NEW APP';
+        document.getElementById('saveBtnText').innerText = 'SAVE APP';
+        document.getElementById('iconPreview').style.display = 'none';
+    };
+
+    // Icon preview on URL input
+    document.addEventListener('DOMContentLoaded', () => {
+        const iconInput = document.getElementById('fIcon');
+        if(iconInput) {
+            iconInput.addEventListener('input', () => {
+                const url = iconInput.value.trim();
+                if(url) {
+                    document.getElementById('iconPreviewImg').src = url;
+                    document.getElementById('iconPreview').style.display = 'block';
+                }
             });
         }
+    });
 
-        function filterCat(c, b) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if(b) b.classList.add('active'); 
-            renderApps(appsData.filter(a => a.category === c));
+    // ===== ADMIN PANEL OPEN/CLOSE =====
+    window.openAdminLogin = function() {
+        document.getElementById('adminLoginModal').style.display = 'flex';
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('globalOverlay').classList.remove('active');
+        setTimeout(() => document.getElementById('adminPassInput').focus(), 300);
+    };
+
+    // ===== PASSWORD FUNCTIONS (Global - onclick ke liye) =====
+    window.checkAdminPass = function() {
+        const input = document.getElementById('adminPassInput').value;
+        const storedPass = localStorage.getItem('ma_admin_pass') || 'malegend123';
+        if (input === storedPass) {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('adminPassInput').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+            document.getElementById('adminPassInput').value = '';
         }
+    };
 
-        function doSearch() {
-            const q = document.getElementById('search').value.toLowerCase();
-            const results = appsData.filter(a => 
-                a.name.toLowerCase().includes(q) || 
-                a.features.some(f => f.toLowerCase().includes(q))
-            );
-            renderApps(results);
-        }
+    window.changePassword = function() {
+        const cur = document.getElementById('curPass').value;
+        const newp = document.getElementById('newPass').value;
+        const storedPass = localStorage.getItem('ma_admin_pass') || 'malegend123';
+        if (!cur || !newp) { showToast('⚠️ Fill both fields!'); return; }
+        if (cur !== storedPass) { showToast('❌ Wrong current password!'); return; }
+        if (newp.length < 6) { showToast('⚠️ Min 6 characters!'); return; }
+        localStorage.setItem('ma_admin_pass', newp);
+        showToast('✅ Password Changed!');
+        document.getElementById('curPass').value = '';
+        document.getElementById('newPass').value = '';
+    };
+    window.closeAdminLogin = function() {
+        document.getElementById('adminLoginModal').style.display = 'none';
+        document.getElementById('loginError').style.display = 'none';
+    };
+    window.closeAdminPanel = function() {
+        document.getElementById('adminPanel').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
 
-        function openDetails(id) {
-            const a = appsData.find(x => x.id === id);
-            let videoHTML = '';
-            if(a.video) {
-                videoHTML = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${a.video}?controls=0" allowfullscreen></iframe></div>`;
-            }
-            const content = document.getElementById('specsContent');
+    // ===== INFO PAGES =====
+    function showInfo(type) {
+        const content = document.getElementById('infoContent');
+        const title = document.getElementById('infoTitle');
+        if(type === 'about') {
+            title.innerText = "Developer Profile";
             content.innerHTML = `
-                <div style="text-align:center; margin-bottom:30px;">
-                    <img src="${a.icon}" style="width:120px; border-radius:35px; border:none; box-shadow:var(--shadow-flat);">
-                    <h2 style="margin-top:20px; font-family:'Orbitron'; color:var(--gold);">${a.name} <i class="fas fa-check-circle verified-badge"></i></h2>
-                    <p style="font-weight:bold; color:var(--neon-blue); letter-spacing:1px; margin-top:10px;">VERSION: ${a.version}</p>
+                <div class="vip-info-panel" style="text-align:center;">
+                    <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" style="width:120px; border-radius:50%; border:4px solid var(--bg-color); padding:5px; margin-bottom:20px; box-shadow:var(--shadow-flat);">
+                    <h2 style="font-family:'Orbitron'; color:var(--gold); letter-spacing:2px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
+                    <p style="color:var(--neon-green); font-weight:800; font-size:0.8rem; letter-spacing:3px; margin-bottom:15px;">✓ VERIFIED DEVELOPER</p>
+                    <p style="color:var(--text-sub); line-height:1.8;">Pakistan's premier Android modding authority.</p>
                 </div>
-                ${videoHTML}
-                <div class="slider">${a.screens.map(s => `<img src="${s}">`).join('')}</div>
-                <div class="stats-grid">
-                    <div class="stat-item"><label>FILE SIZE</label><value>${a.size}</value></div>
-                    <div class="stat-item"><label>STATUS</label><value style="color:var(--neon-green)">STABLE</value></div>
-                    <div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div>
-                    <div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div>
+                <div class="vip-info-panel">
+                    <h3><i class="fas fa-code"></i> SKILL MATRIX</h3>
+                    <div class="skill-row"><div class="skill-info"><span>Anti-Ban Logic</span><span>100%</span></div><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div></div>
+                    <div class="skill-row"><div class="skill-info"><span>Modding</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
+                    <div class="skill-row"><div class="skill-info"><span>UI/UX Design</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
+                </div>`;
+        } else if(type === 'contact') {
+            title.innerText = "Support Hub";
+            content.innerHTML = `
+                <div class="vip-info-panel">
+                    <h3><i class="fas fa-headset"></i> ELITE SUPPORT</h3>
+                    <div class="contact-grid">
+                        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item wa"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp VIP</h4><span>Join Official Channel</span></div></a>
+                        <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item tg"><i class="fab fa-telegram-plane"></i><div><h4>Telegram Elite</h4><span>Fastest Mod Updates</span></div></a>
+                        <a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item yt"><i class="fab fa-youtube"></i><div><h4>YouTube Channel</h4><span>Tutorials & Proofs</span></div></a>
+                    </div>
+                </div>`;
+        } else if(type === 'policy') {
+            title.innerText = "Privacy Protocol";
+            content.innerHTML = `
+                <div class="vip-info-panel">
+                    <h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3>
+                    <ul class="policy-list" style="list-style:none;">
+                        <li><i class="fas fa-check"></i><strong>Zero Logs:</strong> We do not store any user data.</li>
+                        <li><i class="fas fa-check"></i><strong>End-to-End:</strong> All mod features run locally.</li>
+                        <li><i class="fas fa-check"></i><strong>Safe Links:</strong> All downloads are scanned.</li>
+                    </ul>
                 </div>
-                <div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT'S NEW</h3><p style="color:var(--text-sub); line-height:1.8;">${a.changelog.join('<br>')}</p></div>
-                <div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal - 100% Clean</div>
-                <div class="btn-view" style="padding:22px; font-size:1.3rem; margin-top:5px;" onclick="startTimer('${a.link}'); playClick()">EXECUTE DOWNLOAD</div>
-            `;
-            document.getElementById('specsOverlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            history.pushState({v:'specs'}, '');
+                <div class="vip-info-panel">
+                    <h3><i class="fas fa-gavel"></i> TERMS OF USE</h3>
+                    <p style="color:var(--text-sub); line-height:1.6;">These mods are for educational purposes only. Use at your own risk.</p>
+                </div>`;
         }
+        document.getElementById('infoOverlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        history.pushState({v:'info'}, '');
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('globalOverlay').classList.remove('active');
+    }
 
-        function showInfo(type) {
-            const content = document.getElementById('infoContent');
-            const title = document.getElementById('infoTitle');
-            
-            if(type === 'about') {
-                title.innerText = "Developer Profile";
-                content.innerHTML = `
-                    <div class="vip-info-panel" style="text-align:center;">
-                        <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" style="width:120px; border-radius:50%; border:4px solid var(--bg-color); padding:5px; margin-bottom:20px; box-shadow:var(--shadow-flat);">
-                        <h2 style="font-family:'Orbitron'; color:var(--gold); letter-spacing:2px;">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
-                        <p style="color:var(--neon-green); font-weight:800; font-size:0.8rem; letter-spacing:3px; margin-bottom:15px;">✓ VERIFIED DEVELOPER</p>
-                        <p style="color:var(--text-sub); line-height:1.8;">Pakistan's premier Android modding authority. Specializing in high-security, 100% anti-ban bypass engines.</p>
-                    </div>
-                    <div class="vip-info-panel">
-                        <h3><i class="fas fa-code"></i> SKILL MATRIX</h3>
-                        <div class="skill-row"><div class="skill-info"><span>Anti-Ban Logic</span><span>100%</span></div><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div></div>
-                        <div class="skill-row"><div class="skill-info"><span>Modding</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
-                        <div class="skill-row"><div class="skill-info"><span>UI/UX Design</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
-                    </div>`;
-            } else if (type === 'contact') {
-                title.innerText = "Support Hub";
-                content.innerHTML = `
-                    <div class="vip-info-panel">
-                        <h3><i class="fas fa-headset"></i> ELITE SUPPORT</h3>
-                        <div class="contact-grid">
-                            <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="contact-vip-item wa">
-                                <i class="fab fa-whatsapp"></i> <div><h4>WhatsApp VIP</h4><span>Join Official Channel</span></div>
-                            </a>
-                            <a href="https://t.me/LegendMode_banchack_whatsapp" target="_blank" class="contact-vip-item tg">
-                                <i class="fab fa-telegram-plane"></i> <div><h4>Telegram Elite</h4><span>Fastest Mod Updates</span></div>
-                            </a>
-                            <a href="https://www.youtube.com/@legendmod407" target="_blank" class="contact-vip-item yt">
-                                <i class="fab fa-youtube"></i> <div><h4>YouTube Channel</h4><span>Tutorials & Proofs</span></div>
-                            </a>
-                        </div>
-                    </div>`;
-            } else if (type === 'policy') {
-                title.innerText = "Privacy Protocol";
-                content.innerHTML = `
-                    <div class="vip-info-panel">
-                        <h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3>
-                        <ul class="policy-list" style="list-style:none;">
-                            <li><i class="fas fa-check"></i> <strong>Zero Logs:</strong> We do not store any user chats, numbers, or personal data.</li>
-                            <li><i class="fas fa-check"></i> <strong>End-to-End:</strong> All mod features run locally on your device.</li>
-                            <li><i class="fas fa-check"></i> <strong>Safe Links:</strong> All downloads are scanned and hosted on secure servers.</li>
-                        </ul>
-                    </div>
-                    <div class="vip-info-panel">
-                        <h3><i class="fas fa-gavel"></i> TERMS OF USE</h3>
-                        <p style="color:var(--text-sub); line-height:1.6;">These mods are for educational purposes only. The developer (MA Legend) is not responsible for any account bans. Use at your own risk.</p>
-                    </div>`;
+    // ===== TIMER =====
+    function startTimer(link) {
+        const m = document.getElementById('timerModal'); m.style.display = 'flex';
+        const log = document.getElementById('serverLogs'); const btn = document.getElementById('finalBtn');
+        const count = document.getElementById('timerCount');
+        btn.style.display = 'none'; count.style.display = 'block';
+        log.innerHTML = "> Connecting to Database...";
+        let time = 10;
+        const t = setInterval(() => {
+            time--; count.innerText = time;
+            if(time === 8) log.innerHTML += "<br>> Establishing Secure Handshake...";
+            if(time === 5) log.innerHTML += "<br>> Decrypting Download Token...";
+            if(time === 1) log.innerHTML += "<br>> ELITE LINK SECURED!";
+            if(time <= 0) {
+                clearInterval(t); count.style.display = 'none'; btn.style.display = 'block';
+                btn.href = link;
+                btn.onclick = () => { m.style.display = 'none'; history.back(); };
             }
-            document.getElementById('infoOverlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            history.pushState({v:'info'}, '');
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('globalOverlay').classList.remove('active');
-        }
+        }, 1000);
+    }
 
-        function startTimer(link) {
-            const m = document.getElementById('timerModal'); m.style.display = 'flex';
-            const log = document.getElementById('serverLogs'); const btn = document.getElementById('finalBtn');
-            const count = document.getElementById('timerCount');
-            btn.style.display = 'none'; count.style.display = 'block'; log.innerHTML = "> Connecting to Database...";
-            let time = 10;
-            const t = setInterval(() => {
-                time--; count.innerText = time;
-                if(time === 8) log.innerHTML += "<br>> Establishing Secure Handshake...";
-                if(time === 5) log.innerHTML += "<br>> Decrypting Download Token...";
-                if(time === 1) log.innerHTML += "<br>> ELITE LINK SECURED!";
-                if(time <= 0) { clearInterval(t); count.style.display = 'none'; btn.style.display = 'block'; btn.href = link; btn.onclick = () => { m.style.display = 'none'; history.back(); }; }
-            }, 1000);
-        }
+    // ===== HELPERS =====
+    function getTimeAgo(dateStr) {
+        const now = new Date(); const past = new Date(dateStr);
+        let diff = Math.floor((now - past) / 1000);
+        if (diff < 0) diff = 0;
+        if (diff < 60) return "Just now";
+        const mins = Math.floor(diff / 60);
+        if (mins < 60) return mins + "m ago";
+        const hrs = Math.floor(mins / 60);
+        if (hrs < 24) return hrs + "h ago";
+        return Math.floor(hrs / 24) + "d ago";
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            filterCat('whatsapp', document.querySelector('.tab-btn'));
-        });
-    </script>
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.style.display = 'block'; t.innerText = msg;
+        setTimeout(() => t.style.display = 'none', 2500);
+    }
+
+    async function shareMod() {
+        if (navigator.share) {
+            try { await navigator.share({ title:'MA LEGEND VIP Store', text:'Download VIP Mods!', url:window.location.href }); }
+            catch(e) { copyToClipboard(); }
+        } else { copyToClipboard(); }
+    }
+
+    function copyToClipboard() {
+        navigator.clipboard.writeText(window.location.href);
+        showToast('LINK COPIED!');
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('globalOverlay').classList.toggle('active');
+        if(document.getElementById('sidebar').classList.contains('active')) history.pushState({v:'side'}, '');
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+        const icon = document.querySelector('#themeBtn i');
+        icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun');
+    }
+
+    function setTheme(color) {
+        document.documentElement.style.setProperty('--gold', color);
+        playClick();
+    }
+
+    function toggleNotif() {
+        const n = document.getElementById('notifModal');
+        n.style.display = n.style.display === 'block' ? 'none' : 'block';
+    }
+
+    window.closeAll = function(back = true) {
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('globalOverlay').classList.remove('active');
+        document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none');
+        document.getElementById('timerModal').style.display = 'none';
+        document.getElementById('notifModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        if(back && history.state) history.back();
+    };
+
+    window.onpopstate = () => closeAll(false);
+
+    // ===== SECRET ACCESS METHOD 1: Footer 5x Click =====
+    let footerClickCount = 0;
+    let footerClickTimer = null;
+    document.getElementById('footerCopy').addEventListener('click', () => {
+        footerClickCount++;
+        clearTimeout(footerClickTimer);
+        footerClickTimer = setTimeout(() => { footerClickCount = 0; }, 2000);
+        if (footerClickCount >= 5) {
+            footerClickCount = 0;
+            window.openAdminLogin();
+        }
+    });
+
+    // ===== SECRET ACCESS METHOD 2: Keyboard Shortcut A then D then M =====
+    let keySeq = '';
+    let keyTimer = null;
+    document.addEventListener('keydown', (e) => {
+        keySeq += e.key.toLowerCase();
+        clearTimeout(keyTimer);
+        keyTimer = setTimeout(() => { keySeq = ''; }, 1500);
+        if (keySeq.includes('adm')) {
+            keySeq = '';
+            window.openAdminLogin();
+        }
+    });
+</script>
 </body>
 </html>
