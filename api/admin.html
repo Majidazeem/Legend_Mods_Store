@@ -467,7 +467,9 @@ const AK = "apps";
 
 window.appsData = [];
 
-// Load apps
+// ===== CUSTOMIZER STATE (must be defined first) =====
+var custState = {color:'#1565C0', bg:'light', effect:'particles', sound:true, marquee:true, counter:true};
+
 // ===== CUSTOMIZER FIREBASE FUNCTIONS (need module scope) =====
 window.saveCustomizer = async function(){
     try{
@@ -520,13 +522,10 @@ async function loadCustomizerState(){
 // Load customizer settings
 loadCustomizerState();
 
-// Load all data via API
-async function loadAllData() {
-    await loadAppsData();
-    await loadKeysData();
-    await loadReportTextsData();
-    await loadContactSettings();
-    await loadCustomizerState();
+// Load all data
+function loadAllData() {
+    loadContactSettings();
+    loadCustomizerState();
 }
 onValue(ref(db, AK), (snap) => {
     const d = snap.val();
@@ -550,7 +549,7 @@ window.saveApp = async function() {
 
 window.deleteApp = async function(fk, nm) {
     if(!confirm('Delete "'+nm+'"?'))return;
-    try{await remove(ref(db,`${AK}/${fk}`));showToast('🗑️ Deleted!');
+    try{await remove(ref(db,`${AK}/${fk}`));showToast('🗑️ Deleted!');}
     catch(e){showToast('❌ Error!');}
 };
 
@@ -692,8 +691,10 @@ function renderKeysList() {
     }).join('');
 }
 
-onValue(ref(db, 'proKeys'), function(snap) { var d = snap.val(); if (!d) { _allKeys = []; } else { 
-    { _allKeys = Object.keys(d).map(function(k){ return {fk:k,...d[k]}; }); }
+onValue(ref(db, 'proKeys'), function(snap) {
+    var d = snap.val();
+    if (!d) { _allKeys = []; }
+    else { _allKeys = Object.keys(d).map(function(k){ return {fk:k,...d[k]}; }); }
     _allKeys.sort(function(a,b){ return new Date(b.createdAt)-new Date(a.createdAt); });
     // Update counts
     var all = _allKeys.length;
@@ -903,7 +904,6 @@ function renderList(filter) {
 
 function filterList(f,b){document.querySelectorAll('.tab-row .tab-btn').forEach(function(x){x.classList.remove('active');});if(b)b.classList.add('active');renderList(f);}
 // ===== CUSTOMIZER =====
-var custState = {color:'#1565C0', bg:'light', effect:'particles', sound:true, marquee:true, counter:true};
 
 window.selectColor = function(c, el){
     custState.color = c;
