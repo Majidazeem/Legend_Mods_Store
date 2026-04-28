@@ -456,26 +456,14 @@
 
 <!-- FIREBASE -->
 <script type="module">
-// ===== ADMIN API CONFIG =====
-// Firebase sirf server pe hai - yahan sirf API calls hain
-const API = window.location.origin + '/api';
-let _adminToken = sessionStorage.getItem('_admin_token') || '';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, get, remove, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-function apiHeaders() {
-  return { 'Content-Type': 'application/json', 'x-admin-token': _adminToken };
-}
-async function apiGet(path) {
-  const r = await fetch(API + path, { headers: apiHeaders() }); return r.json();
-}
-async function apiPost(path, body) {
-  const r = await fetch(API + path, { method:'POST', headers: apiHeaders(), body: JSON.stringify(body) }); return r.json();
-}
-async function apiPut(path, body) {
-  const r = await fetch(API + path, { method:'PUT', headers: apiHeaders(), body: JSON.stringify(body) }); return r.json();
-}
-async function apiDel(path) {
-  const r = await fetch(API + path, { method:'DELETE', headers: apiHeaders() }); return r.json();
-}
+// URL encoded - inspect se seedha nahi milta
+const _x=['aHR0cHM6Ly9teS13ZWJzaXRlLXN0b3JlLWUzNDI4LWRlZmF1bHQtcnRkYi5maXJlYmFzZWlvLmNvbS8='];
+const app = initializeApp({ databaseURL: atob(_x[0]) });
+const db = getDatabase(app);
+const AK = "apps";
 
 window.appsData = [];
 
@@ -492,14 +480,14 @@ window.saveCustomizer = async function(){
         var nii=document.getElementById('notifItemsInput'); if(nii&&nii.value) custState.notifItems=nii.value.split('\n').filter(function(x){return x.trim();});
         var wfn=document.getElementById('waFloatNumber'); custState.waFloat={enabled:custState._waFloatOn||false,number:wfn?wfn.value:''};
         var bmu=document.getElementById('bgMusicUrl'); custState.bgMusic={enabled:custState._bgMusicOn||false,url:bmu?bmu.value:''};
-        await apiPost('/settings?type=site', custState);
+        await set(ref(db,'siteSettings'), custState);
         showToast('🚀 Applied! Refresh your website to see changes.');
     } catch(e){showToast('❌ Firebase Error: '+e.message);}
 };
 
 async function loadCustomizerState(){
     try{
-        const _r = await apiGet('/settings?type=site'); const snap = { exists: () => !!_r.data, val: () => _r.data };
+        const snap = await get(ref(db,'siteSettings'));
         if(snap.exists()){
             const s = snap.val();
             custState = {...custState, ...s};
@@ -540,22 +528,7 @@ async function loadAllData() {
     await loadContactSettings();
     await loadCustomizerState();
 }
-async function loadAppsData() {
-    const res = await apiGet('/apps');
-    if (!res.success) return;
-    window.appsData = res.apps.map(a => ({...a, firebaseKey: a.id}));
-    renderAppsList(window.appsData);
-    document.getElementById('adminAppCount').innerText = res.apps.length;
-    const stats = {total:0,whatsapp:0,apps:0,tools:0,bancheck:0};
-    res.apps.forEach(a => { stats.total++; if(stats[a.category]!==undefined) stats[a.category]++; });
-    document.getElementById('statTotal').innerText = stats.total;
-    document.getElementById('statWA').innerText = stats.whatsapp;
-    document.getElementById('statApps').innerText = stats.apps;
-    document.getElementById('statTools').innerText = stats.tools;
-    document.getElementById('statBan').innerText = stats.bancheck || 0;
-}
-// dummy onValue replacement - called on page load
-(function fakeOnValue(snap) {
+onValue(ref(db, AK), (snap) => {
     const d = snap.val();
     if (!d) { window.appsData = []; }
     else { window.appsData = Object.keys(d).map(k => ({firebaseKey:k,...d[k]})); }
@@ -569,17 +542,15 @@ window.saveApp = async function() {
     if(!name||!version||!icon||!link){showToast('⚠️ Fill required fields!');return;}
     const appData={id:Date.now(),name,version,category,size,icon,link,video,screens:screens.length?screens:[icon],features:features.length?features:['Premium Features'],changelog:changelog.length?changelog:['Latest Update'],uploadDate:new Date().toISOString()};
     try {
-        let res;
-        if(editId){ res = await apiPut('/apps', {...appData, id: editId}); showToast('✅ App Updated!'); }
-        else { res = await apiPost('/apps', appData); showToast('✅ App Added!'); }
-        await loadAppsData();
+        if(editId){await set(ref(db,`${AK}/${editId}`),appData);showToast('✅ App Updated!');}
+        else{const nr=push(ref(db,AK));await set(nr,appData);showToast('✅ App Added!');}
         resetForm();
     } catch(e){showToast('❌ Firebase Error!');}
 };
 
 window.deleteApp = async function(fk, nm) {
     if(!confirm('Delete "'+nm+'"?'))return;
-    try{ await apiDel('/apps?id='+fk); showToast('🗑️ Deleted!'); await loadAppsData();
+    try{await remove(ref(db,`${AK}/${fk}`));showToast('🗑️ Deleted!');
     catch(e){showToast('❌ Error!');}
 };
 
@@ -636,12 +607,12 @@ window.generateProKey = async function() {
         usedBy: ''
     };
     try {
-        var res = await apiPost('/keys?action=generate', keyData);
-        keyData.key = res.key || keyData.key;
+        var nr = push(ref(db, 'proKeys'));
+        await set(nr, keyData);
         document.getElementById('generatedKeyText').innerText = keyStr;
         document.getElementById('generatedKeyBox').style.display = 'block';
         document.getElementById('keyNote').value = '';
-        showToast('✅ Key Generated Successfully!'); await loadKeysData();
+        showToast('✅ Key Generated Successfully!');
     } catch(e) { showToast('❌ Error: ' + e.message); }
 };
 
@@ -657,7 +628,7 @@ window.copyKey = function(k) {
 window.revokeKey = async function(fk, keyStr) {
     if (!confirm('Kya aap "' + keyStr + '" key ko BLOCK karna chahte hain?')) return;
     try {
-        await apiPost('/keys?action=revoke', {id: fk}); await loadKeysData();
+        await set(ref(db, 'proKeys/' + fk + '/status'), 'revoked');
         showToast('🔴 Key Blocked Successfully!');
     } catch(e) { showToast('❌ Error: ' + e.message); }
 };
@@ -665,7 +636,8 @@ window.revokeKey = async function(fk, keyStr) {
 window.resetKeyDevice = async function(fk, keyStr) {
     if (!confirm('Reset device for this key? The key will work on another device.')) return;
     try {
-        await apiPost('/keys?action=reset', {id: fk}); await loadKeysData();
+        await set(ref(db, 'proKeys/' + fk + '/status'), 'active');
+        await set(ref(db, 'proKeys/' + fk + '/usedBy'), '');
         showToast('🔄 Device Reset Successfully!');
     } catch(e) { showToast('❌ Error: ' + e.message); }
 };
@@ -720,7 +692,7 @@ function renderKeysList() {
     }).join('');
 }
 
-async function loadKeysData() { try { const res = await apiGet('/keys'); if(!res.success) return; _allKeys = res.keys; 
+onValue(ref(db, 'proKeys'), function(snap) { var d = snap.val(); if (!d) { _allKeys = []; } else { 
     { _allKeys = Object.keys(d).map(function(k){ return {fk:k,...d[k]}; }); }
     _allKeys.sort(function(a,b){ return new Date(b.createdAt)-new Date(a.createdAt); });
     // Update counts
@@ -735,14 +707,19 @@ async function loadKeysData() { try { const res = await apiGet('/keys'); if(!res
     document.getElementById('kCntUsed').innerText = used;
     document.getElementById('kCntExpired').innerText = expired;
     document.getElementById('kCntRevoked').innerText = revoked;
-    renderKeysList(); } catch(e){} }
+    renderKeysList();
+});
 
 // ===== REPORT TEXTS SYSTEM =====
 var _allReportTexts = [];
 var _rtFilter = 'all';
 
-async function loadReportTextsData() { try { const res = await apiGet('/settings?type=reports'); _allReportTexts = res.texts ? res.texts.map(t=>({...t,fk:t.id})) : [];
-    document.getElementById('reportTextCount').innerText = _allReportTexts.length; renderReportTexts(); } catch(e){} }
+onValue(ref(db, 'reportTexts'), function(snap) {
+    var d = snap.val();
+    _allReportTexts = d ? Object.keys(d).map(function(k){ return {fk:k,...d[k]}; }) : [];
+    document.getElementById('reportTextCount').innerText = _allReportTexts.length;
+    renderReportTexts();
+});
 
 window.filterReports = function(f, btn) {
     _rtFilter = f;
@@ -781,11 +758,12 @@ window.saveReportText = async function() {
     var data = { title, body, type, updatedAt: new Date().toISOString() };
     try {
         if (editId) {
-            await apiPost('/settings?type=report', {...data, id: editId});
-            showToast('✅ Text Updated Successfully!'); await loadReportTextsData();
+            await set(ref(db, 'reportTexts/' + editId), data);
+            showToast('✅ Text Updated Successfully!');
         } else {
-            await apiPost('/settings?type=report', data);
-            showToast('✅ Report Text Added Successfully!'); await loadReportTextsData();
+            var nr = push(ref(db, 'reportTexts'));
+            await set(nr, data);
+            showToast('✅ Report Text Added Successfully!');
         }
         resetRtForm();
     } catch(e) { showToast('❌ Error: ' + e.message); }
@@ -804,7 +782,7 @@ window.editReportText = function(fk) {
 
 window.deleteReportText = async function(fk, title) {
     if (!confirm('"' + title + '" — are you sure you want to delete this?')) return;
-    try { await apiDel('/settings?type=report&id='+fk); showToast('🗑️ Deleted!'); await loadReportTextsData(); }
+    try { await remove(ref(db, 'reportTexts/' + fk)); showToast('🗑️ Deleted!'); }
     catch(e) { showToast('❌ Error!'); }
 };
 
@@ -819,9 +797,9 @@ window.resetRtForm = function() {
 // ===== CONTACT SETTINGS =====
 async function loadContactSettings() {
     try {
-        var res2 = await apiGet('/settings?type=contact');
-        if (!res2.success || !res2.data) return;
-        var s = res2.data;
+        var snap = await get(ref(db, 'contactSettings'));
+        if (!snap.exists()) return;
+        var s = snap.val();
         if (s.waNumber) document.getElementById('csWaNumber').value = s.waNumber;
         if (s.waMsg) document.getElementById('csWaMsg').value = s.waMsg;
         if (s.tgUsername) document.getElementById('csTgUsername').value = s.tgUsername;
@@ -841,7 +819,7 @@ window.saveContactSettings = async function() {
     var monthlyPrice = document.getElementById('csMonthly').value.trim();
     if (!waNumber) { showToast('⚠️ Please enter WhatsApp number!'); return; }
     try {
-        await apiPost('/settings?type=contact', { waNumber, waMsg, tgUsername, tgText, weeklyPrice, monthlyPrice });
+        await set(ref(db, 'contactSettings'), { waNumber, waMsg, tgUsername, tgText, weeklyPrice, monthlyPrice });
         showToast('✅ Contact Settings Saved Successfully!');
     } catch(e) { showToast('❌ Firebase Error: ' + e.message); }
 };
