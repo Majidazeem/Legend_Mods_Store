@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/apps",          "dest": "/api/apps.js" },
+    { "src": "/api/auth",          "dest": "/api/auth.js" },
+    { "src": "/api/keys",          "dest": "/api/keys.js" },
+    { "src": "/api/settings",      "dest": "/api/settings.js" },
+    { "src": "/admin",             "dest": "/admin.html" },
+    { "src": "/admin.html",        "dest": "/admin.html" },
+    { "src": "/(.*)",              "dest": "/index.html" }
+  ]
+}
