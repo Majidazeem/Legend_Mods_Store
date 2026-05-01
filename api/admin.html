@@ -456,105 +456,105 @@
 
 <!-- FIREBASE -->
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, get, remove, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+// ===== ADMIN API CONFIG - Firebase sirf server pe hai =====
+const API = '/api';
+let _adminToken = sessionStorage.getItem('_admin_token') || '';
 
-// URL encoded - inspect se seedha nahi milta
-const _x=['aHR0cHM6Ly9teS13ZWJzaXRlLXN0b3JlLWUzNDI4LWRlZmF1bHQtcnRkYi5maXJlYmFzZWlvLmNvbS8='];
-const app = initializeApp({ databaseURL: atob(_x[0]) });
-const db = getDatabase(app);
-const AK = "apps";
+function apiH() { return { 'Content-Type': 'application/json', 'x-admin-token': _adminToken }; }
+async function apiGet(p) { const r = await fetch(API+p,{headers:apiH()}); return r.json(); }
+async function apiPost(p,b) { const r = await fetch(API+p,{method:'POST',headers:apiH(),body:JSON.stringify(b)}); return r.json(); }
+async function apiPut(p,b) { const r = await fetch(API+p,{method:'PUT',headers:apiH(),body:JSON.stringify(b)}); return r.json(); }
+async function apiDel(p) { const r = await fetch(API+p,{method:'DELETE',headers:apiH()}); return r.json(); }
 
 window.appsData = [];
+window.custState = window.custState || {color:'#1565C0',bg:'light',effect:'particles',sound:true,marquee:true,counter:true};
+var custState = window.custState;
 
-// ===== CUSTOMIZER STATE (must be defined first) =====
-var custState = {color:'#1565C0', bg:'light', effect:'particles', sound:true, marquee:true, counter:true};
-
-// ===== CUSTOMIZER FIREBASE FUNCTIONS (need module scope) =====
-window.saveCustomizer = async function(){
-    try{
-        // collect new fields into custState
-        var at=document.getElementById('announceText'); if(at) custState.announce={enabled:custState._announceOn||false,text:at.value||'',color:document.getElementById('announceColor').value};
-        var mm=document.getElementById('maintMsg'); if(mm) custState.maintenance={enabled:custState._maintOn||false,msg:mm.value||'Site is under maintenance.'};
-        var ts=document.getElementById('timerSeconds'); if(ts&&ts.value) custState.timerSeconds=parseInt(ts.value)||10;
-        var mti=document.getElementById('marqueeTextInput'); if(mti&&mti.value) custState.marqueeText=mti.value;
-        var vti=document.getElementById('vipTagInput'); if(vti&&vti.value) custState.vipTag=vti.value;
-        var nii=document.getElementById('notifItemsInput'); if(nii&&nii.value) custState.notifItems=nii.value.split('\n').filter(function(x){return x.trim();});
-        var wfn=document.getElementById('waFloatNumber'); custState.waFloat={enabled:custState._waFloatOn||false,number:wfn?wfn.value:''};
-        var bmu=document.getElementById('bgMusicUrl'); custState.bgMusic={enabled:custState._bgMusicOn||false,url:bmu?bmu.value:''};
-        await set(ref(db,'siteSettings'), custState);
-        showToast('🚀 Applied! Refresh your website to see changes.');
-    } catch(e){showToast('❌ Firebase Error: '+e.message);}
+// ===== ADMIN LOGIN via API =====
+window.adminLogin = async function() {
+    const pass = document.getElementById('adminPass').value;
+    try {
+        const res = await fetch(API+'/auth', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pass})});
+        const data = await res.json();
+        if (data.success && data.token) {
+            _adminToken = data.token;
+            sessionStorage.setItem('_admin_token', _adminToken);
+            document.getElementById('loginPage').style.display='none';
+            document.getElementById('adminPage').style.display='block';
+            loadAllData();
+        } else {
+            document.getElementById('loginError2').style.display='block';
+            document.getElementById('loginError2').innerText='❌ Wrong password!';
+        }
+    } catch(e) {
+        document.getElementById('loginError2').style.display='block';
+        document.getElementById('loginError2').innerText='❌ Server error. Try again.';
+    }
 };
 
-async function loadCustomizerState(){
-    try{
-        const snap = await get(ref(db,'siteSettings'));
-        if(snap.exists()){
-            const s = snap.val();
-            custState = {...custState, ...s};
-            if(s.color){
-                window.selectColor(s.color, null);
-                document.getElementById('customColorPick').value = s.color;
-            }
-            if(s.bg) window.selectBg(s.bg, document.getElementById('bg'+s.bg.charAt(0).toUpperCase()+s.bg.slice(1)));
-            if(s.effect) window.selectEffect(s.effect, document.getElementById('eff_'+s.effect));
-            ['sound','marquee','loader','counter'].forEach(function(k){
-                if(s[k]!==undefined){
-                    custState[k]=s[k];
-                    var el=document.getElementById('tog_'+k);
-                    if(el) el.classList.toggle('on',s[k]);
-                }
-            });
-            // Load new fields
-            if(s.announce){custState._announceOn=s.announce.enabled;var te=document.getElementById('tog_announce');if(te)te.classList.toggle('on',s.announce.enabled);var ai=document.getElementById('announceText');if(ai&&s.announce.text)ai.value=s.announce.text;var ac=document.getElementById('announceColor');if(ac&&s.announce.color)ac.value=s.announce.color;}
-            if(s.maintenance){custState._maintOn=s.maintenance.enabled;var tm=document.getElementById('tog_maintenance');if(tm)tm.classList.toggle('on',s.maintenance.enabled);var mi=document.getElementById('maintMsg');if(mi&&s.maintenance.msg)mi.value=s.maintenance.msg;}
-            if(s.timerSeconds){var tsi=document.getElementById('timerSeconds');if(tsi)tsi.value=s.timerSeconds;}
-            if(s.marqueeText){var mti=document.getElementById('marqueeTextInput');if(mti)mti.value=s.marqueeText;}
-            if(s.vipTag){var vti=document.getElementById('vipTagInput');if(vti)vti.value=s.vipTag;}
-            if(s.notifItems&&s.notifItems.length){var nii=document.getElementById('notifItemsInput');if(nii)nii.value=s.notifItems.join('\n');}
-            if(s.waFloat){custState._waFloatOn=s.waFloat.enabled;var tw=document.getElementById('tog_waFloat');if(tw)tw.classList.toggle('on',s.waFloat.enabled);var wfn=document.getElementById('waFloatNumber');if(wfn&&s.waFloat.number)wfn.value=s.waFloat.number;}
-            if(s.bgMusic){custState._bgMusicOn=s.bgMusic.enabled;var tb=document.getElementById('tog_bgMusic');if(tb)tb.classList.toggle('on',s.bgMusic.enabled);var bmu=document.getElementById('bgMusicUrl');if(bmu&&s.bgMusic.url)bmu.value=s.bgMusic.url;}
-        }
-    } catch(e){ console.error('Customizer load error:',e); }
-}
-
-// Load customizer settings
-loadCustomizerState();
-
-// Load all data
+// ===== LOAD ALL DATA =====
 function loadAllData() {
+    loadAppsData();
+    loadKeysData();
+    loadReportTextsData();
     loadContactSettings();
     loadCustomizerState();
 }
-onValue(ref(db, AK), (snap) => {
-    const d = snap.val();
-    if (!d) { window.appsData = []; }
-    else { window.appsData = Object.keys(d).map(k => ({firebaseKey:k,...d[k]})); }
-    window.appsData.sort((a,b) => new Date(b.uploadDate)-new Date(a.uploadDate));
-    updateStats();
-    renderList('all');
-});
+
+// ===== APPS =====
+async function loadAppsData() {
+    try {
+        const res = await apiGet('/apps');
+        if (!res.success) return;
+        window.appsData = res.apps.map(a=>({...a, firebaseKey:a.id}));
+        window.appsData.sort((a,b)=>new Date(b.uploadDate)-new Date(a.uploadDate));
+        renderList('all');
+        updateStats();
+        document.getElementById('adminAppCount').innerText = res.apps.length;
+    } catch(e) { console.error(e); }
+}
 
 window.saveApp = async function() {
-    const name=document.getElementById('fName').value.trim(), version=document.getElementById('fVersion').value.trim(), category=document.getElementById('fCategory').value, size=document.getElementById('fSize').value.trim()||'N/A', icon=document.getElementById('fIcon').value.trim(), link=document.getElementById('fLink').value.trim(), video=document.getElementById('fVideo').value.trim(), screens=document.getElementById('fScreens').value.trim().split('\n').filter(s=>s.trim()), features=document.getElementById('fFeatures').value.trim().split('\n').filter(f=>f.trim()), changelog=document.getElementById('fChangelog').value.trim().split('\n').filter(c=>c.trim()), editId=document.getElementById('editId').value;
-    if(!name||!version||!icon||!link){showToast('⚠️ Fill required fields!');return;}
-    const appData={id:Date.now(),name,version,category,size,icon,link,video,screens:screens.length?screens:[icon],features:features.length?features:['Premium Features'],changelog:changelog.length?changelog:['Latest Update'],uploadDate:new Date().toISOString()};
+    const editId = document.getElementById('editId').value;
+    const appData = {
+        name: document.getElementById('fName').value.trim(),
+        version: document.getElementById('fVersion').value.trim(),
+        category: document.getElementById('fCategory').value,
+        size: document.getElementById('fSize').value.trim(),
+        icon: document.getElementById('fIcon').value.trim(),
+        link: document.getElementById('fLink').value.trim(),
+        video: document.getElementById('fVideo').value.trim(),
+        screens: document.getElementById('fScreens').value.split('\n').map(s=>s.trim()).filter(Boolean),
+        features: document.getElementById('fFeatures').value.split('\n').map(s=>s.trim()).filter(Boolean),
+        changelog: document.getElementById('fChangelog').value.split('\n').map(s=>s.trim()).filter(Boolean),
+        uploadDate: editId ? undefined : new Date().toISOString(),
+    };
+    if (!appData.name || !appData.link) { showToast('⚠️ App Name and Link required!'); return; }
     try {
-        if(editId){await set(ref(db,`${AK}/${editId}`),appData);showToast('✅ App Updated!');}
-        else{const nr=push(ref(db,AK));await set(nr,appData);showToast('✅ App Added!');}
+        if (editId) {
+            await apiPut('/apps', {...appData, id:editId});
+            showToast('✅ App Updated!');
+        } else {
+            appData.uploadDate = new Date().toISOString();
+            await apiPost('/apps', appData);
+            showToast('✅ App Added!');
+        }
         resetForm();
-    } catch(e){showToast('❌ Firebase Error!');}
+        await loadAppsData();
+    } catch(e) { showToast('❌ Error!'); }
 };
 
 window.deleteApp = async function(fk, nm) {
-    if(!confirm('Delete "'+nm+'"?'))return;
-    try{await remove(ref(db,`${AK}/${fk}`));showToast('🗑️ Deleted!');}
-    catch(e){showToast('❌ Error!');}
+    if(!confirm('Delete "'+nm+'"?')) return;
+    try {
+        await apiDel('/apps?id='+fk);
+        showToast('🗑️ Deleted!');
+        await loadAppsData();
+    } catch(e) { showToast('❌ Error!'); }
 };
 
 window.editApp = function(fk) {
-    const a=window.appsData.find(x=>x.firebaseKey===fk); if(!a)return;
+    const a = window.appsData.find(x=>x.firebaseKey===fk); if(!a) return;
     document.getElementById('editId').value=fk;
     document.getElementById('fName').value=a.name||'';
     document.getElementById('fVersion').value=a.version||'';
@@ -572,257 +572,242 @@ window.editApp = function(fk) {
     document.querySelector('.admin-card').scrollIntoView({behavior:'smooth'});
 };
 
-// ===== PRO KEYS SYSTEM =====
+// ===== PRO KEYS =====
 var _allKeys = [];
 var _keysFilter = 'all';
 
-function _genKeyStr() {
-    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    function seg(n){var s='';for(var i=0;i<n;i++)s+=chars[Math.floor(Math.random()*chars.length)];return s;}
-    return 'W-MALG-'+seg(4)+'-'+seg(4)+'-'+seg(4);
+async function loadKeysData() {
+    try {
+        const res = await apiGet('/keys');
+        if(!res.success) return;
+        _allKeys = res.keys;
+        updateKeyCounts();
+        renderKeysList();
+    } catch(e) {}
 }
 
-function getKeyStatus(k) {
-    if (k.status === 'revoked') return 'revoked';
-    if (new Date(k.expiresAt) < new Date()) return 'expired';
-    if (k.status === 'used') return 'used';
-    return 'active';
+function updateKeyCounts() {
+    var all=_allKeys.length;
+    document.getElementById('keysTotalCount').innerText=all;
+    document.getElementById('kCntAll').innerText=all;
+    document.getElementById('kCntActive').innerText=_allKeys.filter(k=>k.status==='active').length;
+    document.getElementById('kCntUsed').innerText=_allKeys.filter(k=>k.status==='used').length;
+    document.getElementById('kCntExpired').innerText=_allKeys.filter(k=>k.status==='expired').length;
+    document.getElementById('kCntRevoked').innerText=_allKeys.filter(k=>k.status==='revoked').length;
 }
 
 window.generateProKey = async function() {
     var plan = document.getElementById('keyPlan').value;
     var note = document.getElementById('keyNote').value.trim();
-    var days = plan === 'weekly' ? 7 : 30;
-    var exp = new Date();
-    exp.setDate(exp.getDate() + days);
-    var keyStr = _genKeyStr();
-    var keyData = {
-        key: keyStr,
-        plan: plan,
-        note: note || '',
-        createdAt: new Date().toISOString(),
-        expiresAt: exp.toISOString(),
-        status: 'active',
-        usedBy: ''
-    };
     try {
-        var nr = push(ref(db, 'proKeys'));
-        await set(nr, keyData);
-        document.getElementById('generatedKeyText').innerText = keyStr;
-        document.getElementById('generatedKeyBox').style.display = 'block';
-        document.getElementById('keyNote').value = '';
-        showToast('✅ Key Generated Successfully!');
-    } catch(e) { showToast('❌ Error: ' + e.message); }
+        const res = await apiPost('/keys?action=generate', {plan, note});
+        if(res.success) {
+            document.getElementById('generatedKeyText').innerText = res.key;
+            document.getElementById('generatedKeyBox').style.display = 'block';
+            document.getElementById('keyNote').value='';
+            showToast('✅ Key Generated Successfully!');
+            await loadKeysData();
+        }
+    } catch(e) { showToast('❌ Error!'); }
 };
 
-window.copyGenKey = function() {
-    var txt = document.getElementById('generatedKeyText').innerText;
-    navigator.clipboard.writeText(txt).then(function(){showToast('📋 Key Copied!');}).catch(function(){});
-};
-
-window.copyKey = function(k) {
-    navigator.clipboard.writeText(k).then(function(){showToast('📋 Key Copied!');}).catch(function(){});
-};
+window.copyGenKey = function() { navigator.clipboard.writeText(document.getElementById('generatedKeyText').innerText).then(()=>showToast('📋 Key Copied!')); };
+window.copyKey = function(k) { navigator.clipboard.writeText(k).then(()=>showToast('📋 Key Copied!')); };
 
 window.revokeKey = async function(fk, keyStr) {
-    if (!confirm('Kya aap "' + keyStr + '" key ko BLOCK karna chahte hain?')) return;
-    try {
-        await set(ref(db, 'proKeys/' + fk + '/status'), 'revoked');
-        showToast('🔴 Key Blocked Successfully!');
-    } catch(e) { showToast('❌ Error: ' + e.message); }
+    if(!confirm('Block key "'+keyStr+'"?')) return;
+    await apiPost('/keys?action=revoke', {id:fk});
+    showToast('🔴 Key Blocked!');
+    await loadKeysData();
 };
 
 window.resetKeyDevice = async function(fk, keyStr) {
-    if (!confirm('Reset device for this key? The key will work on another device.')) return;
-    try {
-        await set(ref(db, 'proKeys/' + fk + '/status'), 'active');
-        await set(ref(db, 'proKeys/' + fk + '/usedBy'), '');
-        showToast('🔄 Device Reset Successfully!');
-    } catch(e) { showToast('❌ Error: ' + e.message); }
+    if(!confirm('Reset device for this key?')) return;
+    await apiPost('/keys?action=reset', {id:fk});
+    showToast('🔄 Device Reset!');
+    await loadKeysData();
 };
 
-window.deleteKey = async function(fk, keyStr) {
-    if (!confirm('Key "' + keyStr + '" permanently? This cannot be undone.')) return;
-    try {
-        await remove(ref(db, 'proKeys/' + fk));
-        showToast('🗑️ Key Deleted Successfully!');
-    } catch(e) { showToast('❌ Error: ' + e.message); }
+window.deleteKey = async function(fk) {
+    if(!confirm('Delete this key permanently?')) return;
+    await apiDel('/keys?id='+fk);
+    showToast('🗑️ Key Deleted!');
+    await loadKeysData();
 };
 
-window.filterKeys = function(f, btn) {
-    _keysFilter = f;
-    document.querySelectorAll('.key-filter-tab').forEach(function(b){b.classList.remove('active');});
-    if (btn) btn.classList.add('active');
+window.filterKeys = function(f,btn) {
+    _keysFilter=f;
+    document.querySelectorAll('.key-filter-tab').forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
     renderKeysList();
 };
 
 function renderKeysList() {
     var list = document.getElementById('keysList');
-    var data = _keysFilter === 'all' ? _allKeys : _allKeys.filter(function(k){ return getKeyStatus(k) === _keysFilter; });
-    if (!data.length) { list.innerHTML = '<div class="empty-state"><i class="fas fa-key"></i><p>No keys found</p></div>'; return; }
-    list.innerHTML = data.map(function(k) {
-        var status = getKeyStatus(k);
-        var statusLabel = {active:'🟢 ACTIVE', used:'🔵 USED', expired:'🔴 EXPIRE', revoked:'⛔ BLOCK'}[status];
-        var exp = new Date(k.expiresAt).toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'});
-        var created = new Date(k.createdAt).toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'});
-        var planBadge = k.plan === 'weekly' ? '⏱ Weekly' : '📅 Monthly';
-        var deviceHtml = (k.usedBy && k.status === 'used') ? '<div class="used-device-id">📱 Device: ' + k.usedBy.substring(0,30) + '...</div>' : '';
-        var noteHtml = k.note ? '<span>📝 ' + k.note + '</span>' : '';
-        var resetBtn = (status === 'used') ? '<button class="btn-key-action" style="background:var(--input-bg);color:var(--gold);" onclick="resetKeyDevice(\''+k.fk+'\',\''+k.key+'\')"><i class="fas fa-rotate"></i> Device Reset</button>' : '';
-        var revokeBtn = (status !== 'revoked') ? '<button class="btn-key-action btn-revoke-key" onclick="revokeKey(\''+k.fk+'\',\''+k.key+'\')"><i class="fas fa-ban"></i> Block</button>' : '';
-        return '<div class="key-item">'
-            + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">'
-            + '<span class="key-status ' + status + '">' + statusLabel + '</span>'
-            + '<span style="font-size:0.72rem;color:var(--text-sub);font-weight:700;">' + planBadge + '</span>'
-            + '</div>'
-            + '<div class="key-code">' + k.key + '</div>'
-            + '<div class="key-meta">'
-            + '<span>📅 Exp: ' + exp + '</span>'
-            + '<span>🗓️ Created: ' + created + '</span>'
-            + noteHtml
-            + '</div>'
-            + deviceHtml
-            + '<div class="key-actions-row" style="margin-top:10px;">'
-            + '<button class="btn-key-action btn-copy-key" onclick="copyKey(\''+k.key+'\')"><i class="fas fa-copy"></i> Copy</button>'
-            + resetBtn + revokeBtn
-            + '<button class="btn-key-action btn-delete-key" onclick="deleteKey(\''+k.fk+'\',\''+k.key+'\')"><i class="fas fa-trash"></i> Delete</button>'
-            + '</div>'
-            + '</div>';
-    }).join('');
+    var data = _keysFilter==='all' ? _allKeys : _allKeys.filter(function(k){return k.status===_keysFilter;});
+    if(!data.length){list.innerHTML='<div class="empty-state"><p>No keys found</p></div>';return;}
+    var html = '';
+    data.forEach(function(k){
+        var statusLabel={active:'🟢 ACTIVE',used:'🔵 USED',expired:'🔴 EXPIRED',revoked:'⛔ BLOCKED'}[k.status]||k.status;
+        var exp=new Date(k.expiresAt).toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'});
+        var created=new Date(k.createdAt).toLocaleDateString('en-PK',{day:'2-digit',month:'short',year:'numeric'});
+        var planBadge=k.plan==='weekly'?'⏱ Weekly':'📅 Monthly';
+        var kid=k.id, kkey=k.key;
+        var deviceHtml=(k.usedBy&&k.status==='used')?('<div class="used-device-id">📱 Device: '+k.usedBy.substring(0,30)+'...</div>'):'';
+        var noteHtml=k.note?('<span>📝 '+k.note+'</span>'):'';
+        var resetBtn=(k.status==='used')?('<button class="btn-key-action" style="color:var(--gold);" onclick="resetKeyDevice(this.dataset.id,this.dataset.key)" data-id="'+kid+'" data-key="'+kkey+'"><i class="fas fa-rotate"></i> Device Reset</button>'):'';
+        var revokeBtn=(k.status!=='revoked')?('<button class="btn-key-action btn-revoke-key" onclick="revokeKey(this.dataset.id,this.dataset.key)" data-id="'+kid+'" data-key="'+kkey+'"><i class="fas fa-ban"></i> Block</button>'):'';
+        var copyBtn='<button class="btn-key-action btn-copy-key" onclick="copyKey(this.dataset.key)" data-key="'+kkey+'"><i class="fas fa-copy"></i> Copy</button>';
+        var delBtn='<button class="btn-key-action btn-delete-key" onclick="deleteKey(this.dataset.id)" data-id="'+kid+'"><i class="fas fa-trash"></i> Delete</button>';
+        html+='<div class="key-item">'
+            +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span class="key-status '+k.status+'">'+statusLabel+'</span><span style="font-size:0.72rem;color:var(--text-sub);font-weight:700;">'+planBadge+'</span></div>'
+            +'<div class="key-code">'+kkey+'</div>'
+            +'<div class="key-meta"><span>📅 Exp: '+exp+'</span><span>🗓️ Created: '+created+'</span>'+noteHtml+'</div>'
+            +deviceHtml
+            +'<div class="key-actions-row" style="margin-top:10px;">'+copyBtn+resetBtn+revokeBtn+delBtn+'</div>'
+            +'</div>';
+    });
+    list.innerHTML = html;
 }
 
-onValue(ref(db, 'proKeys'), function(snap) {
-    var d = snap.val();
-    if (!d) { _allKeys = []; }
-    else { _allKeys = Object.keys(d).map(function(k){ return {fk:k,...d[k]}; }); }
-    _allKeys.sort(function(a,b){ return new Date(b.createdAt)-new Date(a.createdAt); });
-    // Update counts
-    var all = _allKeys.length;
-    var active = _allKeys.filter(function(k){return getKeyStatus(k)==='active';}).length;
-    var used = _allKeys.filter(function(k){return getKeyStatus(k)==='used';}).length;
-    var expired = _allKeys.filter(function(k){return getKeyStatus(k)==='expired';}).length;
-    var revoked = _allKeys.filter(function(k){return getKeyStatus(k)==='revoked';}).length;
-    document.getElementById('keysTotalCount').innerText = all;
-    document.getElementById('kCntAll').innerText = all;
-    document.getElementById('kCntActive').innerText = active;
-    document.getElementById('kCntUsed').innerText = used;
-    document.getElementById('kCntExpired').innerText = expired;
-    document.getElementById('kCntRevoked').innerText = revoked;
-    renderKeysList();
-});
-
-// ===== REPORT TEXTS SYSTEM =====
+// ===== REPORT TEXTS =====
 var _allReportTexts = [];
 var _rtFilter = 'all';
 
-onValue(ref(db, 'reportTexts'), function(snap) {
-    var d = snap.val();
-    _allReportTexts = d ? Object.keys(d).map(function(k){ return {fk:k,...d[k]}; }) : [];
-    document.getElementById('reportTextCount').innerText = _allReportTexts.length;
-    renderReportTexts();
-});
+async function loadReportTextsData() {
+    try {
+        const res = await apiGet('/settings?type=reports');
+        _allReportTexts = res.texts ? res.texts.map(t=>({...t,fk:t.id})) : [];
+        document.getElementById('reportTextCount').innerText = _allReportTexts.length;
+        renderReportTexts();
+    } catch(e) {}
+}
 
-window.filterReports = function(f, btn) {
-    _rtFilter = f;
-    document.querySelectorAll('.tab-row .tab-btn').forEach(function(b){b.classList.remove('active');});
+window.filterReports = function(f,btn) {
+    _rtFilter=f;
+    document.querySelectorAll('.tab-row .tab-btn').forEach(b=>b.classList.remove('active'));
     if(btn) btn.classList.add('active');
     renderReportTexts();
 };
 
 function renderReportTexts() {
     var list = document.getElementById('reportTextsList');
-    var data = _rtFilter === 'all' ? _allReportTexts : _allReportTexts.filter(function(t){return t.type===_rtFilter;});
-    if (!data.length) { list.innerHTML = '<div class="empty-state"><p>No texts found</p></div>'; return; }
-    list.innerHTML = data.map(function(t) {
-        var badge = t.type === 'free'
-            ? '<span style="color:var(--neon-green);font-size:0.72rem;font-weight:900;">🆓 FREE</span>'
-            : '<span style="color:var(--gold);font-size:0.72rem;font-weight:900;">⭐ PRO</span>';
-        var preview = (t.body||'').substring(0,80) + ((t.body||'').length>80?'...':'');
-        return '<div class="app-item-admin" style="flex-direction:column;align-items:flex-start;">'
-            + '<div style="display:flex;justify-content:space-between;width:100%;align-items:center;margin-bottom:8px;">'
-            + '<div><h4 style="font-family:Rajdhani;font-weight:800;">' + (t.title||'') + '</h4>' + badge + '</div>'
-            + '<div class="app-actions">'
-            + '<button class="btn-icon btn-edit" onclick="editReportText(\''+t.fk+'\')"><i class="fas fa-pen"></i></button>'
-            + '<button class="btn-icon btn-del" onclick="deleteReportText(\''+t.fk+'\',\''+t.title.replace(/'/g,"\\'")+ '\')"><i class="fas fa-trash"></i></button>'
-            + '</div></div>'
-            + '<p style="font-size:0.78rem;color:var(--text-sub);font-weight:600;line-height:1.5;">' + preview + '</p>'
-            + '</div>';
-    }).join('');
+    var data = _rtFilter==='all' ? _allReportTexts : _allReportTexts.filter(function(t){return t.type===_rtFilter;});
+    if(!data.length){list.innerHTML='<div class="empty-state"><p>No texts found</p></div>';return;}
+    var html='';
+    data.forEach(function(t){
+        var badge=t.type==='free'
+            ?'<span style="color:var(--neon-green);font-size:0.72rem;font-weight:900;">FREE</span>'
+            :'<span style="color:var(--gold);font-size:0.72rem;font-weight:900;">PRO</span>';
+        var preview=(t.body||'').substring(0,80)+((t.body||'').length>80?'...':'');
+        html+='<div class="app-item-admin" style="flex-direction:column;align-items:flex-start;">'
+            +'<div style="display:flex;justify-content:space-between;width:100%;align-items:center;margin-bottom:8px;">'
+            +'<div><h4 style="font-family:Rajdhani;font-weight:800;">'+(t.title||'')+'</h4>'+badge+'</div>'
+            +'<div class="app-actions">'
+            +'<button class="btn-icon btn-edit" onclick="editReportText(this.dataset.id)" data-id="'+t.fk+'"><i class="fas fa-pen"></i></button>'
+            +'<button class="btn-icon btn-del" onclick="deleteReportText(this.dataset.id,this.dataset.title)" data-id="'+t.fk+'" data-title="'+(t.title||'').replace(/"/g,'&quot;')+'"><i class="fas fa-trash"></i></button>'
+            +'</div></div>'
+            +'<p style="font-size:0.78rem;color:var(--text-sub);font-weight:600;line-height:1.5;">'+preview+'</p>'
+            +'</div>';
+    });
+    list.innerHTML=html;
 }
 
 window.saveReportText = async function() {
-    var title = document.getElementById('rtTitle').value.trim();
-    var body = document.getElementById('rtBody').value.trim();
-    var type = document.getElementById('rtType').value;
-    var editId = document.getElementById('rtEditId').value;
-    if (!title || !body) { showToast('⚠️ Title and Text are both required!'); return; }
-    var data = { title, body, type, updatedAt: new Date().toISOString() };
+    var title=document.getElementById('rtTitle').value.trim();
+    var body=document.getElementById('rtBody').value.trim();
+    var type=document.getElementById('rtType').value;
+    var editId=document.getElementById('rtEditId').value;
+    if(!title||!body){showToast('⚠️ Title and Text are both required!');return;}
+    var data={title,body,type};
     try {
-        if (editId) {
-            await set(ref(db, 'reportTexts/' + editId), data);
-            showToast('✅ Text Updated Successfully!');
-        } else {
-            var nr = push(ref(db, 'reportTexts'));
-            await set(nr, data);
-            showToast('✅ Report Text Added Successfully!');
-        }
+        if(editId){ await apiPost('/settings?type=report',{...data,id:editId}); showToast('✅ Text Updated!'); }
+        else { await apiPost('/settings?type=report',data); showToast('✅ Report Text Added!'); }
         resetRtForm();
-    } catch(e) { showToast('❌ Error: ' + e.message); }
+        await loadReportTextsData();
+    } catch(e){showToast('❌ Error!');}
 };
 
 window.editReportText = function(fk) {
-    var t = _allReportTexts.find(function(x){return x.fk===fk;});
-    if (!t) return;
-    document.getElementById('rtEditId').value = fk;
-    document.getElementById('rtTitle').value = t.title || '';
-    document.getElementById('rtBody').value = t.body || '';
-    document.getElementById('rtType').value = t.type || 'free';
-    document.getElementById('rtSaveBtnText').innerText = 'UPDATE TEXT';
+    var t=_allReportTexts.find(x=>x.fk===fk); if(!t) return;
+    document.getElementById('rtEditId').value=fk;
+    document.getElementById('rtTitle').value=t.title||'';
+    document.getElementById('rtBody').value=t.body||'';
+    document.getElementById('rtType').value=t.type||'free';
+    document.getElementById('rtSaveBtnText').innerText='UPDATE TEXT';
     document.getElementById('rtTitle').scrollIntoView({behavior:'smooth'});
 };
 
-window.deleteReportText = async function(fk, title) {
-    if (!confirm('"' + title + '" — are you sure you want to delete this?')) return;
-    try { await remove(ref(db, 'reportTexts/' + fk)); showToast('🗑️ Deleted!'); }
-    catch(e) { showToast('❌ Error!'); }
+window.deleteReportText = async function(fk,title) {
+    if(!confirm('Delete "'+(title||'this text')+'"?')) return;
+    try { await apiDel('/settings?type=report&id='+fk); showToast('🗑️ Deleted!'); await loadReportTextsData(); } catch(e){}
 };
 
 window.resetRtForm = function() {
-    document.getElementById('rtEditId').value = '';
-    document.getElementById('rtTitle').value = '';
-    document.getElementById('rtBody').value = '';
-    document.getElementById('rtType').value = 'free';
-    document.getElementById('rtSaveBtnText').innerText = 'SAVE TEXT';
+    document.getElementById('rtEditId').value='';
+    document.getElementById('rtTitle').value='';
+    document.getElementById('rtBody').value='';
+    document.getElementById('rtType').value='free';
+    document.getElementById('rtSaveBtnText').innerText='SAVE TEXT';
 };
 
 // ===== CONTACT SETTINGS =====
 async function loadContactSettings() {
     try {
-        var snap = await get(ref(db, 'contactSettings'));
-        if (!snap.exists()) return;
-        var s = snap.val();
-        if (s.waNumber) document.getElementById('csWaNumber').value = s.waNumber;
-        if (s.waMsg) document.getElementById('csWaMsg').value = s.waMsg;
-        if (s.tgUsername) document.getElementById('csTgUsername').value = s.tgUsername;
-        if (s.tgText) document.getElementById('csTgText').value = s.tgText;
-        if (s.weeklyPrice) document.getElementById('csWeekly').value = s.weeklyPrice;
-        if (s.monthlyPrice) document.getElementById('csMonthly').value = s.monthlyPrice;
-    } catch(e) {}
+        var res=await apiGet('/settings?type=contact');
+        if(!res.success||!res.data) return;
+        var s=res.data;
+        if(s.waNumber) document.getElementById('csWaNumber').value=s.waNumber;
+        if(s.waMsg) document.getElementById('csWaMsg').value=s.waMsg;
+        if(s.tgUsername) document.getElementById('csTgUsername').value=s.tgUsername;
+        if(s.tgText) document.getElementById('csTgText').value=s.tgText;
+        if(s.weeklyPrice) document.getElementById('csWeekly').value=s.weeklyPrice;
+        if(s.monthlyPrice) document.getElementById('csMonthly').value=s.monthlyPrice;
+    } catch(e){}
 }
-loadContactSettings();
 
 window.saveContactSettings = async function() {
-    var waNumber = document.getElementById('csWaNumber').value.trim();
-    var waMsg = document.getElementById('csWaMsg').value.trim();
-    var tgUsername = document.getElementById('csTgUsername').value.trim();
-    var tgText = document.getElementById('csTgText').value.trim();
-    var weeklyPrice = document.getElementById('csWeekly').value.trim();
-    var monthlyPrice = document.getElementById('csMonthly').value.trim();
-    if (!waNumber) { showToast('⚠️ Please enter WhatsApp number!'); return; }
+    var waNumber=document.getElementById('csWaNumber').value.trim();
+    var waMsg=document.getElementById('csWaMsg').value.trim();
+    var tgUsername=document.getElementById('csTgUsername').value.trim();
+    var tgText=document.getElementById('csTgText').value.trim();
+    var weeklyPrice=document.getElementById('csWeekly').value.trim();
+    var monthlyPrice=document.getElementById('csMonthly').value.trim();
+    if(!waNumber){showToast('⚠️ Please enter WhatsApp number!');return;}
     try {
-        await set(ref(db, 'contactSettings'), { waNumber, waMsg, tgUsername, tgText, weeklyPrice, monthlyPrice });
-        showToast('✅ Contact Settings Saved Successfully!');
-    } catch(e) { showToast('❌ Firebase Error: ' + e.message); }
+        await apiPost('/settings?type=contact',{waNumber,waMsg,tgUsername,tgText,weeklyPrice,monthlyPrice});
+        showToast('✅ Contact Settings Saved!');
+    } catch(e){showToast('❌ Error!');}
+};
+
+// ===== CUSTOMIZER =====
+async function loadCustomizerState() {
+    try {
+        const res = await apiGet('/settings?type=site');
+        if(!res.success||!res.data) return;
+        const s=res.data;
+        window.custState={...window.custState,...s};
+        custState=window.custState;
+        if(s.color) { document.querySelectorAll('.color-swatch').forEach(sw=>{sw.classList.toggle('selected',sw.dataset.color===s.color);}); }
+        if(s.effect) { document.querySelectorAll('.effect-btn').forEach(btn=>{btn.classList.toggle('active',btn.dataset.effect===s.effect);}); }
+        const feats={sound:'tog_sound',marquee:'tog_marquee',loader:'tog_loader',counter:'tog_counter'};
+        Object.entries(feats).forEach(([k,id])=>{ const el=document.getElementById(id); if(el) el.classList.toggle('on',!!s[k]); });
+        if(s.announce){ const el=document.getElementById('tog_announce'); if(el) el.classList.toggle('on',!!s.announce.enabled); const at=document.getElementById('announceText'); if(at&&s.announce.text) at.value=s.announce.text; }
+        if(s.maintenance){ const el=document.getElementById('tog_maintenance'); if(el) el.classList.toggle('on',!!s.maintenance.enabled); const mm=document.getElementById('maintMsg'); if(mm&&s.maintenance.msg) mm.value=s.maintenance.msg; }
+    } catch(e){}
+}
+
+window.saveCustomizer = async function() {
+    try {
+        var at=document.getElementById('announceText'); if(at) window.custState.announce={enabled:window.custState._announceOn||false,text:at.value||'',color:document.getElementById('announceColor').value};
+        var mm=document.getElementById('maintMsg'); if(mm) window.custState.maintenance={enabled:window.custState._maintOn||false,msg:mm.value||'Site is under maintenance.'};
+        var ts=document.getElementById('timerSeconds'); if(ts&&ts.value) window.custState.timerSeconds=parseInt(ts.value)||10;
+        var wb=document.getElementById('waFloatNum'); if(wb&&wb.value) window.custState.waFloat={enabled:window.custState._waFloatOn||false,number:wb.value};
+        var bm=document.getElementById('bgMusicUrl'); if(bm&&bm.value) window.custState.bgMusic={enabled:window.custState._bgMusicOn||false,url:bm.value};
+        var sb=document.getElementById('sidebarBannerUrl'); if(sb) window.custState.sidebarBanner=sb.value;
+        await apiPost('/settings?type=site', window.custState);
+        showToast('✅ Settings Saved!');
+    } catch(e){showToast('❌ Error: '+e.message);}
 };
 </script>
 
@@ -927,14 +912,14 @@ window.selectEffect = function(eff, el){
 };
 
 window.toggleFeature = function(key, el){
-    custState[key] = !custState[key];
-    el.classList.toggle('on', custState[key]);
+    window.custState[key] = !window.custState[key];
+    el.classList.toggle('on', window.custState[key]);
 };
 
-window.toggleAnnounce = function(el){custState._announceOn=!custState._announceOn;el.classList.toggle('on',custState._announceOn);};
-window.toggleMaintenance = function(el){custState._maintOn=!custState._maintOn;el.classList.toggle('on',custState._maintOn);};
-window.toggleWaFloat = function(el){custState._waFloatOn=!custState._waFloatOn;el.classList.toggle('on',custState._waFloatOn);};
-window.toggleBgMusic = function(el){custState._bgMusicOn=!custState._bgMusicOn;el.classList.toggle('on',custState._bgMusicOn);};
+window.toggleAnnounce = function(el){window.custState._announceOn=!window.custState._announceOn;el.classList.toggle('on',window.custState._announceOn);};
+window.toggleMaintenance = function(el){window.custState._maintOn=!window.custState._maintOn;el.classList.toggle('on',window.custState._maintOn);};
+window.toggleWaFloat = function(el){window.custState._waFloatOn=!window.custState._waFloatOn;el.classList.toggle('on',window.custState._waFloatOn);};
+window.toggleBgMusic = function(el){window.custState._bgMusicOn=!window.custState._bgMusicOn;el.classList.toggle('on',window.custState._bgMusicOn);};
 function resetForm(){['editId','fName','fVersion','fSize','fIcon','fLink','fVideo','fScreens','fFeatures','fChangelog'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('fCategory').value='whatsapp';document.getElementById('formTitle').innerText='ADD NEW APP';document.getElementById('saveBtnText').innerText='SAVE APP';document.getElementById('iconPreview').style.display='none';document.getElementById('mfConvertBox').style.display='none';}
 function previewIcon(url){if(url){document.getElementById('iconPreviewImg').src=url;document.getElementById('iconPreview').style.display='block';}}
 function showToast(msg){var t=document.getElementById('toast');t.style.display='block';t.innerText=msg;setTimeout(function(){t.style.display='none';},2500);}
