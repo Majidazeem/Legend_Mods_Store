@@ -1,0 +1,741 @@
+<!-- © 2026 MA LEGEND | All Rights Reserved -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MA LEGEND | Official VIP Elite Store</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/9mkRYT12/1773365624558.jpg">
+<meta property="og:title" content="MA LEGEND | VIP Elite Store">
+<meta property="og:description" content="Download Exclusive WhatsApp Mods, XML Themes & VIP Tools.">
+<meta property="og:image" content="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg">
+<meta name="theme-color" content="#00796b">
+<meta name="google-site-verification" content="zHgzYwQHZBw3MmoOVn9rw9fYniFB-pPvtYB7cES-8e8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="MA LEGEND">
+<link rel="apple-touch-icon" href="https://i.ibb.co/9mkRYT12/1773365624558.jpg">
+<link rel="manifest" href="data:application/json,{%22name%22:%22MA%20LEGEND%20VIP%20Store%22,%22short_name%22:%22MA%20LEGEND%22,%22start_url%22:%22./%22,%22display%22:%22standalone%22,%22background_color%22:%22%23e0ebe9%22,%22theme_color%22:%22%2300796b%22,%22icons%22:[{%22src%22:%22https://i.ibb.co/9mkRYT12/1773365624558.jpg%22,%22sizes%22:%22192x192%22,%22type%22:%22image/jpeg%22}]}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e0ebe9;--shadow-out:8px 8px 18px #adc4c0,-8px -8px 18px #ffffff;--shadow-in:inset 5px 5px 12px #adc4c0,inset -5px -5px 12px #ffffff;--blue:#00796b;--blue-light:#26a69a;--green:#25c16f;--red:#e74c3c;--text:#2c3e60;--subtext:#8898b8;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Nunito',sans-serif;-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+/* SPLASH */
+#splash-screen{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:#000;}
+#splash-bg-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.55;animation:splashFloat 4s ease-in-out infinite;}
+#splash-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.5));}
+@keyframes splashFloat{0%,100%{transform:scale(1);}50%{transform:scale(1.06) translateY(-8px);}}
+#splash-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.4s,visibility 0.4s;}
+.splash-icon-img{width:160px;height:160px;border-radius:22px;margin-bottom:22px;box-shadow:0 8px 40px rgba(0,0,0,0.8);position:relative;z-index:2;object-fit:cover;animation:iconBounce 3s ease-in-out infinite;}
+@keyframes iconBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.splash-logo-text{font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:3px;margin-bottom:6px;position:relative;z-index:2;}
+.splash-sub-text{font-size:0.75rem;color:rgba(255,255,255,0.75);letter-spacing:3px;text-transform:uppercase;margin-bottom:32px;font-weight:700;position:relative;z-index:2;}
+.splash-loader{position:relative;z-index:2;width:80px;height:5px;background:rgba(255,255,255,0.2);border-radius:10px;overflow:hidden;}
+.splash-loader-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--blue-light));border-radius:10px;animation:loadBar 2.8s ease forwards;}
+@keyframes loadBar{0%{width:0%}100%{width:100%}}
+/* HEADER */
+header{height:78px;padding:0 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;background:var(--bg);box-shadow:0 4px 16px rgba(0,0,0,0.07);}
+.brand-logo h1{font-family:'Orbitron',sans-serif;font-size:1.15rem;font-weight:800;color:var(--blue);display:flex;align-items:center;gap:6px;}
+.brand-logo h1 span{color:var(--blue-light);}
+.verified-badge{color:var(--blue-light);font-size:0.8em;animation:spinBadge 6s linear infinite;}
+@keyframes spinBadge{0%{transform:rotateY(0deg)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
+.btn-nav-icon{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--blue);cursor:pointer;font-size:1.15rem;box-shadow:var(--shadow-out);border:none;position:relative;transition:box-shadow 0.15s,transform 0.15s;}
+.btn-nav-icon:active{box-shadow:var(--shadow-in);transform:scale(0.95);}
+.notif-dot{position:absolute;top:11px;right:11px;width:9px;height:9px;background:var(--red);border-radius:50%;box-shadow:0 0 6px var(--red);}
+/* MARQUEE */
+.marquee{background:var(--bg);color:var(--blue);padding:14px 18px;font-weight:800;overflow:hidden;white-space:nowrap;font-size:0.95rem;margin:14px 18px;border-radius:18px;box-shadow:var(--shadow-in);}
+.marquee-inner{display:inline-block;animation:scrollText 40s linear infinite;}
+@keyframes scrollText{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+/* TABS */
+.tabs{display:flex;gap:12px;padding:8px 15px 18px;overflow-x:auto;scrollbar-width:none;}
+.tab-btn{flex-shrink:0;padding:13px 22px;border-radius:16px;border:none;background:var(--bg);color:var(--subtext);font-weight:800;cursor:pointer;font-size:0.88rem;box-shadow:var(--shadow-out);font-family:'Nunito',sans-serif;}
+.tab-btn.active{color:var(--blue);box-shadow:var(--shadow-in);}
+/* SEARCH */
+.search-container{width:90%;max-width:550px;margin:0 auto 28px;background:var(--bg);padding:14px 22px;border-radius:50px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-in);}
+.search-container input{background:transparent;border:none;color:var(--text);outline:none;width:100%;font-size:1rem;font-weight:700;font-family:'Nunito',sans-serif;}
+.search-container input::placeholder{color:var(--subtext);}
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;padding:0 16px 60px;max-width:1250px;margin:0 auto;}
+.card{background:var(--bg);border-radius:28px;padding:24px;position:relative;box-shadow:var(--shadow-out);animation:fadeInUp 0.5s ease both;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.vip-tag{position:absolute;top:-12px;right:20px;padding:6px 16px;background:var(--bg);color:var(--blue);font-size:0.68rem;font-weight:900;border-radius:12px;box-shadow:var(--shadow-out);font-family:'Orbitron',sans-serif;letter-spacing:1px;}
+.card-head{display:flex;gap:16px;align-items:center;margin-bottom:20px;}
+.card-head img{width:80px;height:80px;border-radius:22px;object-fit:cover;box-shadow:var(--shadow-out);}
+.card-head h3{font-weight:900;font-size:1.15rem;color:var(--text);margin-bottom:8px;}
+.time-badge{font-size:0.76rem;color:var(--red);font-weight:800;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;box-shadow:var(--shadow-in);background:var(--bg);}
+.stars{color:var(--blue);font-size:1rem;margin-top:8px;letter-spacing:1px;}
+.stars span{color:var(--subtext);font-size:0.8rem;}
+.card-actions{display:flex;gap:13px;}
+.btn-view{flex:1;background:var(--bg);color:var(--blue);padding:15px;border-radius:18px;text-align:center;font-weight:900;cursor:pointer;font-size:0.98rem;box-shadow:var(--shadow-out);letter-spacing:1px;}
+.btn-view:active{box-shadow:var(--shadow-in);}
+.btn-share{width:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;color:var(--subtext);cursor:pointer;font-size:1.2rem;background:var(--bg);box-shadow:var(--shadow-out);}
+.btn-share:active{box-shadow:var(--shadow-in);color:var(--blue);}
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:-320px;width:300px;height:100%;background:var(--bg);z-index:2001;padding:28px 20px;box-shadow:10px 0 28px rgba(0,0,0,0.09);transition:0.4s;overflow-y:auto;}
+.sidebar.active{left:0;}
+.sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.32);z-index:2000;display:none;backdrop-filter:blur(4px);}
+.sidebar-overlay.active{display:block;}
+.side-profile{text-align:center;margin-bottom:26px;}
+.side-avatar-img{width:90px;height:90px;border-radius:50%;border:4px solid var(--bg);box-shadow:var(--shadow-out);padding:4px;animation:spinLogo 15s linear infinite;}
+@keyframes spinLogo{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.sidebar-section{margin-bottom:20px;padding:16px;border-radius:20px;box-shadow:var(--shadow-in);}
+.status-header{font-size:0.72rem;color:var(--subtext);margin-bottom:10px;display:flex;justify-content:space-between;font-weight:800;text-transform:uppercase;letter-spacing:1px;}
+.status-indicator{display:flex;align-items:center;gap:10px;color:var(--green);font-weight:800;}
+.pulsing-dot{width:10px;height:10px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.theme-options{display:flex;gap:13px;justify-content:center;margin-top:10px;}
+.theme-circle{width:28px;height:28px;border-radius:50%;cursor:pointer;box-shadow:var(--shadow-out);border:2px solid var(--bg);}
+.side-links a{display:flex;align-items:center;gap:13px;padding:14px;color:var(--text);text-decoration:none;border-radius:18px;font-size:0.93rem;margin-bottom:11px;cursor:pointer;box-shadow:var(--shadow-out);font-weight:700;}
+.side-links a:active{box-shadow:var(--shadow-in);}
+.side-links a i{color:var(--blue);width:20px;text-align:center;}
+/* OVERLAYS */
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:3000;display:none;flex-direction:column;overflow-y:auto;animation:slideIn 0.3s ease;}
+@keyframes slideIn{from{transform:translateY(38px);opacity:0}to{transform:translateY(0);opacity:1}}
+.overlay-header{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg);z-index:100;box-shadow:0 4px 12px rgba(0,0,0,0.06);}
+.overlay-header span{font-family:'Orbitron',sans-serif;font-weight:800;color:var(--blue);font-size:0.88rem;}
+.overlay-body{padding:28px 16px;max-width:750px;margin:0 auto;width:100%;padding-bottom:110px;}
+.vip-info-panel{background:var(--bg);border-radius:26px;padding:26px;margin-bottom:22px;box-shadow:var(--shadow-out);}
+.vip-info-panel h3{color:var(--blue);font-family:'Orbitron',sans-serif;font-size:0.92rem;margin-bottom:18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,121,107,0.1);padding-bottom:13px;}
+.skill-row{margin-bottom:13px;}
+.skill-info{display:flex;justify-content:space-between;margin-bottom:5px;font-size:0.86rem;font-weight:700;color:var(--subtext);}
+.progress-bar{width:100%;height:9px;background:var(--bg);box-shadow:var(--shadow-in);border-radius:10px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--blue-light));}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.stat-item{background:var(--bg);border-radius:20px;padding:18px;text-align:center;box-shadow:var(--shadow-in);}
+.stat-item label{display:block;font-size:0.7rem;color:var(--subtext);margin-bottom:7px;font-weight:800;text-transform:uppercase;letter-spacing:1px;}
+.stat-item value{font-weight:900;font-size:1.1rem;color:var(--blue);}
+.contact-vip-item{display:flex;align-items:center;gap:16px;padding:20px;background:var(--bg);border-radius:20px;text-decoration:none;color:var(--text);box-shadow:var(--shadow-out);margin-bottom:13px;}
+.contact-vip-item i{font-size:1.8rem;width:42px;text-align:center;}
+.contact-vip-item.wa i{color:#25D366;}.contact-vip-item.tg i{color:#0088cc;}.contact-vip-item.yt i{color:#FF0000;}
+.contact-vip-item div h4{font-weight:900;margin-bottom:3px;}
+.contact-vip-item div span{font-size:0.8rem;color:var(--subtext);}
+.slider{display:flex;gap:16px;overflow-x:auto;padding:6px 2px 24px;scrollbar-width:none;}
+.slider img{height:230px;border-radius:16px;flex-shrink:0;box-shadow:var(--shadow-out);}
+.safe-badge{background:var(--bg);color:var(--green);padding:16px;border-radius:16px;text-align:center;font-weight:800;margin-bottom:20px;box-shadow:var(--shadow-in);font-size:0.92rem;display:flex;align-items:center;justify-content:center;gap:10px;}
+.policy-list li{padding:11px 0;border-bottom:1px solid rgba(0,121,107,0.08);display:flex;gap:11px;align-items:flex-start;line-height:1.6;font-weight:600;}
+.policy-list li i{color:var(--green);margin-top:2px;}
+.btn-watch-video{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;padding:13px 24px;border-radius:14px;font-weight:800;font-size:0.98rem;text-decoration:none;margin-bottom:20px;}
+/* TIMER */
+.modal-view{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.42);z-index:4000;display:none;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(6px);}
+.modal-content{background:var(--bg);border-radius:38px;width:100%;max-width:400px;padding:36px 28px;text-align:center;box-shadow:var(--shadow-out);max-height:90vh;overflow-y:auto;}
+.timer-val{font-size:4.8rem;font-weight:900;color:var(--blue);font-family:'Orbitron',sans-serif;margin:10px 0;}
+.modal-content h3{color:var(--text);font-family:'Orbitron',sans-serif;font-size:0.9rem;margin-bottom:16px;}
+.logs{font-family:monospace;font-size:0.8rem;color:var(--blue);text-align:left;background:var(--bg);padding:16px;border-radius:16px;height:90px;overflow:hidden;line-height:1.7;box-shadow:var(--shadow-in);}
+/* SHARE */
+#shareBackdrop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.28);z-index:9998;display:none;backdrop-filter:blur(3px);}
+#shareBackdrop.active{display:block;}
+#shareModal{position:fixed;bottom:0;left:0;width:100%;background:var(--bg);z-index:9999;border-radius:28px 28px 0 0;padding:22px 18px 42px;display:none;box-shadow:var(--shadow-out);}
+#shareModal.active{display:block;animation:slideUp 0.3s ease;}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.share-title{font-weight:900;font-size:0.85rem;color:var(--text);margin-bottom:18px;text-align:center;letter-spacing:2px;text-transform:uppercase;}
+.share-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+.share-item{display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;text-decoration:none;}
+.share-item-icon{width:54px;height:54px;border-radius:17px;display:flex;align-items:center;justify-content:center;font-size:1.45rem;background:var(--bg);box-shadow:var(--shadow-out);}
+.share-item span{font-size:0.66rem;color:var(--subtext);font-weight:800;}
+.share-item.wa .share-item-icon{color:#25D366;}.share-item.tg .share-item-icon{color:#0088cc;}.share-item.fb .share-item-icon{color:#1877f2;}.share-item.cp .share-item-icon{color:var(--blue);}
+.share-cancel{width:100%;padding:14px;border:none;border-radius:15px;background:var(--bg);color:var(--text);font-weight:900;cursor:pointer;box-shadow:var(--shadow-out);font-family:'Nunito',sans-serif;}
+/* NOTIF */
+#notifModal{position:fixed;top:88px;right:16px;width:275px;background:var(--bg);z-index:2500;border-radius:20px;padding:16px;box-shadow:var(--shadow-out);display:none;}
+.notif-item{padding:11px 0;border-bottom:1px solid rgba(0,121,107,0.08);font-size:0.86rem;display:flex;gap:10px;align-items:flex-start;font-weight:600;}
+/* FOOTER */
+footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:0 -5px 18px rgba(0,0,0,0.06);}
+.footer-logo{font-family:'Orbitron',sans-serif;color:var(--blue);font-size:1.45rem;letter-spacing:6px;margin-bottom:28px;font-weight:900;}
+.footer-social-icon{display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:var(--bg);box-shadow:var(--shadow-out);color:var(--blue);font-size:1.3rem;margin:0 7px;text-decoration:none;}
+#toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:11px 26px;border-radius:28px;font-weight:800;font-size:0.88rem;z-index:99999;display:none;box-shadow:0 6px 20px rgba(0,121,107,0.38);letter-spacing:1px;white-space:nowrap;}
+@keyframes sideFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+/* REPORTS */
+#reportsOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:3000;display:none;flex-direction:column;overflow-y:auto;animation:slideIn 0.3s ease;}
+.reports-hero{background:linear-gradient(135deg,var(--blue),var(--blue-light));padding:40px 20px;text-align:center;color:#fff;}
+.reports-hero h1{font-family:'Orbitron',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:3px;margin-bottom:8px;}
+.reports-hero p{font-size:0.85rem;opacity:0.9;font-weight:700;}
+.key-unlock-section{margin:0 16px 20px;background:var(--bg);border-radius:22px;padding:24px;box-shadow:var(--shadow-out);}
+.key-unlock-section h3{font-family:'Orbitron',sans-serif;color:var(--blue);font-size:0.9rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.key-input-row{display:flex;gap:10px;}
+.key-input{flex:1;background:var(--bg);border:none;color:var(--text);padding:14px 17px;border-radius:13px;font-size:0.9rem;outline:none;box-shadow:var(--shadow-in);font-family:'Nunito',sans-serif;font-weight:600;}
+.btn-unlock{padding:14px 20px;border-radius:13px;border:none;font-weight:900;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:0.75rem;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;box-shadow:0 4px 16px rgba(0,121,107,0.3);letter-spacing:1px;}
+.pro-status-box{background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:18px;padding:20px;color:#fff;margin:0 16px 16px;text-align:center;}
+.pro-status-box h4{font-family:'Orbitron',sans-serif;font-size:1rem;margin-bottom:6px;}
+.reports-contact{margin:0 16px 30px;}
+.reports-contact h3{font-family:'Orbitron',sans-serif;color:var(--blue);font-size:0.85rem;margin-bottom:14px;letter-spacing:1px;}
+.report-contact-btn{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:var(--bg);box-shadow:var(--shadow-out);text-decoration:none;color:var(--text);margin-bottom:12px;font-weight:700;}
+.report-contact-btn i{font-size:1.5rem;}
+.report-contact-btn.wa i{color:#25D366;}.report-contact-btn.tg i{color:#0088cc;}
+.report-contact-btn div small{font-size:0.75rem;color:var(--subtext);}
+.report-tools-section{padding:0 16px 10px;}
+.report-tools-section h3{font-family:'Orbitron',sans-serif;color:var(--blue);font-size:0.85rem;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section-badge{background:var(--bg);padding:4px 12px;border-radius:10px;box-shadow:var(--shadow-in);font-size:0.68rem;}
+.plan-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 16px 8px;}
+.plan-card{background:var(--bg);border-radius:24px;padding:20px 16px;text-align:center;box-shadow:var(--shadow-out);position:relative;overflow:hidden;}
+.plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-light));}
+.plan-badge-lbl{font-size:0.68rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--subtext);margin-bottom:10px;}
+.plan-price{font-family:'Orbitron',sans-serif;font-size:1.4rem;color:var(--blue);font-weight:900;}
+.plan-duration{font-size:0.75rem;color:var(--subtext);font-weight:700;margin:4px 0 12px;}
+.plan-features-list{text-align:left;margin:12px 0;list-style:none;}
+.plan-features-list li{padding:5px 0;font-size:0.8rem;font-weight:700;display:flex;gap:8px;align-items:center;border-bottom:1px solid rgba(0,121,107,0.08);}
+.plan-features-list li i{color:var(--green);flex-shrink:0;}
+.btn-buy-plan{width:100%;padding:12px;border-radius:14px;border:none;font-weight:900;cursor:pointer;font-family:'Orbitron',sans-serif;font-size:0.72rem;letter-spacing:1px;margin-top:8px;}
+.btn-buy-free{background:var(--bg);color:var(--subtext);box-shadow:var(--shadow-out);}
+.btn-buy-pro{background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;box-shadow:0 6px 20px rgba(0,121,107,0.35);}
+.report-text-card{background:var(--bg);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-out);position:relative;}
+.rt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.rt-title{font-weight:900;font-size:0.95rem;color:var(--text);display:flex;align-items:center;gap:8px;}
+.rt-body{font-size:0.82rem;color:var(--subtext);font-weight:600;line-height:1.7;background:var(--bg);padding:12px 14px;border-radius:13px;box-shadow:var(--shadow-in);max-height:90px;overflow:hidden;position:relative;white-space:pre-wrap;word-break:break-word;}
+.rt-body.expanded{max-height:none;}
+.rt-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(transparent,var(--bg));border-radius:0 0 13px 13px;}
+.rt-body.expanded::after{display:none;}
+.rt-actions{display:flex;gap:9px;margin-top:12px;}
+.btn-copy-text{flex:1;padding:12px;border-radius:13px;border:none;background:var(--bg);color:var(--blue);font-weight:900;font-size:0.85rem;cursor:pointer;box-shadow:var(--shadow-out);font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-copy-text:active{box-shadow:var(--shadow-in);}
+.btn-copy-text.copied{color:var(--green);}
+.btn-expand-text{width:44px;border-radius:13px;border:none;background:var(--bg);color:var(--subtext);font-size:1rem;cursor:pointer;box-shadow:var(--shadow-out);}
+.pro-lock{display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:800;color:var(--blue);background:var(--bg);padding:6px 12px;border-radius:20px;box-shadow:var(--shadow-in);}
+.tools-loading{text-align:center;padding:30px;color:var(--subtext);font-weight:700;font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash-screen">
+    <img id="splash-bg-img" src="https://i.postimg.cc/SYY94wTH/20260101-082111.jpg" onerror="this.style.display='none'">
+    <div id="splash-overlay"></div>
+    <img src="https://i.ibb.co/MDxQRv2n/d4d962aadc4c4342fac6e6b1eb0228bd.jpg" class="splash-icon-img" onerror="this.style.display='none'">
+    <div class="splash-logo-text">MA LEGEND</div>
+    <div class="splash-sub-text">VIP Elite Store</div>
+    <div class="splash-loader"><div class="splash-loader-bar"></div></div>
+</div>
+
+<div id="shareBackdrop" onclick="closeShareModal()"></div>
+<div id="shareModal">
+    <div class="share-title">⚡ Share App</div>
+    <div class="share-grid">
+        <a class="share-item wa" id="shareWA" href="#" target="_blank" onclick="closeShareModal()"><div class="share-item-icon"><i class="fab fa-whatsapp"></i></div><span>WhatsApp</span></a>
+        <a class="share-item tg" id="shareTG" href="#" target="_blank" onclick="closeShareModal()"><div class="share-item-icon"><i class="fab fa-telegram-plane"></i></div><span>Telegram</span></a>
+        <a class="share-item fb" id="shareFB" href="#" target="_blank" onclick="closeShareModal()"><div class="share-item-icon"><i class="fab fa-facebook-f"></i></div><span>Facebook</span></a>
+        <div class="share-item cp" onclick="copyShareLink()"><div class="share-item-icon"><i class="fas fa-link"></i></div><span>Copy Link</span></div>
+    </div>
+    <button class="share-cancel" onclick="closeShareModal()">Cancel</button>
+</div>
+
+<div id="toast"></div>
+<div class="sidebar-overlay" id="globalOverlay" onclick="closeAll()"></div>
+
+<div id="notifModal">
+    <h4 style="color:var(--blue);font-family:'Orbitron',sans-serif;font-size:0.82rem;margin-bottom:12px;letter-spacing:1px;">RECENT ALERTS</h4>
+    <div id="notifList">
+        <div class="notif-item"><i class="fas fa-bolt" style="color:var(--green)"></i> WA Anti-Ban Updated!</div>
+        <div class="notif-item"><i class="fas fa-star" style="color:var(--blue)"></i> New iOS XML Added.</div>
+    </div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+    <div class="side-profile">
+        <img src="https://i.ibb.co/9mkRYT12/1773365624558.jpg" class="side-avatar-img">
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--blue);margin-top:16px;" class="side-dev-name">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></h2>
+        <p style="font-size:0.72rem;color:var(--subtext);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:4px;" class="side-dev-title">Master Developer</p>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>Device Status</span></div>
+        <div style="text-align:center;padding:10px;">
+            <i class="fas fa-mobile-alt" style="font-size:1.3rem;color:var(--blue);margin-bottom:7px;display:block;"></i>
+            <div id="deviceTag" style="font-family:'Orbitron',sans-serif;color:var(--blue);font-size:0.78rem;font-weight:800;">DETECTING...</div>
+            <div style="font-size:0.68rem;color:var(--subtext);margin-top:3px;font-weight:600;">System Optimized</div>
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>Server Status</span><span>v5.0</span></div>
+        <div class="status-indicator"><div class="pulsing-dot"></div> FIREBASE LIVE</div>
+        <div style="margin-top:11px;font-size:0.82rem;color:var(--subtext);display:flex;align-items:center;gap:8px;font-weight:700;">
+            <i class="fas fa-users" style="color:var(--blue);"></i>
+            <span id="liveUserCnt" style="font-weight:900;color:var(--text);">420</span> ELITE USERS ONLINE
+        </div>
+    </div>
+    <div class="sidebar-section">
+        <div class="status-header"><span>Theme Color</span></div>
+        <div class="theme-options">
+            <div class="theme-circle" style="background:#00796b" onclick="setTheme('#00796b','#26a69a')"></div>
+            <div class="theme-circle" style="background:#00b894" onclick="setTheme('#00b894','#00cec9')"></div>
+            <div class="theme-circle" style="background:#e74c3c" onclick="setTheme('#e74c3c','#ff6b6b')"></div>
+            <div class="theme-circle" style="background:#9b59b6" onclick="setTheme('#9b59b6','#b07fd1')"></div>
+        </div>
+    </div>
+    <div class="side-links">
+        <a onclick="closeAll();playClick()"><i class="fas fa-home"></i> Home Dashboard</a>
+        <a onclick="showInfo('about');playClick()"><i class="fas fa-user-shield"></i> About Developer</a>
+        <a onclick="showInfo('contact');playClick()"><i class="fas fa-headset"></i> Contact Support</a>
+        <a onclick="showInfo('policy');playClick()"><i class="fas fa-file-contract"></i> Privacy Policy</a>
+        <div style="margin:18px 0;height:2px;background:var(--bg);box-shadow:var(--shadow-in);border-radius:5px;"></div>
+        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="sidebar-wa-link"><i class="fab fa-whatsapp"></i> Join WA Channel</a>
+        <div style="margin-top:20px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-out);animation:sideFloat 4s ease-in-out infinite;">
+            <img src="https://i.postimg.cc/t12bNvNk/8b1442b79eae4f4e7c0f9b909570a61f.jpg" class="sidebar-banner-img" style="width:100%;display:block;border-radius:20px;" onerror="this.style.display='none'">
+        </div>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <button class="btn-nav-icon" onclick="toggleSidebar();playClick()"><i class="fas fa-bars-staggered"></i></button>
+    <div class="brand-logo"><h1>MA <span>LEGEND</span> <i class="fas fa-check-circle verified-badge"></i></h1></div>
+    <div style="display:flex;gap:11px;">
+        <button class="btn-nav-icon" onclick="toggleNotif();playClick()"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <button class="btn-nav-icon" id="themeBtn" onclick="toggleDarkMode();playClick()"><i class="fas fa-moon"></i></button>
+    </div>
+</header>
+
+<div class="marquee"><div class="marquee-inner" id="marqueeText">صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ ﷺ اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div></div>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="filterCat('whatsapp',this);playClick()">WA MODS</button>
+    <button class="tab-btn" onclick="filterCat('themes',this);playClick()">XML THEMES</button>
+    <button class="tab-btn" onclick="filterCat('apps',this);playClick()">APPS</button>
+    <button class="tab-btn" onclick="filterCat('tools',this);playClick()">VIP TOOLS</button>
+    <button class="tab-btn" onclick="filterCat('bancheck',this);playClick()">🛡️ BAN CHECK</button>
+    <button class="tab-btn" onclick="openReports();playClick()">📊 REPORTS</button>
+</div>
+
+<div class="search-container">
+    <i class="fas fa-magnifying-glass" style="color:var(--blue)"></i>
+    <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
+</div>
+
+<div style="width:300px;height:250px;margin:0 auto 18px;display:block;overflow:hidden;"><script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script></div>
+<main class="grid" id="appGrid"></main>
+
+<!-- SPECS OVERLAY -->
+<div id="specsOverlay" class="overlay">
+    <div class="overlay-header">
+        <div class="btn-nav-icon" onclick="history.back();playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span>SPECIFICATIONS</span><div style="width:50px;"></div>
+    </div>
+    <div class="overlay-body" id="specsContent"></div>
+</div>
+
+<!-- INFO OVERLAY -->
+<div id="infoOverlay" class="overlay">
+    <div class="overlay-header">
+        <div class="btn-nav-icon" onclick="history.back();playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span id="infoTitle">VIP HUB</span><div style="width:50px;"></div>
+    </div>
+    <div class="overlay-body" id="infoContent"></div>
+</div>
+
+<!-- TIMER MODAL -->
+<div class="modal-view" id="timerModal">
+    <div class="modal-content">
+        <div class="timer-val" id="timerCount">10</div>
+        <h3>SECURING ELITE LINK...</h3>
+        <div class="logs" id="serverLogs"></div>
+        <div style="width:300px;height:250px;margin:14px auto;display:block;overflow:hidden;"><script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script></div>
+        <a href="https://t.me/legend_friends_no2" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:16px;background:linear-gradient(135deg,#0088cc,#005f8e);color:#fff;font-weight:800;font-size:0.9rem;text-decoration:none;margin:10px 0;letter-spacing:1px;"><i class="fab fa-telegram-plane"></i> Join Our Telegram Channel</a>
+
+        <div id="timerSkipBtn" style="display:none;margin-top:8px;"><a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" onclick="document.getElementById('timerSkipBtn').style.display='none'" style="display:block;text-decoration:none;padding:12px 24px;border-radius:13px;background:rgba(255,255,255,0.08);color:#aaa;font-weight:800;font-size:0.82rem;text-align:center;letter-spacing:1px;">&#9197; Skip Ad &amp; Continue</a></div>
+        <a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:10px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
+    </div>
+</div>
+
+<!-- FOOTER AD -->
+<div style="width:300px;height:250px;margin:20px auto;display:block;overflow:hidden;">
+    <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-logo">MA LEGEND <i class="fas fa-check-circle verified-badge"></i></div>
+    <div style="display:flex;justify-content:center;margin-bottom:28px;">
+        <a href="https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x" target="_blank" class="footer-social-icon footer-wa"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/legend_friends_no2" target="_blank" class="footer-social-icon footer-tg"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://www.youtube.com/@legendmod407" target="_blank" class="footer-social-icon footer-yt"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p id="footerCopy" style="font-size:0.83rem;color:var(--subtext);letter-spacing:2px;cursor:default;user-select:none;font-weight:700;">&copy; 2026 MA LEGEND ELITE STORE</p>
+</footer>
+
+<!-- REPORTS OVERLAY -->
+<div id="reportsOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:3000;display:none;flex-direction:column;overflow-y:auto;">
+    <div class="overlay-header">
+        <div class="btn-nav-icon" onclick="history.back();playClick()"><i class="fas fa-chevron-left"></i></div>
+        <span>📊 REPORTS</span><div style="width:50px;"></div>
+    </div>
+    <div class="reports-hero">
+        <h1>📊 REPORTS TOOL</h1>
+        <p>WhatsApp Channel & Account Report System</p>
+        <p style="margin-top:8px;font-size:0.78rem;opacity:0.8;">Get a Pro Key from Admin to unlock Pro version</p>
+    </div>
+    <div id="proStatusBox" class="pro-status-box" style="display:none;">
+        <h4>✅ PRO UNLOCKED!</h4>
+        <p id="proStatusMsg" style="font-size:0.82rem;opacity:0.9;margin-top:4px;"></p>
+    </div>
+    <div class="plan-cards">
+        <div class="plan-card">
+            <div class="plan-badge-lbl">FREE</div>
+            <div class="plan-price">0 PKR</div>
+            <div class="plan-duration">Hamesha Free</div>
+            <ul class="plan-features-list">
+                <li><i class="fas fa-check"></i>Free Report Texts</li>
+                <li><i class="fas fa-check"></i>Copy & Paste Ready</li>
+                <li style="color:var(--subtext);"><i class="fas fa-times" style="color:var(--red);"></i>Pro Texts</li>
+            </ul>
+            <button class="btn-buy-plan btn-buy-free" onclick="switchTextTab('free')">FREE USE KARO</button>
+        </div>
+        <div class="plan-card">
+            <div class="plan-badge-lbl" style="color:var(--blue);">PRO ⭐</div>
+            <div style="margin-bottom:4px;"><span style="font-size:0.72rem;color:var(--subtext);font-weight:700;">Weekly: </span><span id="weeklyPriceText" style="font-family:'Orbitron',sans-serif;font-size:1.05rem;color:var(--blue);font-weight:900;">200 PKR</span></div>
+            <div><span style="font-size:0.72rem;color:var(--subtext);font-weight:700;">Monthly: </span><span id="monthlyPriceText" style="font-family:'Orbitron',sans-serif;font-size:1.05rem;color:var(--blue);font-weight:900;">500 PKR</span></div>
+            <div class="plan-duration">Get key from Admin</div>
+            <ul class="plan-features-list">
+                <li><i class="fas fa-check"></i>All Pro Texts</li>
+                <li><i class="fas fa-check"></i>Powerful Reports</li>
+                <li><i class="fas fa-check"></i>Unlimited Access</li>
+            </ul>
+            <button class="btn-buy-plan btn-buy-pro" onclick="switchTextTab('pro')">🔑 KEY SE UNLOCK</button>
+        </div>
+    </div>
+    <div class="key-unlock-section" id="keyUnlockSection" style="display:none;">
+        <h3><i class="fas fa-key"></i> PRO KEY ENTER KARO</h3>
+        <div class="key-input-row">
+            <input type="text" class="key-input" id="proKeyInput" placeholder="W-MALG-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
+            <button class="btn-unlock" id="unlockBtn" onclick="verifyProKey()">UNLOCK</button>
+        </div>
+        <p style="font-size:0.75rem;color:var(--subtext);margin-top:10px;font-weight:600;">Key admin se WhatsApp ya Telegram par lein</p>
+    </div>
+    <div class="report-tools-section" style="margin-top:8px;">
+        <h3><span class="section-badge">📝</span> REPORT TEXTS</h3>
+        <div style="display:flex;gap:12px;margin-bottom:18px;">
+            <button id="tabFreeBtn" onclick="switchTextTab('free')" style="flex:1;padding:14px;border-radius:16px;border:none;background:var(--bg);color:var(--blue);font-weight:900;font-size:0.9rem;cursor:pointer;box-shadow:var(--shadow-in);font-family:'Nunito',sans-serif;"><i class="fas fa-lock-open"></i> FREE</button>
+            <button id="tabProBtn" onclick="switchTextTab('pro')" style="flex:1;padding:14px;border-radius:16px;border:none;background:var(--bg);color:var(--subtext);font-weight:900;font-size:0.9rem;cursor:pointer;box-shadow:var(--shadow-out);font-family:'Nunito',sans-serif;"><i class="fas fa-lock"></i> PRO ⭐</button>
+        </div>
+        <div id="tabFreeContent">
+            <div id="freeTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+        </div>
+        <div id="tabProContent" style="display:none;">
+            <div id="proTextsUnlocked" style="display:none;">
+                <div id="proTextsList"><div class="tools-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
+            </div>
+            <div id="proTextsLocked">
+                <div style="background:var(--bg);border-radius:22px;padding:32px 20px;text-align:center;box-shadow:var(--shadow-in);margin-bottom:14px;">
+                    <i class="fas fa-lock" style="font-size:2.5rem;color:var(--blue);margin-bottom:14px;display:block;"></i>
+                    <div style="font-family:'Orbitron',sans-serif;font-size:0.9rem;color:var(--blue);font-weight:900;margin-bottom:8px;">PRO TEXTS LOCKED</div>
+                    <div style="font-size:0.8rem;color:var(--subtext);font-weight:600;margin-bottom:20px;">Get a Pro Key from Admin and unlock Pro version</div>
+                    <button onclick="showKeyUnlock()" style="width:100%;padding:15px;border-radius:14px;border:none;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;font-weight:900;font-size:0.9rem;cursor:pointer;font-family:'Orbitron',sans-serif;">🔑 KEY SE UNLOCK KARO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reports-contact">
+        <h3>📲 PRO KEY KAISE LEIN?</h3>
+        <a class="report-contact-btn wa" id="reportWaBtn" href="https://wa.me/923277796795" target="_blank"><i class="fab fa-whatsapp"></i><div><div>Contact on WhatsApp</div><small id="reportWaText">+923277796795 • Fast Response</small></div></a>
+        <a class="report-contact-btn tg" id="reportTgBtn" href="https://t.me/legend_friends_no2" target="_blank"><i class="fab fa-telegram-plane"></i><div><div>Contact on Telegram</div><small id="reportTgText">@legend_friends_no2 • 24/7 Available</small></div></a>
+        <div style="background:var(--bg);border-radius:16px;padding:16px;box-shadow:var(--shadow-in);margin-top:10px;">
+            <p style="font-size:0.82rem;font-weight:800;color:var(--text);margin-bottom:8px;">💰 Pricing:</p>
+            <p id="pricingWeekly" style="font-size:0.82rem;font-weight:700;color:var(--blue);">⏱ Weekly: 200 PKR (7 Din)</p>
+            <p id="pricingMonthly" style="font-size:0.82rem;font-weight:700;color:var(--blue);margin-top:4px;">📅 Monthly: 500 PKR (30 Din)</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== API MODULE ===================== -->
+<script type="module">
+
+const API = "/api";
+
+async function apiGet(p) {
+    try { const r = await fetch(API+p); return r.json(); } catch(e) { return {}; }
+}
+async function apiPost(p, b) {
+    try { const r = await fetch(API+p, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(b)}); return r.json(); } catch(e) { return {}; }
+}
+
+function getDeviceId() {
+    let id = localStorage.getItem("_dev_id");
+    if (!id) { id = "dev_"+Date.now()+"_"+Math.random().toString(36).substr(2,9); localStorage.setItem("_dev_id", id); }
+    return id;
+}
+
+async function loadSiteSettings() {
+    try {
+        const res = await apiGet("/settings?type=site");
+        if (!res.success || !res.data) return;
+        const s = res.data;
+        window._siteSettings = s;
+        if (s.color) document.documentElement.style.setProperty("--blue", s.color);
+        if (s.bg === "dark") document.body.classList.add("dark-mode");
+        if (s.siteName) { const el = document.getElementById("siteName"); if(el) el.innerText = s.siteName; }
+        if (s.marquee === false) { const el = document.querySelector(".marquee"); if(el) el.style.display="none"; }
+        if (s.marqueeText) { const el = document.getElementById("marqueeText"); if(el) el.innerText = s.marqueeText; }
+        if (s.announce && s.announce.enabled && s.announce.text) {
+            const ab = document.getElementById("announceBanner");
+            if (ab) { ab.innerText = s.announce.text; ab.style.display="block"; ab.style.background = s.announce.color||"#e53935"; }
+        }
+        if (s.sidebarBanner) document.querySelectorAll(".sidebar-banner-img").forEach(function(el){ el.src=s.sidebarBanner; el.style.display="block"; });
+        if (s.socialWA) document.querySelectorAll(".footer-wa,.sidebar-wa-link").forEach(function(el){el.href=s.socialWA;});
+        if (s.socialTG) document.querySelectorAll(".footer-tg").forEach(function(el){el.href=s.socialTG;});
+        if (s.socialYT) document.querySelectorAll(".footer-yt").forEach(function(el){el.href=s.socialYT;});
+        if (s.maintenance && s.maintenance.enabled) {
+            document.body.innerHTML = "<div style='min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1d23;color:#e8edf5;text-align:center;padding:30px;font-family:Poppins,sans-serif;'><div style='font-size:4rem;'>🔧</div><h1 style='color:#4fc3f7;font-size:1.4rem;margin:20px 0 14px;'>MAINTENANCE MODE</h1><p style='color:#7a8aaa;'>"+(s.maintenance.msg||"Site is under maintenance.")+"</p></div>";
+        }
+    } catch(e) {}
+}
+
+async function loadContactSettings() {
+    try {
+        const res = await apiGet("/settings?type=contact");
+        if (!res.success || !res.data) return;
+        const s = res.data;
+        const waMsg = s.waMsg || "Hello! I want to buy a Pro Key. Please share the price and details.";
+        const waLink = "https://wa.me/"+(s.waNumber||"923277796795")+"?text="+encodeURIComponent(waMsg);
+        const el = document.getElementById("reportWaBtn"); if(el) el.href = waLink;
+        if (s.tgUsername) { const e2 = document.getElementById("reportTgBtn"); if(e2) e2.href="https://t.me/"+s.tgUsername; }
+        if (s.tgText) { const e3 = document.getElementById("reportTgText"); if(e3) e3.innerText=s.tgText; }
+        if (s.weeklyPrice) { const e4 = document.getElementById("pricingWeekly"); if(e4) e4.innerText="Weekly: "+s.weeklyPrice; }
+        if (s.monthlyPrice) { const e5 = document.getElementById("pricingMonthly"); if(e5) e5.innerText="Monthly: "+s.monthlyPrice; }
+    } catch(e) {}
+}
+
+async function loadApps() {
+    try {
+        const res = await apiGet("/apps");
+        if (res.success && res.apps) {
+            window.appsData = res.apps.map(function(a){ return Object.assign({firebaseKey:a.id}, a); });
+        } else { window.appsData = []; }
+        window.appsData.sort(function(a,b){ return new Date(b.uploadDate)-new Date(a.uploadDate); });
+        const wa = window.appsData.filter(function(a){return a.category==="whatsapp";});
+        renderApps(wa.length > 0 ? wa : window.appsData);
+    } catch(e) { window.appsData=[]; renderApps([]); }
+}
+
+async function loadReportTexts() {
+    try {
+        const res = await apiGet("/settings?type=reports");
+        const fEl = document.getElementById("freeTextsList");
+        const pEl = document.getElementById("proTextsList");
+        if (!fEl || !pEl) return;
+        if (!res.success || !res.texts || !res.texts.length) {
+            fEl.innerHTML = "<div class='tools-loading'>No free texts available yet</div>";
+            pEl.innerHTML = "<div class='tools-loading'>No pro texts available yet</div>";
+            return;
+        }
+        const free = res.texts.filter(function(t){return t.type==="free";});
+        const pro  = res.texts.filter(function(t){return t.type==="pro";});
+        fEl.innerHTML = free.map(function(t){return mkCard(Object.assign({firebaseKey:t.id},t),true);}).join("") || "<div class='tools-loading'>No free texts available yet</div>";
+        pEl.innerHTML = pro.map(function(t){return mkCard(Object.assign({firebaseKey:t.id},t),false);}).join("") || "<div class='tools-loading'>No pro texts available yet</div>";
+    } catch(e) {}
+}
+
+function mkCard(text, isFree) {
+    const bodyId = "rtb_"+text.firebaseKey;
+    const badge = isFree ? "<span class='pro-lock'><i class='fas fa-lock-open'></i> FREE</span>" : "<span class='pro-lock'><i class='fas fa-lock'></i> PRO</span>";
+    return "<div class='report-text-card'><div class='rt-header'><div class='rt-title'><i class='fas fa-file-alt' style='color:var(--blue)'></i>"+(text.title||"")+"</div>"+badge+"</div>"
+        + "<div class='rt-body' id='"+bodyId+"'>"+(text.body||"")+"</div>"
+        + "<div class='rt-actions'><button class='btn-copy-text' data-key='"+text.firebaseKey+"' data-free='"+isFree+"' onclick='copyRTxt(this.dataset.key,this.dataset.free==="true")'><i class='fas fa-copy'></i> COPY TEXT</button>"
+        + "<button class='btn-expand-text' onclick='expandTxt(""+bodyId+"",this)'><i class='fas fa-chevron-down'></i></button></div></div>";
+}
+
+window.verifyProKey = async function() {
+    const btn = document.getElementById("unlockBtn");
+    const key = (document.getElementById("proKeyInput").value||"").trim().toUpperCase();
+    if (!key) { showToast("Please enter your key!"); return; }
+    if (btn) { btn.innerText="..."; btn.disabled=true; }
+    const res = await apiPost("/keys?action=verify", {key:key, deviceId:getDeviceId()});
+    if (res.valid) {
+        localStorage.setItem("ma_pro_key_data", JSON.stringify({key:key, plan:res.plan, expiresAt:res.expiresAt}));
+        activateProUI({plan:res.plan, expiresAt:res.expiresAt});
+        showToast("PRO UNLOCKED!");
+    } else {
+        const msgs = {device_locked:"Key is active on another device!", expired:"Key expired! Get new key.", revoked:"Key has been blocked!"};
+        showToast(msgs[res.reason] || "Wrong key! Get correct key from Admin.");
+        if(btn){btn.innerText="UNLOCK";btn.disabled=false;}
+    }
+};
+
+loadApps();
+loadSiteSettings();
+loadContactSettings();
+loadReportTexts();
+
+</script>
+
+<!-- PLAIN SCRIPT -->
+<script>
+window.appsData = window.appsData || [];
+window.soundEnabled = true;
+window._isProUser = false;
+window._siteSettings = {};
+
+var audioCtx;
+function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if (audioCtx.state === 'suspended') audioCtx.resume(); }
+window.addEventListener('click', () => initAudio(), { once: true });
+window.addEventListener('touchstart', () => initAudio(), { once: true });
+function playClick() {
+    if (!window.soundEnabled) return;
+    try { if (!audioCtx) initAudio(); var o = audioCtx.createOscillator(), g = audioCtx.createGain(); o.connect(g); g.connect(audioCtx.destination); o.frequency.value = 700; o.type = 'sine'; g.gain.setValueAtTime(0.07, audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08); o.start(); o.stop(audioCtx.currentTime + 0.08); } catch (e) {}
+}
+
+setTimeout(() => { const s = document.getElementById('splash-screen'); if (s) { s.classList.add('hidden'); setTimeout(() => s.remove(), 400); } }, 3000);
+
+window.addEventListener('load', () => {
+    var ua = navigator.userAgent;
+    var os = ua.indexOf('Android') > -1 ? 'Android Elite' : ua.indexOf('iPhone') > -1 ? 'iOS Secure' : ua.indexOf('Windows') > -1 ? 'PC Master' : 'Device';
+    var dt = document.getElementById('deviceTag'); if (dt) dt.innerText = 'DETECTED: ' + os;
+    var deepId = new URLSearchParams(window.location.search).get('app');
+    if (deepId) { var tries = 0, ti = setInterval(() => { tries++; var a = window.appsData && window.appsData.find(x => x.firebaseKey === deepId || String(x.id) === String(deepId)); if (a) { clearInterval(ti); setTimeout(() => openDetails(deepId), 600); } if (tries > 20) clearInterval(ti); }, 500); }
+});
+
+setInterval(() => { var c = document.getElementById('liveUserCnt'); if (c) c.innerText = Math.max(100, parseInt(c.innerText) + (Math.floor(Math.random() * 10) - 5)); }, 3000);
+
+function showToast(msg) { var t = document.getElementById('toast'); t.style.display = 'block'; t.innerText = msg; setTimeout(() => t.style.display = 'none', 3000); }
+function getTimeAgo(d) { var diff = Math.floor((new Date() - new Date(d)) / 1000); if (diff < 60) return 'Just now'; if (diff < 3600) return Math.floor(diff / 60) + 'm ago'; if (diff < 86400) return Math.floor(diff / 3600) + 'h ago'; return Math.floor(diff / 86400) + 'd ago'; }
+
+function renderApps(data) {
+    var g = document.getElementById('appGrid'); if (!g) return;
+    if (!data || !data.length) { g.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:46px;color:var(--subtext);"><i class="fas fa-inbox" style="font-size:2.5rem;display:block;margin-bottom:13px;opacity:0.3;"></i><p style="font-weight:700;">No apps in this category</p></div>'; return; }
+    g.innerHTML = '';
+    data.forEach((app, idx) => {
+        var aid = app.firebaseKey || app.id;
+        g.innerHTML += '<div class="card" style="animation-delay:' + (idx * 0.07) + 's"><div class="vip-tag">VIP ELITE</div><div class="card-head"><img src="' + app.icon + '" loading="lazy" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'"><div><h3>' + app.name + '</h3><div class="time-badge"><i class="fas fa-clock"></i> ' + getTimeAgo(app.uploadDate) + '</div><div class="stars">★★★★★ <span>(Verified)</span></div></div></div><div class="card-actions"><div class="btn-view" onclick="openDetails(\'' + aid + '\');playClick()">SPECIFICATIONS</div><div class="btn-share" onclick="openShareModal(\'' + aid + '\',\'' + app.name.replace(/'/g, "\\'").replace(/"/g, '&quot;') + '\');playClick()"><i class="fas fa-share-nodes"></i></div></div></div>';
+    });
+}
+
+function filterCat(c, b) { document.querySelectorAll('.tabs .tab-btn').forEach(x => x.classList.remove('active')); if (b) b.classList.add('active'); renderApps(window.appsData.filter(a => a.category === c)); }
+function doSearch() { var q = document.getElementById('search').value.toLowerCase(); renderApps(window.appsData.filter(a => a.name.toLowerCase().includes(q) || (a.features || []).some(f => f.toLowerCase().includes(q)))); }
+
+function openDetails(id) {
+    var a = window.appsData.find(x => x.firebaseKey === id || String(x.id) === String(id)); if (!a) return;
+    var vid = ''; if (a.video) { var yl = a.video; if (yl.includes('youtu.be/')) yl = 'https://www.youtube.com/watch?v=' + yl.split('youtu.be/')[1].split('?')[0]; else if (!yl.includes('http')) yl = 'https://www.youtube.com/watch?v=' + yl; vid = '<a href="' + yl + '" target="_blank" class="btn-watch-video"><i class="fab fa-youtube"></i> WATCH VIDEO</a>'; }
+    // Ad button — har app ke sath auto show hoga
+    var adBtn = '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" class="btn-watch-video" style="background:linear-gradient(135deg,#e53935,#b71c1c);margin-left:10px;"><i class="fas fa-download"></i> GET APK MIRROR</a>';
+    var vidRow = (vid || adBtn) ? '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">' + vid + adBtn + '</div>' : '';
+    document.getElementById('specsContent').innerHTML =
+        '<div style="text-align:center;margin-bottom:26px;"><a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:inline-block;"><img src="' + a.icon + '" style="width:105px;border-radius:28px;box-shadow:var(--shadow-out);" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'" ></a><h2 style="margin-top:16px;font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">' + a.name + ' <i class="fas fa-check-circle verified-badge"></i></h2><p style="font-weight:800;color:var(--subtext);letter-spacing:1px;margin-top:7px;font-size:0.88rem;">VERSION: ' + a.version + '</p></div>' + vidRow +
+        '<div class="slider">' + (a.screens || [a.icon]).map(s => '<img src="' + s + '">').join('') + '</div>' +
+        '<div class="stats-grid"><div class="stat-item"><label>FILE SIZE</label><value>' + a.size + '</value></div><div class="stat-item"><label>STATUS</label><value style="color:var(--green)">STABLE</value></div><div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div><div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div></div>' +
+        '<div class="vip-info-panel"><h3><i class="fas fa-star"></i> FEATURES</h3><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">' + (a.features || []).map(f => '<li style="display:flex;gap:10px;font-weight:700;"><i class="fas fa-check" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>' + f + '</li>').join('') + '</ul></div>' +
+        '<div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT\'S NEW</h3><p style="color:var(--subtext);line-height:1.9;font-weight:600;">' + (a.changelog || []).join('<br>') + '</p></div>' +
+        '<div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal — 100% Clean</div>' +
+        '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:18px;background:linear-gradient(135deg,#00796b,#26a69a);color:#fff;font-weight:900;font-size:0.95rem;text-decoration:none;margin-top:14px;box-shadow:0 6px 20px rgba(0,121,107,0.35);letter-spacing:1px;font-family:Orbitron,sans-serif;"><i class="fas fa-shield-check"></i> GET VIRUS FREE FILE</a>' +
+        '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:10px;text-align:center;" onclick="startTimer(\'' + a.link + '\');playClick()">⬇ EXECUTE DOWNLOAD</div>';
+    document.getElementById('specsOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; history.pushState({ v: 'specs' }, '');
+}
+
+
+
+// ===== DIRECT DOWNLOAD TRIGGER =====
+// ===== SMART AD LINK =====
+var _adUrl = 'https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492';
+function openAd() { try { window.open(_adUrl, '_blank'); } catch(e) {} }
+
+function startTimer(link) {
+    var m = document.getElementById('timerModal'); m.style.display = 'flex';
+    var log = document.getElementById('serverLogs'), btn = document.getElementById('finalBtn'), count = document.getElementById('timerCount');
+    var skipBtn = document.getElementById('timerSkipBtn');
+    btn.style.display = 'none'; count.style.display = 'block'; log.innerHTML = '> Connecting to Database...';
+    if (skipBtn) { skipBtn.style.display = 'none'; setTimeout(() => { skipBtn.style.display = 'block'; }, 5000); }
+    var time = 10, t = setInterval(() => {
+        time--; count.innerText = time;
+        if (time === 8) log.innerHTML += '<br>> Establishing Secure Handshake...';
+        if (time === 5) log.innerHTML += '<br>> Decrypting Download Token...';
+        if (time === 1) log.innerHTML += '<br>> ELITE LINK SECURED! ✓';
+        if (time <= 0) {
+            clearInterval(t);
+            count.style.display = 'none';
+            btn.style.display = 'block';
+            btn.href = link;
+            btn.target = '_blank';
+            btn.innerText = '⬇ DOWNLOAD KARO';
+            btn.onclick = () => { m.style.display = 'none'; if(skipBtn) skipBtn.style.display='none'; };
+        }
+    }, 1000);
+}
+
+function showInfo(type) {
+    var s = window._siteSettings || {};
+    var devName = s.devName || 'MA LEGEND', devTitle = s.devTitle || 'Master Developer';
+    var devAvatar = s.devAvatar || 'https://i.ibb.co/9mkRYT12/1773365624558.jpg';
+    var devBio = s.devBio || "Pakistan's premier Android modding authority.";
+    var waLink = s.socialWA || 'https://whatsapp.com/channel/0029VarS46O3QxRtTZO0z60x';
+    var tgLink = s.socialTG || 'https://t.me/legend_friends_no2';
+    var ytLink = s.socialYT || 'https://www.youtube.com/@legendmod407';
+    var policyImg = s.policyImage || 'https://i.postimg.cc/RqTY6JX5/1d155d70622965027c4973aea5dd8940.jpg';
+    var policyText = s.policyText || 'For educational purposes only. Use at your own risk.';
+    var skills = s.skills || [{ name: 'Anti-Ban Logic', pct: 100 }, { name: 'Modding', pct: 95 }, { name: 'UI/UX Design', pct: 90 }];
+    var content = document.getElementById('infoContent'), title = document.getElementById('infoTitle');
+    if (type === 'about') {
+        title.innerText = 'Developer Profile';
+        var skillsHtml = skills.map(sk => '<div class="skill-row"><div class="skill-info"><span>' + sk.name + '</span><span>' + sk.pct + '%</span></div><div class="progress-bar"><div class="progress-fill" style="width:' + sk.pct + '%"></div></div></div>').join('');
+        content.innerHTML = '<div class="vip-info-panel" style="text-align:center;"><img src="' + devAvatar + '" style="width:105px;border-radius:50%;border:4px solid var(--bg);padding:4px;margin-bottom:16px;box-shadow:var(--shadow-out);" onerror="this.src=\'https://i.ibb.co/9mkRYT12/1773365624558.jpg\'"><h2 style="font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">' + devName + ' <i class="fas fa-check-circle verified-badge"></i></h2><p style="color:var(--green);font-weight:900;font-size:0.75rem;letter-spacing:3px;margin-bottom:13px;">✓ VERIFIED DEVELOPER</p><p style="color:var(--subtext);line-height:1.8;font-weight:600;">' + devBio + '</p></div><div class="vip-info-panel"><h3><i class="fas fa-code"></i> SKILL MATRIX</h3>' + skillsHtml + '</div>';
+    } else if (type === 'contact') {
+        title.innerText = 'Support Hub';
+        content.innerHTML = '<div class="vip-info-panel"><h3><i class="fas fa-headset"></i> ELITE SUPPORT</h3><a href="' + waLink + '" target="_blank" class="contact-vip-item wa"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp VIP</h4><span>Join Official Channel</span></div></a><a href="' + tgLink + '" target="_blank" class="contact-vip-item tg"><i class="fab fa-telegram-plane"></i><div><h4>Telegram Elite</h4><span>Fastest Mod Updates</span></div></a><a href="' + ytLink + '" target="_blank" class="contact-vip-item yt"><i class="fab fa-youtube"></i><div><h4>YouTube Channel</h4><span>Tutorials & Proofs</span></div></a></div>';
+    } else if (type === 'policy') {
+        title.innerText = 'Privacy Protocol';
+        content.innerHTML = '<div style="border-radius:22px;overflow:hidden;box-shadow:var(--shadow-out);margin-bottom:26px;"><img src="' + policyImg + '" style="width:100%;display:block;border-radius:22px;" onerror="this.style.display=\'none\'"></div><div class="vip-info-panel"><h3><i class="fas fa-shield-halved"></i> DATA SECURITY</h3><ul class="policy-list" style="list-style:none;"><li><i class="fas fa-check"></i><div><strong>Zero Logs:</strong> We do not store any user data.</div></li><li><i class="fas fa-check"></i><div><strong>Safe Links:</strong> All downloads are scanned.</div></li></ul></div><div class="vip-info-panel"><h3><i class="fas fa-gavel"></i> TERMS OF USE</h3><p style="color:var(--subtext);line-height:1.6;font-weight:600;">' + policyText + '</p></div>';
+    }
+    document.getElementById('infoOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; history.pushState({ v: 'info' }, '');
+    document.getElementById('sidebar').classList.remove('active'); document.getElementById('globalOverlay').classList.remove('active');
+}
+
+var currentShareUrl = '';
+function openShareModal(appId, appName) { var base = window.location.href.split('?')[0].split('#')[0]; currentShareUrl = appId ? base + '?app=' + appId : base; var title = '🔥 ' + appName + ' - MA LEGEND VIP Store'; var msg = encodeURIComponent(title + '\n' + currentShareUrl); document.getElementById('shareWA').href = 'https://wa.me/?text=' + msg; document.getElementById('shareTG').href = 'https://t.me/share/url?url=' + encodeURIComponent(currentShareUrl) + '&text=' + encodeURIComponent(title); document.getElementById('shareFB').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(currentShareUrl); document.getElementById('shareModal').classList.add('active'); document.getElementById('shareBackdrop').classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeShareModal() { document.getElementById('shareModal').classList.remove('active'); document.getElementById('shareBackdrop').classList.remove('active'); document.body.style.overflow = 'auto'; }
+function copyShareLink() { navigator.clipboard.writeText(currentShareUrl).then(() => showToast('🔗 LINK COPIED!')).catch(() => {}); closeShareModal(); }
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('globalOverlay').classList.toggle('active'); if (document.getElementById('sidebar').classList.contains('active')) history.pushState({ v: 'side' }, ''); }
+function toggleDarkMode() {
+    var dark = document.body.getAttribute('data-theme') === 'dark';
+    if (!dark) { document.body.setAttribute('data-theme', 'dark'); document.documentElement.style.setProperty('--bg', '#1e2230'); document.documentElement.style.setProperty('--shadow-out', '8px 8px 18px #141824,-8px -8px 18px #282e3c'); document.documentElement.style.setProperty('--shadow-in', 'inset 5px 5px 12px #141824,inset -5px -5px 12px #282e3c'); document.documentElement.style.setProperty('--text', '#e0e8f8'); document.documentElement.style.setProperty('--subtext', '#6a7a9a'); var i = document.querySelector('#themeBtn i'); i.classList.add('fa-sun'); i.classList.remove('fa-moon'); }
+    else { document.body.removeAttribute('data-theme'); document.documentElement.style.setProperty('--bg', '#e0ebe9'); document.documentElement.style.setProperty('--shadow-out', '8px 8px 18px #adc4c0,-8px -8px 18px #ffffff'); document.documentElement.style.setProperty('--shadow-in', 'inset 5px 5px 12px #adc4c0,inset -5px -5px 12px #ffffff'); document.documentElement.style.setProperty('--text', '#2c3e60'); document.documentElement.style.setProperty('--subtext', '#8898b8'); var i = document.querySelector('#themeBtn i'); i.classList.remove('fa-sun'); i.classList.add('fa-moon'); }
+}
+function setTheme(main, light) { document.documentElement.style.setProperty('--blue', main); document.documentElement.style.setProperty('--blue-light', light || main); }
+function toggleNotif() { var n = document.getElementById('notifModal'); n.style.display = n.style.display === 'block' ? 'none' : 'block'; }
+function closeAll(back) { if (back === undefined) back = true; document.getElementById('sidebar').classList.remove('active'); document.getElementById('globalOverlay').classList.remove('active'); document.querySelectorAll('.overlay').forEach(o => o.style.display = 'none'); document.getElementById('reportsOverlay').style.display = 'none'; document.getElementById('timerModal').style.display = 'none'; document.getElementById('notifModal').style.display = 'none'; document.body.style.overflow = 'auto'; if (back && history.state) history.back(); }
+window.onpopstate = () => closeAll(false);
+
+// REPORTS
+function openReports() { document.getElementById('reportsOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; history.pushState({ v: 'reports' }, ''); checkStoredKey(); }
+function checkStoredKey() {
+    try {
+        var stored = localStorage.getItem('ma_pro_key_data');
+        if (stored) { var d = JSON.parse(stored); if (new Date(d.expiresAt) > new Date()) { activateProUI(d); } else { localStorage.removeItem('ma_pro_key_data'); } }
+    } catch (e) {}
+}
+function showKeyUnlock() { var s = document.getElementById('keyUnlockSection'); s.style.display = s.style.display === 'block' ? 'none' : 'block'; if (s.style.display === 'block') s.scrollIntoView({ behavior: 'smooth' }); }
+function switchTextTab(tab) {
+    var fBtn = document.getElementById('tabFreeBtn'), pBtn = document.getElementById('tabProBtn');
+    var fC = document.getElementById('tabFreeContent'), pC = document.getElementById('tabProContent');
+    if (tab === 'free') {
+        fC.style.display = 'block'; pC.style.display = 'none';
+        fBtn.style.boxShadow = 'var(--shadow-in)'; fBtn.style.color = 'var(--blue)';
+        pBtn.style.boxShadow = 'var(--shadow-out)'; pBtn.style.color = 'var(--subtext)';
+    } else {
+        fC.style.display = 'none'; pC.style.display = 'block';
+        pBtn.style.boxShadow = 'var(--shadow-in)'; pBtn.style.color = 'var(--blue)';
+        fBtn.style.boxShadow = 'var(--shadow-out)'; fBtn.style.color = 'var(--subtext)';
+        var locked = document.getElementById('proTextsLocked'), unlocked = document.getElementById('proTextsUnlocked');
+        if (window._isProUser) { if (locked) locked.style.display = 'none'; if (unlocked) unlocked.style.display = 'block'; }
+        else { if (locked) locked.style.display = 'block'; if (unlocked) unlocked.style.display = 'none'; }
+    }
+}
+function activateProUI(data) {
+    window._isProUser = true;
+    var exp = new Date(data.expiresAt).toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: 'numeric' });
+    var box = document.getElementById('proStatusBox');
+    if (box) { box.style.display = 'block'; document.getElementById('proStatusMsg').innerText = (data.plan === 'weekly' ? 'Weekly' : 'Monthly') + ' Plan Active • Expire: ' + exp; }
+    var ks = document.getElementById('keyUnlockSection'); if (ks) ks.style.display = 'none';
+    var locked = document.getElementById('proTextsLocked'), unlocked = document.getElementById('proTextsUnlocked');
+    if (locked) locked.style.display = 'none'; if (unlocked) unlocked.style.display = 'block';
+    var pBtn = document.getElementById('tabProBtn'); if (pBtn) { pBtn.innerHTML = '<i class="fas fa-lock-open"></i> PRO ⭐'; pBtn.style.color = 'var(--blue)'; }
+}
+function copyRTxt(key, isFree) {
+    if (!isFree && !window._isProUser) { showToast('🔒 Pro Key Required!'); showKeyUnlock(); return; }
+    var el = document.getElementById('rtb_' + key); if (!el) return;
+    var txt = el.innerText || el.textContent;
+    navigator.clipboard.writeText(txt).then(() => { var btn = document.getElementById('copybtn_' + key); if (btn) { btn.classList.add('copied'); btn.innerHTML = '<i class="fas fa-check"></i> COPIED!'; setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '<i class="fas fa-copy"></i> COPY TEXT'; }, 2000); } showToast('✅ Text Copied!'); }).catch(() => { var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast('✅ Text Copied!'); });
+}
+function expandTxt(bodyId, btn) { var el = document.getElementById(bodyId); if (!el) return; el.classList.toggle('expanded'); btn.querySelector('i').className = el.classList.contains('expanded') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'; }
+
+checkStoredKey();
+</script>
+</body>
+</html>
