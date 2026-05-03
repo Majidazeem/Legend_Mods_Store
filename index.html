@@ -427,7 +427,7 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
     </div>
     <div class="reports-contact">
         <h3>📲 PRO KEY KAISE LEIN?</h3>
-        <a class="report-contact-btn wa" id="reportWaBtn" href="https://wa.me/923277796795" target="_blank"><i class="fab fa-whatsapp"></i><div><div>Contact on WhatsApp</div><small id="reportWaText">+923277796795 • Fast Response</small></div></a>
+        <a class="report-contact-btn wa" id="reportWaBtn" href="https://wa.me/" target="_blank"><i class="fab fa-whatsapp"></i><div><div>Contact on WhatsApp</div><small id="reportWaText">Contact Admin</small></div></a>
         <a class="report-contact-btn tg" id="reportTgBtn" href="https://t.me/legend_friends_no2" target="_blank"><i class="fab fa-telegram-plane"></i><div><div>Contact on Telegram</div><small id="reportTgText">@legend_friends_no2 • 24/7 Available</small></div></a>
         <div style="background:var(--bg);border-radius:16px;padding:16px;box-shadow:var(--shadow-in);margin-top:10px;">
             <p style="font-size:0.82rem;font-weight:800;color:var(--text);margin-bottom:8px;">💰 Pricing:</p>
@@ -526,12 +526,17 @@ async function loadReportTexts() {
 }
 
 function mkCard(text, isFree) {
-    const bodyId = "rtb_"+text.firebaseKey;
-    const badge = isFree ? "<span class='pro-lock'><i class='fas fa-lock-open'></i> FREE</span>" : "<span class='pro-lock'><i class='fas fa-lock'></i> PRO</span>";
-    return "<div class='report-text-card'><div class='rt-header'><div class='rt-title'><i class='fas fa-file-alt' style='color:var(--blue)'></i>"+(text.title||"")+"</div>"+badge+"</div>"
-        + "<div class='rt-body' id='"+bodyId+"'>"+(text.body||"")+"</div>"
-        + "<div class='rt-actions'><button class='btn-copy-text' data-key='"+text.firebaseKey+"' data-free='"+isFree+"' onclick='copyRTxt(this.dataset.key,this.dataset.free==="true")'><i class='fas fa-copy'></i> COPY TEXT</button>"
-        + "<button class='btn-expand-text' onclick='expandTxt(""+bodyId+"",this)'><i class='fas fa-chevron-down'></i></button></div></div>";
+    var bodyId = "rtb_" + text.firebaseKey;
+    var badge = isFree
+        ? "<span class=\'pro-lock\'><i class=\'fas fa-lock-open\'></i> FREE</span>"
+        : "<span class=\'pro-lock\'><i class=\'fas fa-lock\'></i> PRO</span>";
+    var copyBtn = "<button class=\'btn-copy-text\' onclick=\'copyRTxt(&quot;" + text.firebaseKey + "&quot;," + isFree + ")\'><i class=\'fas fa-copy\'></i> COPY TEXT</button>";
+    var expandBtn = "<button class=\'btn-expand-text\' onclick=\'expandTxt(&quot;" + bodyId + "&quot;,this)\'><i class=\'fas fa-chevron-down\'></i></button>";
+    return "<div class=\'report-text-card\'>"
+        + "<div class=\'rt-header\'><div class=\'rt-title\'><i class=\'fas fa-file-alt\' style=\'color:var(--blue)\'></i>" + (text.title||"") + "</div>" + badge + "</div>"
+        + "<div class=\'rt-body\' id=\'"+bodyId+"\'>"+( text.body||"")+"</div>"
+        + "<div class=\'rt-actions\'>" + copyBtn + expandBtn + "</div>"
+        + "</div>";
 }
 
 window.verifyProKey = async function() {
