@@ -437,130 +437,139 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
     </div>
 </div>
 
-<!-- ===================== API MODULE ===================== -->
-<script type="module">
+<!-- ===== API CLIENT (Firebase hidden server-side) ===== -->
+<script>
+// ─────────────────────────────────────────────────────────
+//  Sabhi Firebase calls API route ke zariye hoti hain.
+//  Client ko DB URL kabhi nahi milta — inspect mein safe.
+// ─────────────────────────────────────────────────────────
+var API = "/api/data";
 
-const API = "/api";
-
-async function apiGet(p) {
-    try { const r = await fetch(API+p); return r.json(); } catch(e) { return {}; }
-}
-async function apiPost(p, b) {
-    try { const r = await fetch(API+p, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(b)}); return r.json(); } catch(e) { return {}; }
+async function apiFetch(action, method, body) {
+    method = method || "GET";
+    var opts = { method: method, headers: { "Content-Type": "application/json" } };
+    if (body) opts.body = JSON.stringify(body);
+    var url = API + "?action=" + action;
+    var r = await fetch(url, opts);
+    return r.json();
 }
 
 function getDeviceId() {
-    let id = localStorage.getItem("_dev_id");
-    if (!id) { id = "dev_"+Date.now()+"_"+Math.random().toString(36).substr(2,9); localStorage.setItem("_dev_id", id); }
+    var id = localStorage.getItem("_dev_id");
+    if (!id) { id = "dev_" + Date.now() + "_" + Math.random().toString(36).substr(2,9); localStorage.setItem("_dev_id", id); }
     return id;
 }
 
+// ── Load site settings + contact ─────────────────────────
 async function loadSiteSettings() {
     try {
-        const res = await apiGet("/settings?type=site");
-        if (!res.success || !res.data) return;
-        const s = res.data;
+        var d = await apiFetch("settings");
+        var s = d.site || {};
         window._siteSettings = s;
         if (s.color) document.documentElement.style.setProperty("--blue", s.color);
         if (s.bg === "dark") document.body.classList.add("dark-mode");
-        if (s.siteName) { const el = document.getElementById("siteName"); if(el) el.innerText = s.siteName; }
-        if (s.marquee === false) { const el = document.querySelector(".marquee"); if(el) el.style.display="none"; }
-        if (s.marqueeText) { const el = document.getElementById("marqueeText"); if(el) el.innerText = s.marqueeText; }
+        if (s.siteName) { var e1 = document.getElementById("siteName"); if (e1) e1.innerText = s.siteName; }
+        if (s.marquee === false) { var e2 = document.querySelector(".marquee"); if (e2) e2.style.display = "none"; }
+        if (s.marqueeText) { var e3 = document.getElementById("marqueeText"); if (e3) e3.innerText = s.marqueeText; }
         if (s.announce && s.announce.enabled && s.announce.text) {
-            const ab = document.getElementById("announceBanner");
-            if (ab) { ab.innerText = s.announce.text; ab.style.display="block"; ab.style.background = s.announce.color||"#e53935"; }
+            var ab = document.getElementById("announceBanner");
+            if (ab) { ab.innerText = s.announce.text; ab.style.display = "block"; ab.style.background = s.announce.color || "#e53935"; }
         }
-        if (s.sidebarBanner) document.querySelectorAll(".sidebar-banner-img").forEach(function(el){ el.src=s.sidebarBanner; el.style.display="block"; });
-        if (s.socialWA) document.querySelectorAll(".footer-wa,.sidebar-wa-link").forEach(function(el){el.href=s.socialWA;});
-        if (s.socialTG) document.querySelectorAll(".footer-tg").forEach(function(el){el.href=s.socialTG;});
-        if (s.socialYT) document.querySelectorAll(".footer-yt").forEach(function(el){el.href=s.socialYT;});
+        if (s.sidebarBanner) { document.querySelectorAll(".sidebar-banner-img").forEach(function(el){el.src=s.sidebarBanner;el.style.display="block";}); }
         if (s.maintenance && s.maintenance.enabled) {
-            document.body.innerHTML = "<div style='min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1d23;color:#e8edf5;text-align:center;padding:30px;font-family:Poppins,sans-serif;'><div style='font-size:4rem;'>🔧</div><h1 style='color:#4fc3f7;font-size:1.4rem;margin:20px 0 14px;'>MAINTENANCE MODE</h1><p style='color:#7a8aaa;'>"+(s.maintenance.msg||"Site is under maintenance.")+"</p></div>";
+            var mmsg = s.maintenance.msg || "Site is under maintenance.";
+            var mDiv = document.createElement("div");
+            mDiv.style.cssText = "min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#1a1d23;color:#e8edf5;text-align:center;padding:30px;font-family:Poppins,sans-serif;";
+            mDiv.innerHTML = "<div style='font-size:4rem;'>🔧</div><h1 style='color:#4fc3f7;font-size:1.4rem;margin:20px 0;'>MAINTENANCE MODE</h1><p style='color:#7a8aaa;'>" + mmsg + "</p>";
+            document.body.innerHTML = ""; document.body.appendChild(mDiv);
         }
-    } catch(e) {}
+        // contact
+        var ct = d.contact || {};
+        var waMsg = ct.waMsg || "Hello! I want to buy a Pro Key.";
+        var waLink = "https://wa.me/" + (ct.waNumber || "923277796795") + "?text=" + encodeURIComponent(waMsg);
+        var elwa = document.getElementById("reportWaBtn"); if (elwa) elwa.href = waLink;
+        if (ct.tgUsername) { var etg = document.getElementById("reportTgBtn"); if (etg) etg.href = "https://t.me/" + ct.tgUsername; }
+        if (ct.tgText)     { var etx = document.getElementById("reportTgText"); if (etx) etx.innerText = ct.tgText; }
+        if (ct.weeklyPrice)  { var ewk = document.getElementById("pricingWeekly");  if (ewk) ewk.innerText = "Weekly: "  + ct.weeklyPrice; }
+        if (ct.monthlyPrice) { var emo = document.getElementById("pricingMonthly"); if (emo) emo.innerText = "Monthly: " + ct.monthlyPrice; }
+    } catch(e) { console.error("Settings load error", e); }
 }
 
-async function loadContactSettings() {
-    try {
-        const res = await apiGet("/settings?type=contact");
-        if (!res.success || !res.data) return;
-        const s = res.data;
-        const waMsg = s.waMsg || "Hello! I want to buy a Pro Key. Please share the price and details.";
-        const waLink = "https://wa.me/"+(s.waNumber||"923277796795")+"?text="+encodeURIComponent(waMsg);
-        const el = document.getElementById("reportWaBtn"); if(el) el.href = waLink;
-        if (s.tgUsername) { const e2 = document.getElementById("reportTgBtn"); if(e2) e2.href="https://t.me/"+s.tgUsername; }
-        if (s.tgText) { const e3 = document.getElementById("reportTgText"); if(e3) e3.innerText=s.tgText; }
-        if (s.weeklyPrice) { const e4 = document.getElementById("pricingWeekly"); if(e4) e4.innerText="Weekly: "+s.weeklyPrice; }
-        if (s.monthlyPrice) { const e5 = document.getElementById("pricingMonthly"); if(e5) e5.innerText="Monthly: "+s.monthlyPrice; }
-    } catch(e) {}
-}
-
+// ── Load Apps ────────────────────────────────────────────
 async function loadApps() {
     try {
-        const res = await apiGet("/apps");
-        if (res.success && res.apps) {
-            window.appsData = res.apps.map(function(a){ return Object.assign({firebaseKey:a.id}, a); });
-        } else { window.appsData = []; }
-        window.appsData.sort(function(a,b){ return new Date(b.uploadDate)-new Date(a.uploadDate); });
-        const wa = window.appsData.filter(function(a){return a.category==="whatsapp";});
-        renderApps(wa.length > 0 ? wa : window.appsData);
-    } catch(e) { window.appsData=[]; renderApps([]); }
-}
-
-async function loadReportTexts() {
-    try {
-        const res = await apiGet("/settings?type=reports");
-        const fEl = document.getElementById("freeTextsList");
-        const pEl = document.getElementById("proTextsList");
-        if (!fEl || !pEl) return;
-        if (!res.success || !res.texts || !res.texts.length) {
-            fEl.innerHTML = "<div class='tools-loading'>No free texts available yet</div>";
-            pEl.innerHTML = "<div class='tools-loading'>No pro texts available yet</div>";
-            return;
+        var d = await apiFetch("apps");
+        var apps = d.apps || [];
+        window.appsData = apps;
+        var at = document.querySelector(".tabs .tab-btn.active");
+        if (at) { at.click(); } else {
+            var wa = apps.filter(function(a){ return a.category === "whatsapp"; });
+            renderApps(wa.length > 0 ? wa : apps);
         }
-        const free = res.texts.filter(function(t){return t.type==="free";});
-        const pro  = res.texts.filter(function(t){return t.type==="pro";});
-        fEl.innerHTML = free.map(function(t){return mkCard(Object.assign({firebaseKey:t.id},t),true);}).join("") || "<div class='tools-loading'>No free texts available yet</div>";
-        pEl.innerHTML = pro.map(function(t){return mkCard(Object.assign({firebaseKey:t.id},t),false);}).join("") || "<div class='tools-loading'>No pro texts available yet</div>";
-    } catch(e) {}
+    } catch(e) { console.error("Apps load error", e); }
 }
 
-function mkCard(text, isFree) {
+// ── Load Report Texts ────────────────────────────────────
+async function loadReports() {
+    try {
+        var d = await apiFetch("reports");
+        var texts = d.texts || [];
+        var fEl = document.getElementById("freeTextsList");
+        var pEl = document.getElementById("proTextsList");
+        if (!fEl || !pEl) return;
+        var free = texts.filter(function(t){ return t.type === "free"; });
+        var pro  = texts.filter(function(t){ return t.type === "pro"; });
+        fEl.innerHTML = "";
+        if (free.length) { free.forEach(function(t){ fEl.appendChild(mkCardEl(t, true)); }); }
+        else { fEl.innerHTML = "<div class='tools-loading'>No free texts yet</div>"; }
+        pEl.innerHTML = "";
+        if (pro.length)  { pro.forEach(function(t){ pEl.appendChild(mkCardEl(t, false)); }); }
+        else { pEl.innerHTML = "<div class='tools-loading'>No pro texts yet</div>"; }
+    } catch(e) { console.error("Reports load error", e); }
+}
+
+function mkCardEl(text, isFree) {
     var bodyId = "rtb_" + text.firebaseKey;
-    var badge = isFree
-        ? "<span class=\'pro-lock\'><i class=\'fas fa-lock-open\'></i> FREE</span>"
-        : "<span class=\'pro-lock\'><i class=\'fas fa-lock\'></i> PRO</span>";
-    var copyBtn = "<button class=\'btn-copy-text\' onclick=\'copyRTxt(&quot;" + text.firebaseKey + "&quot;," + isFree + ")\'><i class=\'fas fa-copy\'></i> COPY TEXT</button>";
-    var expandBtn = "<button class=\'btn-expand-text\' onclick=\'expandTxt(&quot;" + bodyId + "&quot;,this)\'><i class=\'fas fa-chevron-down\'></i></button>";
-    return "<div class=\'report-text-card\'>"
-        + "<div class=\'rt-header\'><div class=\'rt-title\'><i class=\'fas fa-file-alt\' style=\'color:var(--blue)\'></i>" + (text.title||"") + "</div>" + badge + "</div>"
-        + "<div class=\'rt-body\' id=\'"+bodyId+"\'>"+( text.body||"")+"</div>"
-        + "<div class=\'rt-actions\'>" + copyBtn + expandBtn + "</div>"
-        + "</div>";
+    var div = document.createElement("div");
+    div.className = "report-text-card";
+    var badge = isFree ? "<i class='fas fa-lock-open'></i> FREE" : "<i class='fas fa-lock'></i> PRO";
+    div.innerHTML = [
+        "<div class='rt-header'>",
+            "<div class='rt-title'><i class='fas fa-file-alt' style='color:var(--blue)'></i>" + (text.title||"") + "</div>",
+            "<span class='pro-lock'>" + badge + "</span>",
+        "</div>",
+        "<div class='rt-body' id='" + bodyId + "'>" + (text.body||"") + "</div>",
+        "<div class='rt-actions'>",
+            "<button class='btn-copy-text' id='copybtn_" + text.firebaseKey + "' onclick='copyRTxt("" + text.firebaseKey + ""," + isFree + ")'><i class='fas fa-copy'></i> COPY TEXT</button>",
+            "<button class='btn-expand-text' onclick='expandTxt("" + bodyId + "",this)'><i class='fas fa-chevron-down'></i></button>",
+        "</div>"
+    ].join("");
+    return div;
 }
 
+// ── Verify Pro Key (via API) ─────────────────────────────
 window.verifyProKey = async function() {
-    const btn = document.getElementById("unlockBtn");
-    const key = (document.getElementById("proKeyInput").value||"").trim().toUpperCase();
+    var btn = document.getElementById("unlockBtn");
+    var key = (document.getElementById("proKeyInput").value || "").trim().toUpperCase();
     if (!key) { showToast("Please enter your key!"); return; }
-    if (btn) { btn.innerText="..."; btn.disabled=true; }
-    const res = await apiPost("/keys?action=verify", {key:key, deviceId:getDeviceId()});
-    if (res.valid) {
-        localStorage.setItem("ma_pro_key_data", JSON.stringify({key:key, plan:res.plan, expiresAt:res.expiresAt}));
-        activateProUI({plan:res.plan, expiresAt:res.expiresAt});
-        showToast("PRO UNLOCKED!");
-    } else {
-        const msgs = {device_locked:"Key is active on another device!", expired:"Key expired! Get new key.", revoked:"Key has been blocked!"};
-        showToast(msgs[res.reason] || "Wrong key! Get correct key from Admin.");
-        if(btn){btn.innerText="UNLOCK";btn.disabled=false;}
-    }
+    if (btn) { btn.innerText = "..."; btn.disabled = true; }
+    try {
+        var result = await apiFetch("verify-key", "POST", { key: key, deviceId: getDeviceId() });
+        if (result.ok) {
+            localStorage.setItem("ma_pro_key_data", JSON.stringify({ key: key, plan: result.plan, expiresAt: result.expiresAt }));
+            activateProUI(result);
+            showToast("✅ PRO UNLOCKED!");
+        } else {
+            showToast(result.msg || "Invalid key!");
+        }
+    } catch(e) { showToast("Error! Try again."); }
+    if (btn) { btn.innerText = "UNLOCK"; btn.disabled = false; }
 };
 
-loadApps();
+// ── Init ─────────────────────────────────────────────────
 loadSiteSettings();
-loadContactSettings();
-loadReportTexts();
-
+loadApps();
+loadReports();
 </script>
 
 <!-- PLAIN SCRIPT -->
