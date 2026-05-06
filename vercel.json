@@ -1,12 +1,11 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "api/data.js", "use": "@vercel/node" },
+    { "src": "index.html",  "use": "@vercel/static" }
+  ],
   "routes": [
-    { "src": "/api/apps",     "dest": "/api/apps.js"     },
-    { "src": "/api/auth",     "dest": "/api/auth.js"     },
-    { "src": "/api/keys",     "dest": "/api/keys.js"     },
-    { "src": "/api/settings", "dest": "/api/settings.js" },
-    { "src": "/admin.html",   "dest": "/admin.html"      },
-    { "src": "/admin",        "dest": "/admin.html"      },
-    { "src": "/(.*)",         "dest": "/index.html"      }
+    { "src": "/api/data",  "dest": "/api/data.js" },
+    { "src": "/",          "dest": "/index.html"  }
   ]
 }
