@@ -331,7 +331,7 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
         <div style="width:300px;height:250px;margin:14px auto;display:block;overflow:hidden;"><script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script></div>
         <a href="https://t.me/legend_friends_no2" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:16px;background:linear-gradient(135deg,#0088cc,#005f8e);color:#fff;font-weight:800;font-size:0.9rem;text-decoration:none;margin:10px 0;letter-spacing:1px;"><i class="fab fa-telegram-plane"></i> Join Our Telegram Channel</a>
 
-        <div id="timerSkipBtn" style="display:none;margin-top:8px;"><a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" onclick="document.getElementById('timerSkipBtn').style.display='none'" style="display:block;text-decoration:none;padding:12px 24px;border-radius:13px;background:rgba(255,255,255,0.08);color:#aaa;font-weight:800;font-size:0.82rem;text-align:center;letter-spacing:1px;">&#9197; Skip Ad &amp; Continue</a></div>
+        
         <a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:10px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
     </div>
 </div>
@@ -619,34 +619,29 @@ function doSearch() { var q = document.getElementById('search').value.toLowerCas
 function openDetails(id) {
     var a = window.appsData.find(x => x.firebaseKey === id || String(x.id) === String(id)); if (!a) return;
     var vid = ''; if (a.video) { var yl = a.video; if (yl.includes('youtu.be/')) yl = 'https://www.youtube.com/watch?v=' + yl.split('youtu.be/')[1].split('?')[0]; else if (!yl.includes('http')) yl = 'https://www.youtube.com/watch?v=' + yl; vid = '<a href="' + yl + '" target="_blank" class="btn-watch-video"><i class="fab fa-youtube"></i> WATCH VIDEO</a>'; }
-    // Ad button — har app ke sath auto show hoga
-    var adBtn = '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" class="btn-watch-video" style="background:linear-gradient(135deg,#e53935,#b71c1c);margin-left:10px;"><i class="fas fa-download"></i> GET APK MIRROR</a>';
-    var vidRow = (vid || adBtn) ? '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">' + vid + adBtn + '</div>' : '';
+    var vidRow = vid ? '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">' + vid + '</div>' : '';
     document.getElementById('specsContent').innerHTML =
-        '<div style="text-align:center;margin-bottom:26px;"><a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:inline-block;"><img src="' + a.icon + '" style="width:105px;border-radius:28px;box-shadow:var(--shadow-out);" onerror="this.src=\'https://i.postimg.cc/SYY94wTH/20260101-082111.jpg\'" ></a><h2 style="margin-top:16px;font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">' + a.name + ' <i class="fas fa-check-circle verified-badge"></i></h2><p style="font-weight:800;color:var(--subtext);letter-spacing:1px;margin-top:7px;font-size:0.88rem;">VERSION: ' + a.version + '</p></div>' + vidRow +
+        '<div style="text-align:center;margin-bottom:26px;"><img src="' + a.icon + '" style="width:105px;border-radius:28px;box-shadow:var(--shadow-out);" onerror="this.src='https://i.postimg.cc/SYY94wTH/20260101-082111.jpg'"><h2 style="margin-top:16px;font-family:\'Orbitron\',sans-serif;color:var(--blue);font-size:1.05rem;">' + a.name + ' <i class="fas fa-check-circle verified-badge"></i></h2><p style="font-weight:800;color:var(--subtext);letter-spacing:1px;margin-top:7px;font-size:0.88rem;">VERSION: ' + a.version + '</p></div>' + vidRow +
         '<div class="slider">' + (a.screens || [a.icon]).map(s => '<img src="' + s + '">').join('') + '</div>' +
         '<div class="stats-grid"><div class="stat-item"><label>FILE SIZE</label><value>' + a.size + '</value></div><div class="stat-item"><label>STATUS</label><value style="color:var(--green)">STABLE</value></div><div class="stat-item"><label>SYSTEM</label><value>Android 6+</value></div><div class="stat-item"><label>AUTHOR</label><value>MA Legend</value></div></div>' +
         '<div class="vip-info-panel"><h3><i class="fas fa-star"></i> FEATURES</h3><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">' + (a.features || []).map(f => '<li style="display:flex;gap:10px;font-weight:700;"><i class="fas fa-check" style="color:var(--green);margin-top:2px;flex-shrink:0;"></i>' + f + '</li>').join('') + '</ul></div>' +
         '<div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT\'S NEW</h3><p style="color:var(--subtext);line-height:1.9;font-weight:600;">' + (a.changelog || []).join('<br>') + '</p></div>' +
         '<div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal — 100% Clean</div>' +
-        '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:18px;background:linear-gradient(135deg,#00796b,#26a69a);color:#fff;font-weight:900;font-size:0.95rem;text-decoration:none;margin-top:14px;box-shadow:0 6px 20px rgba(0,121,107,0.35);letter-spacing:1px;font-family:Orbitron,sans-serif;"><i class="fas fa-shield-check"></i> GET VIRUS FREE FILE</a>' +
+
         '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:10px;text-align:center;" onclick="startTimer(\'' + a.link + '\');playClick()">⬇ EXECUTE DOWNLOAD</div>';
     document.getElementById('specsOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; history.pushState({ v: 'specs' }, '');
 }
 
 
 
-// ===== DIRECT DOWNLOAD TRIGGER =====
-// ===== SMART AD LINK =====
-var _adUrl = 'https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492';
-function openAd() { try { window.open(_adUrl, '_blank'); } catch(e) {} }
+// ===== DIRECT DOWNLOAD =====
 
 function startTimer(link) {
     var m = document.getElementById('timerModal'); m.style.display = 'flex';
     var log = document.getElementById('serverLogs'), btn = document.getElementById('finalBtn'), count = document.getElementById('timerCount');
     var skipBtn = document.getElementById('timerSkipBtn');
     btn.style.display = 'none'; count.style.display = 'block'; log.innerHTML = '> Connecting to Database...';
-    if (skipBtn) { skipBtn.style.display = 'none'; setTimeout(() => { skipBtn.style.display = 'block'; }, 5000); }
+    if (skipBtn) { skipBtn.style.display = 'none'; }
     var time = 10, t = setInterval(() => {
         time--; count.innerText = time;
         if (time === 8) log.innerHTML += '<br>> Establishing Secure Handshake...';
