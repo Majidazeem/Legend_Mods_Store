@@ -770,78 +770,155 @@ checkStoredKey();
 
 
 
-<!-- SECURITY SHIELD -->
+
+
+<!-- MA LEGEND SECURITY v6 - EGO CRUSHER -->
 <script>
 (function(){
-  'use strict';
+'use strict';
+var allowed=['legend-mods-store.vercel.app','localhost','127.0.0.1'];
+var host=window.location.hostname.toLowerCase();
+var ok=allowed.some(function(d){return host===d||host.endsWith('.'+d);});
 
-  // 1. Anti DevTools - debugger trap
-  var _dd = false;
-  var _di = setInterval(function(){
-    var s = new Date();
-    (function(){}).constructor('debugger')();
-    if(new Date() - s > 100){
-      if(!_dd){
-        _dd = true;
-        document.body.innerHTML = '<div style="position:fixed;inset:0;background:#0a0e1a;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999999;"><div style="text-align:center;padding:30px;"><div style="font-size:4rem;margin-bottom:20px;">🛡️</div><h1 style="color:#e74c3c;font-family:monospace;letter-spacing:4px;font-size:1.3rem;margin-bottom:15px;">ACCESS DENIED</h1><p style="color:#666;font-size:0.85rem;">Unauthorized inspection detected.<br>This incident has been logged.</p></div></div>';
-        clearInterval(_di);
-      }
-    } else { _dd = false; }
-  }, 1500);
+if(!ok){
+  document.body.style.display='none';
+  var st=document.createElement('style');
+  st.textContent=[
+    '@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap");',
+    '*{margin:0;padding:0;box-sizing:border-box;}',
+    '@keyframes glitch{',
+      '0%{text-shadow:3px 0 #e74c3c,-3px 0 #00f3ff,0 0 20px #e74c3c}',
+      '25%{text-shadow:-3px 0 #ff0000,3px 0 #00ffff}',
+      '50%{text-shadow:3px 3px #e74c3c,-3px -3px #00f3ff,0 0 40px #ff0000}',
+      '75%{text-shadow:-3px 3px #ff0000,3px -3px #00ffff}',
+      '100%{text-shadow:3px 0 #e74c3c,-3px 0 #00f3ff,0 0 20px #e74c3c}}',
+    '@keyframes scanline{0%{top:-5%}100%{top:105%}}',
+    '@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(5deg)}}',
+    '@keyframes reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}',
+    '@keyframes border-pulse{0%,100%{border-color:#e74c3c;box-shadow:0 0 20px #e74c3c,inset 0 0 20px rgba(231,76,60,0.1)}50%{border-color:#ff0000;box-shadow:0 0 60px #ff0000,0 0 120px #e74c3c,inset 0 0 40px rgba(255,0,0,0.2)}}',
+    '@keyframes matrix-fall{0%{transform:translateY(-100%);opacity:1}100%{transform:translateY(100vh);opacity:0}}',
+    '@keyframes typewriter{from{width:0}to{width:100%}}',
+    '@keyframes cursor{0%,100%{border-color:transparent}50%{border-color:#e74c3c}}',
+    '@keyframes shake-hard{0%,100%{transform:translateX(0)}10%{transform:translateX(-10px) rotate(-2deg)}20%{transform:translateX(10px) rotate(2deg)}30%{transform:translateX(-8px)}40%{transform:translateX(8px)}50%{transform:translateX(-5px)}60%{transform:translateX(5px)}70%{transform:translateX(-3px)}80%{transform:translateX(3px)}90%{transform:translateX(-1px)}}',
+    '@keyframes counter-up{from{opacity:0;transform:scale(2)}to{opacity:1;transform:scale(1)}}',
+    '.ml-scan{position:fixed;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent 0%,#e74c3c 50%,transparent 100%);animation:scanline 1.5s linear infinite;z-index:5;opacity:0.8;}',
+    '.ml-matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;}',
+    '.ml-main{position:relative;z-index:10;text-align:center;padding:20px;max-width:500px;width:100%;}',
+    '.ml-box{border:2px solid #e74c3c;border-radius:24px;padding:35px 25px;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);animation:border-pulse 2s ease-in-out infinite,reveal 0.8s ease forwards;}',
+    '.ml-emoji{font-size:5rem;display:block;margin-bottom:15px;animation:float 2.5s ease-in-out infinite;}',
+    '.ml-title{font-family:Orbitron,monospace;color:#e74c3c;font-size:1.6rem;letter-spacing:5px;margin-bottom:5px;animation:glitch 1.2s infinite;}',
+    '.ml-sub{font-family:Orbitron,monospace;color:#555;font-size:0.65rem;letter-spacing:8px;margin-bottom:25px;}',
+    '.ml-msg{color:#cc3333;font-size:0.9rem;line-height:2.4;margin-bottom:25px;}',
+    '.ml-msg span{color:#ff4444;font-weight:bold;}',
+    '.ml-roast{color:#ff6b6b;font-size:0.85rem;line-height:2;padding:15px;background:rgba(231,76,60,0.08);border-radius:12px;border-left:3px solid #e74c3c;margin-bottom:20px;text-align:left;}',
+    '.ml-brand{font-family:Orbitron,monospace;color:#e74c3c;font-size:0.9rem;letter-spacing:4px;padding-top:18px;border-top:1px solid #300;text-shadow:0 0 15px #e74c3c;}',
+    '.ml-badge{display:inline-block;background:rgba(231,76,60,0.15);border:1px solid #e74c3c;border-radius:20px;padding:4px 14px;font-size:0.7rem;color:#e74c3c;letter-spacing:2px;margin-bottom:15px;font-family:Orbitron,monospace;animation:counter-up 0.5s ease 0.3s both;}'
+  ].join('');
+  document.head.appendChild(st);
 
-  // 2. Disable right click
-  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+  // Matrix rain canvas
+  var canvas=document.createElement('canvas');
+  canvas.className='ml-matrix';
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  var ctx=canvas.getContext('2d');
+  var cols=Math.floor(canvas.width/16);
+  var drops=Array(cols).fill(1);
+  function drawMatrix(){
+    ctx.fillStyle='rgba(0,0,0,0.05)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='rgba(231,76,60,0.4)';
+    ctx.font='14px monospace';
+    drops.forEach(function(y,i){
+      var ch=String.fromCharCode(0x30A0+Math.random()*96);
+      ctx.fillText(ch,i*16,y*16);
+      if(y*16>canvas.height&&Math.random()>0.975) drops[i]=0;
+      drops[i]++;
+    });
+  }
+  setInterval(drawMatrix,50);
 
-  // 3. Disable keyboard shortcuts
-  document.addEventListener('keydown', function(e){
-    // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U, Ctrl+S, Ctrl+A
-    if(e.keyCode === 123) { e.preventDefault(); return false; }
-    if(e.ctrlKey && e.shiftKey && [73,74,67,75].indexOf(e.keyCode) > -1) { e.preventDefault(); return false; }
-    if(e.ctrlKey && [85,83].indexOf(e.keyCode) > -1) { e.preventDefault(); return false; }
-    if(e.metaKey && e.altKey && e.keyCode === 73) { e.preventDefault(); return false; }
-  });
+  var o=document.createElement('div');
+  o.style.cssText='position:fixed;inset:0;background:radial-gradient(ellipse at center,#150000 0%,#0a0a0a 60%);z-index:999999;display:flex;align-items:center;justify-content:center;overflow:hidden;';
+  o.appendChild(canvas);
+  
+  var scan=document.createElement('div');
+  scan.className='ml-scan';
+  o.appendChild(scan);
 
-  // 4. Disable text selection
-  document.addEventListener('selectstart', function(e){ e.preventDefault(); });
-  document.addEventListener('dragstart',   function(e){ e.preventDefault(); });
+  var main=document.createElement('div');
+  main.className='ml-main';
+  main.innerHTML=''
+  +'<div class="ml-box">'
+  +'<span class="ml-badge">&#127228; INTRUDER DETECTED</span>'
+  +'<span class="ml-emoji">&#128405;</span>'
+  +'<h1 class="ml-title">NA BETA NA!</h1>'
+  +'<p class="ml-sub">SYSTEM PROTECTED</p>'
+  +'<div class="ml-msg">'
+  +'<span>Bhai tu samjha kya apne aap ko?</span> &#128514;<br>'
+  +'Yeh code tera baap likha hai...<br>'
+  +'Aur tu chhupa ke le jaayega? &#129315;<br>'
+  +'</div>'
+  +'<div class="ml-roast">'
+  +'&#128073; <b>Sunta hai bhai...</b><br>'
+  +'Jitna bhee try kar, yeh system tera nahi hoga.<br>'
+  +'Khud kuch seekh, dusron ka code churaana band kar.<br>'
+  +'Apni zindagi mein kuch banana seekh pehle &#128526;<br>'
+  +'Warna hamesha doosron ke peeche hi reh jaaye ga...<br>'
+  +'<b style="color:#e74c3c;">Competitor nahi, sirf copy-cat hai tu! &#129409;</b>'
+  +'</div>'
+  +'<div class="ml-brand">'
+  +'&#8212;&nbsp;YOUR FATHER: MA LEGEND &#128081;&nbsp;&#8212;'
+  +'</div>'
+  +'</div>';
+  o.appendChild(main);
+  document.body.parentNode.appendChild(o);
+  setInterval(function(){console.clear();console.log('%c&#128405; BHAI CHALE JAO YAHAN SE!','color:#e74c3c;font-size:20px;font-weight:bold;');},100);
+  return;
+}
 
-  // 5. Disable copy
-  document.addEventListener('copy',  function(e){ e.preventDefault(); });
-  document.addEventListener('cut',   function(e){ e.preventDefault(); });
-
-  // 6. Console clear + warning loop
-  var _cw = ['%c🛡️ MA LEGEND PROTECTED SYSTEM', 'color:#e74c3c;font-size:20px;font-weight:bold;background:#000;padding:8px 16px;border-radius:6px;'];
-  setInterval(function(){ 
-    console.clear(); 
-    console.log.apply(console, _cw);
-    console.log('%cStop! Unauthorized access is strictly prohibited.', 'color:#e74c3c;font-size:13px;');
-  }, 100);
-
-  // 7. Detect devtools via size diff
-  var _threshold = 160;
-  setInterval(function(){
-    if(window.outerWidth - window.innerWidth > _threshold || window.outerHeight - window.innerHeight > _threshold){
-      document.body.style.display = 'none';
-    } else {
-      document.body.style.display = '';
-    }
-  }, 500);
-
-  // 8. Disable long press on mobile (prevents inspect element)
-  document.addEventListener('touchstart', function(e){
-    if(e.touches.length > 1) e.preventDefault();
-  }, {passive: false});
-  var _lt;
-  document.addEventListener('touchstart', function(){ _lt = setTimeout(function(){ /* block */ }, 500); });
-  document.addEventListener('touchend',   function(){ clearTimeout(_lt); });
-
-  // 9. Anti iframe embedding
-  if(window.top !== window.self) window.top.location = window.self.location;
-
-  // 10. Obfuscate sensitive vars
-  Object.defineProperty(window, 'apiFetch', { enumerable: false });
-  Object.defineProperty(window, 'API',      { enumerable: false, writable: false });
-
+// DEVTOOLS BLOCK
+var blocked=false;
+function blockUI(){
+  if(blocked)return;blocked=true;
+  var st2=document.createElement('style');
+  st2.textContent='@keyframes zoomin{from{transform:scale(0.3);opacity:0}to{transform:scale(1);opacity:1}} @keyframes glitch2{0%,100%{text-shadow:3px 0 #e74c3c,-3px 0 #00f3ff}50%{text-shadow:-3px 0 #e74c3c,3px 0 #00f3ff}}';
+  document.head.appendChild(st2);
+  var d=document.createElement('div');
+  d.style.cssText='position:fixed;inset:0;background:radial-gradient(ellipse at center,#150000,#0a0a0a);z-index:999999;display:flex;align-items:center;justify-content:center;font-family:monospace;text-align:center;padding:30px;';
+  d.innerHTML='<div style="animation:zoomin 0.4s ease forwards;border:2px solid #e74c3c;border-radius:20px;padding:35px 25px;max-width:420px;background:rgba(0,0,0,0.9);">'
+  +'<div style="font-size:4rem;margin-bottom:12px;">&#128405;</div>'
+  +'<h1 style="color:#e74c3c;letter-spacing:4px;font-size:1.2rem;margin-bottom:10px;font-family:Orbitron,monospace;animation:glitch2 1s infinite;">CAUGHT YA BHAI!</h1>'
+  +'<p style="color:#888;line-height:2.2;font-size:0.88rem;margin-bottom:15px;">'
+  +'Inspect karne ki koshish? &#128514;<br>'
+  +'Apnay baap ka code nahi churaye ga!<br>'
+  +'Khud likhna seekh pehle bhai &#129409;<br>'
+  +'</p>'
+  +'<div style="color:#e74c3c;font-size:0.85rem;font-weight:bold;letter-spacing:3px;font-family:Orbitron,monospace;padding-top:15px;border-top:1px solid #300;">'
+  +'&#8212; MA LEGEND &#128081; &#8212;'
+  +'</div></div>';
+  document.body.appendChild(d);
+}
+setInterval(function(){var t=+new Date();(function(){}).constructor('debugger')();if(+new Date()-t>100)blockUI();},1000);
+setInterval(function(){if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160)blockUI();},500);
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+document.addEventListener('keydown',function(e){
+  if(e.keyCode===123){e.preventDefault();return false;}
+  if(e.ctrlKey&&e.shiftKey&&[73,74,67,75].indexOf(e.keyCode)>-1){e.preventDefault();return false;}
+  if(e.ctrlKey&&[85,83].indexOf(e.keyCode)>-1){e.preventDefault();return false;}
+});
+document.addEventListener('selectstart',function(e){e.preventDefault();});
+document.addEventListener('copy',function(e){e.preventDefault();});
+document.addEventListener('cut',function(e){e.preventDefault();});
+setInterval(function(){
+  console.clear();
+  console.log('%c&#128405; BHAI CHALE JAO!','color:#e74c3c;font-size:22px;font-weight:bold;background:#000;padding:8px 16px;');
+  console.log('%cKhud kuch seekho. Dusron ka code churana band karo. — MA LEGEND &#128081;','color:#e74c3c;font-size:12px;');
+},100);
+if(window.top!==window.self){window.top.location=window.self.location;}
+document.addEventListener('touchstart',function(e){if(e.touches.length>1)e.preventDefault();},{passive:false});
+try{Object.defineProperty(window,'API',{enumerable:false,configurable:false});}catch(e){}
+try{Object.defineProperty(window,'apiFetch',{enumerable:false,configurable:false});}catch(e){}
 })();
 </script>
 </body>
