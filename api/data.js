@@ -18,19 +18,10 @@ const ADMIN_KEY   = process.env.ADMIN_API_KEY;
 
 // ── Simple CORS headers ──────────────────────────────────────
 function cors(req, res) {
-  var origin = req.headers.origin || "";
-  // Allow: your Vercel site + localhost (for local admin panel)
-  var allowed = [
-    "https://legend-mods-store.vercel.app",
-    "http://localhost",
-    "http://127.0.0.1",
-    "null"   // local file:// open
-  ];
-  var ok = allowed.some(function(a){ return origin.startsWith(a); }) || origin === "";
-  res.setHeader("Access-Control-Allow-Origin",  ok ? (origin || "*") : "https://legend-mods-store.vercel.app");
+  // Allow all origins - admin panel runs locally
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type,x-admin-key");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
 }
 
 // ── Firebase REST helper ─────────────────────────────────────
