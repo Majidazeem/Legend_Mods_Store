@@ -567,8 +567,12 @@ window.verifyProKey = async function() {
 };
 
 // ── Init ─────────────────────────────────────────────────
-// Timeout safety — 5s mein API reply na aaye to bhi splash hide ho
-setTimeout(hideSplash, 5000);
+function hideSplash() {
+    var s = document.getElementById('splash-screen');
+    if (s) { s.style.opacity='0'; s.style.visibility='hidden'; setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); }, 500); }
+}
+// Hamesha 3s baad hide — API se independent
+setTimeout(hideSplash, 3000);
 loadSiteSettings();
 loadApps();
 loadReports();
@@ -590,12 +594,7 @@ function playClick() {
     try { if (!audioCtx) initAudio(); var o = audioCtx.createOscillator(), g = audioCtx.createGain(); o.connect(g); g.connect(audioCtx.destination); o.frequency.value = 700; o.type = 'sine'; g.gain.setValueAtTime(0.07, audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08); o.start(); o.stop(audioCtx.currentTime + 0.08); } catch (e) {}
 }
 
-// Splash screen — hamesha 3s baad hide hoga, API se independent
-function hideSplash() {
-    const s = document.getElementById('splash-screen');
-    if (s) { s.classList.add('hidden'); setTimeout(() => { if(s.parentNode) s.parentNode.removeChild(s); }, 500); }
-}
-setTimeout(hideSplash, 3000);
+// splash handled in first script
 
 window.addEventListener('load', () => {
     var ua = navigator.userAgent;
