@@ -540,8 +540,8 @@ function mkCardEl(text, isFree) {
         "</div>",
         "<div class='rt-body' id='" + bodyId + "'>" + (text.body||"") + "</div>",
         "<div class='rt-actions'>",
-            "<button class='btn-copy-text' id='copybtn_" + text.firebaseKey + "' onclick='copyRTxt("" + text.firebaseKey + ""," + isFree + ")'><i class='fas fa-copy'></i> COPY TEXT</button>",
-            "<button class='btn-expand-text' onclick='expandTxt("" + bodyId + "",this)'><i class='fas fa-chevron-down'></i></button>",
+            "<button class='btn-copy-text' id='copybtn_" + text.firebaseKey + "' onclick=\"copyRTxt('" + text.firebaseKey + "'," + isFree + ")\" ><i class='fas fa-copy'></i> COPY TEXT</button>",
+            "<button class='btn-expand-text' onclick=\"expandTxt('" + bodyId + "',this)\"><i class='fas fa-chevron-down'></i></button>",
         "</div>"
     ].join("");
     return div;
