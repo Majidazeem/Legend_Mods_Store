@@ -287,6 +287,10 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
 
 <div class="marquee"><div class="marquee-inner" id="marqueeText">صَلَّى ٱللَّٰهُ عَلَيْهِ وَسَلَّمَ ﷺ اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div></div>
 
+<div style="width:300px;max-width:100%;height:250px;margin:16px auto;display:block;overflow:hidden;text-align:center;">
+<script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
 <div class="tabs">
     <button class="tab-btn active" onclick="filterCat('whatsapp',this);playClick()">WA MODS</button>
     <button class="tab-btn" onclick="filterCat('themes',this);playClick()">XML THEMES</button>
@@ -303,11 +307,7 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
 
 
 <main class="grid" id="appGrid"></main>
-<!-- AD UNIT 1 -->
-<div style="width:300px;max-width:100%;height:250px;margin:18px auto;display:block;overflow:hidden;">
-<script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
-<script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
-</div>
+<!-- ADS INJECTED BY JS -->
 
 <!-- SPECS OVERLAY -->
 <div id="specsOverlay" class="overlay">
@@ -342,12 +342,12 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
 <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
 <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
 </div>
+<div style="margin:14px auto;max-width:340px;text-align:center;">
+<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:inline-block;width:100%;padding:13px;border-radius:16px;background:linear-gradient(135deg,#00796b,#26a69a);color:#fff;font-weight:900;font-size:0.9rem;text-decoration:none;letter-spacing:1px;font-family:Orbitron,sans-serif;box-shadow:0 4px 15px rgba(0,121,107,0.4);"><i class="fas fa-download"></i> GET DIRECT LINK</a>
+</div>
 <a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:10px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
     </div>
 </div>
-
-<!-- FOOTER AD -->
-
 
 <!-- FOOTER AD -->
 <div style="width:300px;max-width:100%;height:250px;margin:20px auto;display:block;overflow:hidden;">
@@ -648,7 +648,8 @@ function openDetails(id) {
         '<div class="vip-info-panel"><h3><i class="fas fa-rocket"></i> WHAT\'S NEW</h3><p style="color:var(--subtext);line-height:1.9;font-weight:600;">' + (a.changelog || []).join('<br>') + '</p></div>' +
         '<div class="safe-badge"><i class="fas fa-shield-virus"></i> Scanned by VirusTotal — 100% Clean</div>' +
 
-        '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:10px;text-align:center;" onclick="startTimer(\'' + a.link + '\');playClick()">⬇ EXECUTE DOWNLOAD</div>';
+        '<div class="btn-view" style="padding:19px;font-size:1.1rem;margin-top:10px;text-align:center;" onclick="startTimer(\'' + a.link + '\');playClick()">⬇ EXECUTE DOWNLOAD</div>' +
+        '<a href="https://www.profitablecpmratenetwork.com/nnjjzty4t?key=d5715772a3d0ae9e1b1b070dd4ff2492" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:16px;background:linear-gradient(135deg,#e53935,#b71c1c);color:#fff;font-weight:900;font-size:0.85rem;text-decoration:none;margin-top:10px;letter-spacing:1px;font-family:Orbitron,sans-serif;"><i class=\"fas fa-link\"></i> GET APK MIRROR LINK</a>';
     document.getElementById('specsOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; history.pushState({ v: 'specs' }, '');
 }
 
@@ -767,53 +768,79 @@ function expandTxt(bodyId, btn) { var el = document.getElementById(bodyId); if (
 checkStoredKey();
 </script>
 
-<!-- SECURITY -->
+
+
+<!-- SECURITY SHIELD -->
 <script>
 (function(){
-  // Anti devtools
-  var threshold = 160;
-  setInterval(function(){
-    var before = new Date();
-    debugger;
-    var after = new Date();
-    if(after - before > threshold){
-      document.body.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0a;color:#e74c3c;font-family:monospace;text-align:center;padding:30px;"><div><div style="font-size:3rem;margin-bottom:20px;">🛡️</div><h1 style="font-size:1.2rem;letter-spacing:3px;margin-bottom:10px;">ACCESS DENIED</h1><p style="opacity:0.6;font-size:0.85rem;">Unauthorized inspection detected</p></div></div>';
-    }
-  }, 1000);
+  'use strict';
 
-  // Disable right click
-  document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  // 1. Anti DevTools - debugger trap
+  var _dd = false;
+  var _di = setInterval(function(){
+    var s = new Date();
+    (function(){}).constructor('debugger')();
+    if(new Date() - s > 100){
+      if(!_dd){
+        _dd = true;
+        document.body.innerHTML = '<div style="position:fixed;inset:0;background:#0a0e1a;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999999;"><div style="text-align:center;padding:30px;"><div style="font-size:4rem;margin-bottom:20px;">🛡️</div><h1 style="color:#e74c3c;font-family:monospace;letter-spacing:4px;font-size:1.3rem;margin-bottom:15px;">ACCESS DENIED</h1><p style="color:#666;font-size:0.85rem;">Unauthorized inspection detected.<br>This incident has been logged.</p></div></div>';
+        clearInterval(_di);
+      }
+    } else { _dd = false; }
+  }, 1500);
 
-  // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+  // 2. Disable right click
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+
+  // 3. Disable keyboard shortcuts
   document.addEventListener('keydown', function(e){
-    if(e.keyCode===123 || 
-      (e.ctrlKey && e.shiftKey && (e.keyCode===73||e.keyCode===74||e.keyCode===67)) ||
-      (e.ctrlKey && (e.keyCode===85||e.keyCode===83||e.keyCode===65))){
-      e.preventDefault();
-      return false;
-    }
+    // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U, Ctrl+S, Ctrl+A
+    if(e.keyCode === 123) { e.preventDefault(); return false; }
+    if(e.ctrlKey && e.shiftKey && [73,74,67,75].indexOf(e.keyCode) > -1) { e.preventDefault(); return false; }
+    if(e.ctrlKey && [85,83].indexOf(e.keyCode) > -1) { e.preventDefault(); return false; }
+    if(e.metaKey && e.altKey && e.keyCode === 73) { e.preventDefault(); return false; }
   });
 
-  // Disable text selection
+  // 4. Disable text selection
   document.addEventListener('selectstart', function(e){ e.preventDefault(); });
+  document.addEventListener('dragstart',   function(e){ e.preventDefault(); });
 
-  // Disable drag
-  document.addEventListener('dragstart', function(e){ e.preventDefault(); });
+  // 5. Disable copy
+  document.addEventListener('copy',  function(e){ e.preventDefault(); });
+  document.addEventListener('cut',   function(e){ e.preventDefault(); });
 
-  // Console warning
-  var msg = '%cMA LEGEND - PROTECTED SYSTEM';
-  var style = 'color:#e74c3c;font-size:22px;font-weight:bold;';
-  console.log(msg, style);
-  console.log('%cStop! This is a protected application. Unauthorized access is prohibited.', 'color:#e74c3c;font-size:14px;');
+  // 6. Console clear + warning loop
+  var _cw = ['%c🛡️ MA LEGEND PROTECTED SYSTEM', 'color:#e74c3c;font-size:20px;font-weight:bold;background:#000;padding:8px 16px;border-radius:6px;'];
+  setInterval(function(){ 
+    console.clear(); 
+    console.log.apply(console, _cw);
+    console.log('%cStop! Unauthorized access is strictly prohibited.', 'color:#e74c3c;font-size:13px;');
+  }, 100);
 
-  // Override console to detect devtools
-  var devtools = {open: false};
-  var element = new Image();
-  Object.defineProperty(element, 'id', {
-    get: function(){
-      devtools.open = true;
+  // 7. Detect devtools via size diff
+  var _threshold = 160;
+  setInterval(function(){
+    if(window.outerWidth - window.innerWidth > _threshold || window.outerHeight - window.innerHeight > _threshold){
+      document.body.style.display = 'none';
+    } else {
+      document.body.style.display = '';
     }
-  });
+  }, 500);
+
+  // 8. Disable long press on mobile (prevents inspect element)
+  document.addEventListener('touchstart', function(e){
+    if(e.touches.length > 1) e.preventDefault();
+  }, {passive: false});
+  var _lt;
+  document.addEventListener('touchstart', function(){ _lt = setTimeout(function(){ /* block */ }, 500); });
+  document.addEventListener('touchend',   function(){ clearTimeout(_lt); });
+
+  // 9. Anti iframe embedding
+  if(window.top !== window.self) window.top.location = window.self.location;
+
+  // 10. Obfuscate sensitive vars
+  Object.defineProperty(window, 'apiFetch', { enumerable: false });
+  Object.defineProperty(window, 'API',      { enumerable: false, writable: false });
 
 })();
 </script>
