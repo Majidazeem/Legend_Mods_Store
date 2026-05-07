@@ -301,8 +301,13 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
     <input type="text" id="search" placeholder="Search mods & features..." onkeyup="doSearch()">
 </div>
 
-<div style="width:300px;height:250px;margin:0 auto 18px;display:block;overflow:hidden;"><script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script></div>
+
 <main class="grid" id="appGrid"></main>
+<!-- AD UNIT 1 -->
+<div style="width:300px;max-width:100%;height:250px;margin:18px auto;display:block;overflow:hidden;">
+<script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
 
 <!-- SPECS OVERLAY -->
 <div id="specsOverlay" class="overlay">
@@ -328,20 +333,27 @@ footer{text-align:center;padding:55px 18px 75px;background:var(--bg);box-shadow:
         <div class="timer-val" id="timerCount">10</div>
         <h3>SECURING ELITE LINK...</h3>
         <div class="logs" id="serverLogs"></div>
-        <div style="width:300px;height:250px;margin:14px auto;display:block;overflow:hidden;"><script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script><script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script></div>
-        <a href="https://t.me/legend_friends_no2" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:16px;background:linear-gradient(135deg,#0088cc,#005f8e);color:#fff;font-weight:800;font-size:0.9rem;text-decoration:none;margin:10px 0;letter-spacing:1px;"><i class="fab fa-telegram-plane"></i> Join Our Telegram Channel</a>
+        
+        
 
         
-        <a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:10px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
+        <!-- AD UNIT 2 - Timer -->
+<div style="width:300px;max-width:100%;height:250px;margin:14px auto;display:block;overflow:hidden;">
+<script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
+<a href="#" id="finalBtn" style="display:none;text-decoration:none;margin-top:10px;" target="_blank" class="btn-view">OPEN DOWNLOAD</a>
     </div>
 </div>
 
 <!-- FOOTER AD -->
-<div style="width:300px;height:250px;margin:20px auto;display:block;overflow:hidden;">
-    <script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
-    <script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
-</div>
 
+
+<!-- FOOTER AD -->
+<div style="width:300px;max-width:100%;height:250px;margin:20px auto;display:block;overflow:hidden;">
+<script>atOptions={'key':'d0ab0eaa45634b64bb926835ba1f28cf','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script src="https://www.highperformanceformat.com/d0ab0eaa45634b64bb926835ba1f28cf/invoke.js"></script>
+</div>
 <!-- FOOTER -->
 <footer>
 
@@ -501,11 +513,12 @@ async function loadApps() {
         var d = await apiFetch("apps");
         var apps = d.apps || [];
         window.appsData = apps;
-        var at = document.querySelector(".tabs .tab-btn.active");
-        if (at) { at.click(); } else {
-            var wa = apps.filter(function(a){ return a.category === "whatsapp"; });
-            renderApps(wa.length > 0 ? wa : apps);
-        }
+        // Default: show whatsapp tab
+        var wa = apps.filter(function(a){ return a.category === "whatsapp"; });
+        renderApps(wa.length > 0 ? wa : apps);
+        // Highlight first tab
+        var firstTab = document.querySelector(".tabs .tab-btn");
+        if(firstTab){ document.querySelectorAll(".tabs .tab-btn").forEach(function(b){b.classList.remove("active");}); firstTab.classList.add("active"); }
     } catch(e) { console.error("Apps load error", e); }
 }
 
@@ -575,6 +588,7 @@ function hideSplash() {
 setTimeout(hideSplash, 3000);
 loadSiteSettings();
 loadApps();
+loadReports();
 loadReports();
 </script>
 
@@ -751,6 +765,57 @@ function copyRTxt(key, isFree) {
 function expandTxt(bodyId, btn) { var el = document.getElementById(bodyId); if (!el) return; el.classList.toggle('expanded'); btn.querySelector('i').className = el.classList.contains('expanded') ? 'fas fa-chevron-up' : 'fas fa-chevron-down'; }
 
 checkStoredKey();
+</script>
+
+<!-- SECURITY -->
+<script>
+(function(){
+  // Anti devtools
+  var threshold = 160;
+  setInterval(function(){
+    var before = new Date();
+    debugger;
+    var after = new Date();
+    if(after - before > threshold){
+      document.body.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0a;color:#e74c3c;font-family:monospace;text-align:center;padding:30px;"><div><div style="font-size:3rem;margin-bottom:20px;">🛡️</div><h1 style="font-size:1.2rem;letter-spacing:3px;margin-bottom:10px;">ACCESS DENIED</h1><p style="opacity:0.6;font-size:0.85rem;">Unauthorized inspection detected</p></div></div>';
+    }
+  }, 1000);
+
+  // Disable right click
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+
+  // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+  document.addEventListener('keydown', function(e){
+    if(e.keyCode===123 || 
+      (e.ctrlKey && e.shiftKey && (e.keyCode===73||e.keyCode===74||e.keyCode===67)) ||
+      (e.ctrlKey && (e.keyCode===85||e.keyCode===83||e.keyCode===65))){
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Disable text selection
+  document.addEventListener('selectstart', function(e){ e.preventDefault(); });
+
+  // Disable drag
+  document.addEventListener('dragstart', function(e){ e.preventDefault(); });
+
+  // Console warning
+  var msg = '%cMA LEGEND - PROTECTED SYSTEM';
+  var style = 'color:#e74c3c;font-size:22px;font-weight:bold;';
+  console.log(msg, style);
+  console.log('%cStop! This is a protected application. Unauthorized access is prohibited.', 'color:#e74c3c;font-size:14px;');
+
+  // Override console to detect devtools
+  var devtools = {open: false};
+  var element = new Image();
+  Object.defineProperty(element, 'id', {
+    get: function(){
+      devtools.open = true;
+    }
+  });
+
+})();
 </script>
 </body>
 </html>
