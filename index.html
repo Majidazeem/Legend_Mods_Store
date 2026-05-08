@@ -708,7 +708,20 @@ window.addEventListener('load', () => {
 setInterval(() => { var c = document.getElementById('liveUserCnt'); if (c) c.innerText = Math.max(100, parseInt(c.innerText) + (Math.floor(Math.random() * 10) - 5)); }, 3000);
 
 function showToast(msg) { var t = document.getElementById('toast'); t.style.display = 'block'; t.innerText = msg; setTimeout(() => t.style.display = 'none', 3000); }
-function getTimeAgo(d) { var diff = Math.floor((new Date() - new Date(d)) / 1000); if (diff < 60) return 'Just now'; if (diff < 3600) return Math.floor(diff / 60) + 'm ago'; if (diff < 86400) return Math.floor(diff / 3600) + 'h ago'; return Math.floor(diff / 86400) + 'd ago'; }
+function getTimeAgo(d) {
+  if(!d) return 'Recently';
+  var dt = new Date(d);
+  if(isNaN(dt.getTime())) return 'Recently';
+  var diff = Math.floor((new Date() - dt) / 1000);
+  if(diff < 0) return 'Recently';
+  if(diff < 60) return 'Just now';
+  if(diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if(diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  var days = Math.floor(diff/86400);
+  if(days < 30) return days + 'd ago';
+  if(days < 365) return Math.floor(days/30) + 'mo ago';
+  return Math.floor(days/365) + 'y ago';
+}
 
 function renderApps(data) {
     var g = document.getElementById('appGrid'); if (!g) return;
