@@ -868,7 +868,7 @@ checkStoredKey();
 <script>
 (function(){
 'use strict';
-var allowed=['legend-mods-store.vercel.app','localhost','127.0.0.1'];
+var allowed=[atob('bGVnZW5kLW1vZHMtc3RvcmUudmVyY2VsLmFwcA=='),atob('bG9jYWxob3N0'),atob('MTI3LjAuMC4x')];
 var host=window.location.hostname.toLowerCase();
 var ok=allowed.some(function(d){return host===d||host.endsWith('.'+d);});
 
